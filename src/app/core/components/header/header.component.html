@@ -66,15 +66,26 @@
 
     <!-- Navbar     
     -->
-    <ul class="flex border-b  mt-10 text-gray-400" *ngIf="isAuth()" >
-        <li class="-mb-px mr-1 ml-10">
-            <a class="bg-white inline-block py-2 px-4 font-semibold cursor-pointer" routerLinkActive="border-l border-t border-r rounded-t  text-amber-600" routerLink="etud/accueil">Accueil</a>
+    <!-- Teacher link -->
+    <ul  class="flex border-b  mt-10 text-gray-400" *ngIf="isAuth() && getUser() === 'teacher'" >
+        <li class="-mb-px mr-1 ml-10" *ngFor="let link of tLinks">
+            <a class="bg-white inline-block py-2 px-4 font-semibold cursor-pointer" routerLinkActive="border-l border-t border-r rounded-t  text-amber-600" [routerLink]="link.href">{{link.name}}</a>
         </li>
-        <li class="-mb-px mr-1">
-            <a class="bg-white inline-block py-2 px-4 font-semibold cursor-pointer" routerLinkActive="border-l border-t border-r rounded-t  text-amber-600" routerLink='etud/cours'  ariaCurrentWhenActive="page">Mes cours</a>
-        </li>
-        <li class="-mb-px mr-1">
-            <a class="bg-white inline-block py-2 px-4 font-semibold cursor-pointer" routerLinkActive="border-l border-t border-r rounded-t  text-amber-600" routerLink="etud/activite"  ariaCurrentWhenActive="page">Emploie du temps</a>
+    </ul>
+
+    <!-- Admin link -->
+
+    <ul  class="flex border-b  mt-10 text-gray-400" *ngIf="isAuth() && getUser() === 'admin'" >
+        <li class="-mb-px mr-1 ml-10" *ngFor="let link of aLinks">
+            <a class="bg-white inline-block py-2 px-4 font-semibold cursor-pointer" routerLinkActive="border-l border-t border-r rounded-t  text-amber-600" [routerLink]="link.href">{{link.name}}</a>
+        </li> 
+    </ul>
+
+    <!-- Student link -->
+
+    <ul  class="flex border-b  mt-10 text-gray-400" *ngIf="isAuth() && getUser() === 'student'" >
+        <li class="-mb-px mr-1 ml-10" *ngFor="let link of sLinks">
+            <a class="bg-white inline-block py-2 px-4 font-semibold cursor-pointer" routerLinkActive="border-l border-t border-r rounded-t  text-amber-600" [routerLink]="link.href">{{link.name}}</a>
         </li>
        
     </ul>

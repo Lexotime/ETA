@@ -49,8 +49,9 @@ export class LoginComponent {
         const password = this.loginForm.get('password').value;
 
         this.storage.setLocalData('login', login);
+        this.storage.setLocalData('user', 'student');
         
-        this.router.navigateByUrl('/etud');
+        this.router.navigateByUrl('/etud/accueil');
         //const auth: AuthModel = {
         //    login: login,
         //    password: password
