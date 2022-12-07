@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CourseModel } from '../../models/course.model';
 
 @Component({
@@ -8,9 +8,6 @@ import { CourseModel } from '../../models/course.model';
 })
 export class CourseListComponent {
 
-  list: CourseModel[] = [
-    {name: 'bouna'},
-    {name: 'bamba'},
-    {name: 'bar'}
-  ]
+  @Input () courses!: CourseModel[];
+
 }

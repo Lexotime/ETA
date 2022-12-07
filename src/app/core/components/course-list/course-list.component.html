@@ -1,8 +1,8 @@
 
 
 
-<div class='h-[360px] py-4 pl-16 flex'>
+<div class='h-[360px] py-4 pl-16 flex overflow-x-auto'>
 
-    <app-course-item *ngFor="let item of list"></app-course-item>
+    <app-course-item *ngFor="let course of courses" [course]="course"></app-course-item>
 
 </div>

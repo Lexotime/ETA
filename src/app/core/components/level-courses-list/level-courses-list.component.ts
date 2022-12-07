@@ -9,7 +9,7 @@ import { LevelCoursesModel } from '../../models/level-courses.model';
 })
 export class LevelCoursesListComponent {
 
-  @Input () courses!: LevelCoursesModel [];
+  @Input () levelCourses!: LevelCoursesModel [];
   @Input() name!: string;
 
 

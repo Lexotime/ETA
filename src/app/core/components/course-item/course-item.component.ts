@@ -1,10 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { CourseModel } from '../../models/course.model';
 
 @Component({
   selector: 'app-course-item',
   templateUrl: './course-item.component.html',
   styleUrls: ['./course-item.component.css']
 })
+
 export class CourseItemComponent {
 
+  @Input() course!: CourseModel;
+  
+  isLinkHover: boolean = false;
+  
+  onHoverLink ()  {
+    this.isLinkHover= true;
+  }
+
+  onMouseOut () {
+    this.isLinkHover = false;
+  }
 }

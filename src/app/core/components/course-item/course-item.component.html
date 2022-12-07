@@ -3,7 +3,17 @@
 
 
 
-<div class="w-[360px] h-[240px] bg-red-400 ml-10 rounded-xl ">
+<div class="w-[360px] h-[240px] drop-shadow-md bg-white shadow-amber-800 mx-10 rounded-xl relative ">
+
+    <!-- Cover -->
     <img src="" alt="">
-    <div>name</div>
+
+    <!-- Courses info -->
+    <div>{{course.name}}</div>
+
+    <!-- register -->
+    <button  (mouseover)="onHoverLink()" (mouseout)="onMouseOut()" [ngClass]="{'flex absolute top-4 right-4 px-4 py-0.5 rounded': true, 'bg-white drop-shadow-sm': isLinkHover}">
+        <p [ngClass]="{'hidden': !isLinkHover}">S'inscrire</p>
+        <img src="assets/images/icons8-plus-math-30.png" class="" alt="icons">
+    </button>
 </div>

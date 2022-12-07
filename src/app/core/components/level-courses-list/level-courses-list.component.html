@@ -3,7 +3,7 @@
 
 
 
-<section *ngFor="let item of courses">
-    <p class="text-3xl ml-10 text-amber-600">{{item.name}}</p>
-    <app-course-list ></app-course-list>
+<section *ngFor="let levelCourse of levelCourses">
+    <p class="text-3xl ml-10 text-amber-600">{{levelCourse.name}}</p>
+    <app-course-list [courses]="levelCourse.courses"></app-course-list>
 </section>

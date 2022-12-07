@@ -9,14 +9,42 @@ import { LevelCoursesModel } from "src/app/core/models/level-courses.model";
 })
 export class HomeComponent {
 
-  courses: LevelCoursesModel[] = [
-    {name: 'a', courses: [{name: 'math'}, {name: 'francais'}, {name: 'anglais'}]},
-    {name: 'a', courses: [{name: 'math'}, {name: 'francais'}, {name: 'anglais'}]},
-    {name: 'a', courses: [{name: 'math'}, {name: 'francais'}, {name: 'anglais'}]},
-    {name: 'a', courses: [{name: 'math'}, {name: 'francais'}, {name: 'anglais'}]},
-    {name: 'a', courses: [{name: 'math'}, {name: 'francais'}, {name: 'anglais'}]},
-    {name: 'a', courses: [{name: 'math'}, {name: 'francais'}, {name: 'anglais'}]},
-    {name: 'a', courses: [{name: 'math'}, {name: 'francais'}, {name: 'anglais'}]}
+  mostViewList: CourseModel[] = [
+    {teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
+    {teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
+    {teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
+    {teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
+    {teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
+    {teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
+    {teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
+  ];
+
+  levelCourses: LevelCoursesModel[] = [
+    {name: 'Math', courses: [
+      {teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
+      {teacher: 'Amadou',language: '',name: 'math', description: 'this is desc'},
+      {teacher: 'Amadou',language: '',name: 'math', description: 'this is m'}
+    ]},
+    {name: 'Francais', courses: [
+      {teacher: 'Amadou',language: '', name: 'math', description: 'this is m'},
+      {teacher: 'Amadou',language: '', name: 'francais', description: 'this is desc'}, 
+      {teacher: 'Amadou',language: '', name: 'anglais', description: 'this is m'}
+    ]},
+    {name: 'anglais', courses: [
+      {teacher: 'Amadou',language: '', name: 'math', description: 'this is m'}, 
+      {teacher: 'Amadou',language: '', name: 'francais', description: 'this is desc'}, 
+      {teacher: 'Amadou',language: '', name: 'anglais', description: 'this is m'}
+    ]},
+    {name: 'Histoire', courses: [
+      {teacher: 'Amadou',language: '', name: 'math', description: 'this is m'}, 
+      {teacher: 'Amadou',language: '', name: 'francais', description: 'this is desc'}, 
+      {teacher: 'Amadou',language: '', name: 'anglais', description: 'this is m'}
+    ]},
+    {name: 'Geographie', courses: [
+      {teacher: 'Amadou',language: '', name: 'math', description: 'this is m'}, 
+      {teacher: 'Amadou',language: '', name: 'francais', description: 'this is desc'}, 
+      {teacher: 'Amadou',language: '', name: 'anglais', description: 'this is m'}
+    ]},
   ]
 
 

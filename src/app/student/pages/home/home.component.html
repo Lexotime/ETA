@@ -3,13 +3,13 @@
 
 
 <!-- Section 1 les plus suivi -->
-<section class="w-screen ">
+<section class="w-screen mb-10">
     <p class="text-3xl mt-10 ml-10 text-amber-600">
         Les plus suivis 
     </p>
-    <app-course-list></app-course-list>
+    <app-course-list [courses]="mostViewList"></app-course-list>
 </section>
 
 <section>
-    <app-level-courses-list [courses]="courses"></app-level-courses-list>
+    <app-level-courses-list [levelCourses]="levelCourses"></app-level-courses-list>
 </section>
