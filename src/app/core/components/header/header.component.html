@@ -1,0 +1,84 @@
+
+    <!-- Head -->
+    <div [ngClass]="{'fixed top-0 w-full flex items-center justify-between px-8 bg-white drop-shadow': true, 'p-1' : isAuth(), 'p-6': !isAuth()}">
+        <div class="flex space-x-8 items-center">
+            <img src="" alt="logo">
+            <a href="" class="text-3xl text-amber-500">Etoile d'afrique</a>
+        </div>
+        <ul class="flex text-xl" *ngIf="!isAuth()">
+            <li class="mr-6">
+                <a class="text-white px-6 py-2 rounded bg-amber-600 hover:text-amber-800" href="#">Se connecter</a>
+            </li>
+            <li class="mr-6">
+            <a class="text-amber-500 hover:text-amber-800" href="#">S'inscrire</a>
+            </li>
+        </ul>
+
+
+        <!-- Search -->
+
+        
+        <form class="flex items-center" *ngIf="isAuth()">   
+            <label for="simple-search" class="sr-only">Rechercher...</label>
+            <div class="relative w-full">
+                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                    <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+                </div>
+                <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-amber-500 focus:border-amber-500 block w-full pl-10 p-2.5  " placeholder="Rechercher..." required>
+            </div>
+            <button type="submit" class="p-2.5 ml-2 text-sm font-medium text-white bg-amber-700 rounded-lg border border-amber-700 hover:bg-amber-800 focus:ring-4 focus:outline-none focus:ring-amber-300 ">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                <span class="sr-only">Search</span>
+            </button>
+        </form>
+
+
+
+
+
+        <!-- Profile -->
+       <div class="relative flex" *ngIf="isAuth()">
+            <button #toggleButton 
+                id="dropdownDefault" 
+                (click)="onDrop(!isOpen)"
+                class="  font-medium rounded-full text-sm px-4 py-2 text-center flex items-center justify-center " type="button">
+                <img src="" alt=" " class="w-16 h-16 text-center bg-amber-200 rounded-full" >
+                <svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <!-- Dropdown menu -->
+            <div id="dropdown" #list  [ngClass]="{'right-5 top-[100%] z-50 w-44 bg-white rounded divide-y divide-gray-100 shadow': true, 'fixed': isOpen, 'hidden': !isOpen}">
+                <ul class="py-1 text-sm text-gray-700 " aria-labelledby="dropdownDefault">
+                    <li>
+                        <a href="#" class="block py-2 px-4 hover:bg-gray-100">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block py-2 px-4 hover:bg-gray-100">Profil</a>
+                    </li>
+                    <li>
+                        <a  (click)="onLogout()" class="block py-2 px-4 hover:bg-gray-100">Se déconnecter</a>
+                    </li>
+                    </ul>
+            </div>
+       </div>
+    </div>
+
+    <!-- Cover -->
+    <div class="h-[580px] overflow-hidden relative" *ngIf="isAuth()">
+        <img src="assets/images/1172309.jpg" alt="" class="absolute bottom-0 -z-10">
+    </div>
+
+    <!-- Navbar     
+    -->
+    <ul class="flex border-b  mt-10" *ngIf="isAuth()">
+        <li class="-mb-px mr-1 ml-10">
+            <a class="bg-white inline-block border-l border-t border-r rounded-t py-2 px-4 text-amber-600 font-semibold" href="#">Accueil</a>
+        </li>
+        <li class="mr-1">
+            <a class="bg-white inline-block py-2 px-4 text-gray-400 font-semibold" href="#">Mes cours</a>
+        </li>
+        <li class="mr-1">
+            <a class="bg-white inline-block py-2 px-4 text-gray-400 font-semibold" href="#">Emploie du temps</a>
+        </li>
+       
+    </ul>
+ 
