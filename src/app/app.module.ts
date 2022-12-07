@@ -1,3 +1,4 @@
+import { AdminModule } from './admin/admin.module';
 import { StudentModule } from './student/student.module';
 import { CoreModule } from './core/core.module';
 import { AuthModule } from './auth/auth.module';
@@ -19,6 +20,7 @@ import { AppComponent } from './app.component';
     //local module
     CoreModule,
     StudentModule,
+    AdminModule,
     AuthModule,
   ],
   providers: [],

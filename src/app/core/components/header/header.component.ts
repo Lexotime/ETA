@@ -31,7 +31,7 @@ export class HeaderComponent implements OnInit  {
     {name: 'Cours', href: 'admin/cours'},
     {name: 'Etudiant', href: 'admin/etudiants'},
     {name: 'Enseignant', href: 'admin/enseignants'},
-    {name: 'Ajouter Enseignant', href: 'admin/enseignants/ajouter'},
+    {name: 'Ajouter Enseignant', href: 'admin/ajouter'},
   ] ;
 
 

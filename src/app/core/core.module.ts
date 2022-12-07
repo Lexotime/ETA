@@ -8,6 +8,7 @@ import { CourseListComponent } from './components/course-list/course-list.compon
 import { LevelCoursesListComponent } from './components/level-courses-list/level-courses-list.component';
 import { CoursePopUpComponent } from './components/course-pop-up/course-pop-up.component';
 import { MessagesComponent } from './components/messages/messages.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 
@@ -18,7 +19,8 @@ import { MessagesComponent } from './components/messages/messages.component';
     CourseListComponent,
     LevelCoursesListComponent,
     CoursePopUpComponent,
-    MessagesComponent
+    MessagesComponent,
+    FooterComponent
   ],
   imports: [
     CommonModule,
@@ -28,7 +30,8 @@ import { MessagesComponent } from './components/messages/messages.component';
     HeaderComponent,
     CourseListComponent,
     CourseItemComponent,
-    LevelCoursesListComponent
+    LevelCoursesListComponent,
+    FooterComponent
   ],
   providers: [
 		LocalStorageService

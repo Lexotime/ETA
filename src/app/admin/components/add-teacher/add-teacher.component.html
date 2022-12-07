@@ -1,0 +1,127 @@
+
+
+
+<div class="flex items-center justify-center mt-20">
+    <form class="p-4 px-16 space-y-12 bg-white drop-shadow">
+
+        <!-- Prenom -->
+        <div class="relative ">
+            <input type="text"
+                   id="firstname"
+                   formControlName="firstname"
+                   class="w-full md:block p-1 md:w-[320px] peer appearance-none bg-transparent focus:outline focus:outline-0 border-b-2 border-amber-400"
+                   placeholder=""
+            />
+            <label for="firstname"
+                   class="absolute italic text-[18px]
+                    text-gray-500 duration-300
+                    transform -translate-y-1/2 scale-75 z-10
+                    origin-[0] peer-focus:px-0
+                    peer-focus:text-cyan-400
+                    peer-placeholder-shown:scale-100
+                    peer-placeholder-shown:-translate-y-1/2
+                    peer-placeholder-shown:top-1/2
+                    peer-focus:top-2 peer-focus:scale-75
+                    peer-focus:-translate-y-6 ">
+                Prénom</label>
+        </div>
+
+        <!-- Nom -->
+        <div class="relative ">
+            <input type="lastname"
+                   id="lastname"
+                   formControlName="lastname"
+                   class="w-full md:block p-2 md:w-[320px] peer appearance-none bg-transparent focus:outline focus:outline-0 border-b-2 border-amber-400"
+                   placeholder=""
+            />
+            <label for="password"
+                   class="absolute italic text-[18px]
+                    text-gray-500 duration-300
+                    transform -translate-y-4 scale-75 z-10
+                    origin-[0] peer-focus:px-0
+                    peer-focus:text-cyan-400
+                    peer-placeholder-shown:scale-100
+                    peer-placeholder-shown:-translate-y-1/2
+                    peer-placeholder-shown:top-1/2
+                    peer-focus:top-2 peer-focus:scale-75
+                    peer-focus:-translate-y-6 ">
+                Nom</label>
+        </div>
+
+
+
+        <!-- Email -->
+        <div class="relative ">
+            <input type="email"
+                   id="email"
+                   formControlName="email"
+                   class="w-full md:block p-2 md:w-[320px] peer appearance-none bg-transparent focus:outline focus:outline-0 border-b-2 border-amber-400"
+                   placeholder=""
+            />
+            <label for="email"
+                   class="absolute italic text-[18px]
+                    text-gray-500 duration-300
+                    transform -translate-y-4 scale-75 z-10
+                    origin-[0] peer-focus:px-0
+                    peer-focus:text-cyan-400
+                    peer-placeholder-shown:scale-100
+                    peer-placeholder-shown:-translate-y-1/2
+                    peer-placeholder-shown:top-1/2
+                    peer-focus:top-2 peer-focus:scale-75
+                    peer-focus:-translate-y-6 ">
+                Email</label>
+        </div>
+        <!-- Mot de passe -->
+        <div class="relative ">
+            <input type="password"
+                   id="password"
+                   formControlName="password"
+                   class="w-full md:block p-2 md:w-[320px] peer appearance-none bg-transparent focus:outline focus:outline-0 border-b-2 border-amber-400"
+                   placeholder=""
+            />
+            <label for="password"
+                   class="absolute italic text-[18px]
+                    text-gray-500 duration-300
+                    transform -translate-y-4 scale-75 z-10
+                    origin-[0] peer-focus:px-0
+                    peer-focus:text-cyan-400
+                    peer-placeholder-shown:scale-100
+                    peer-placeholder-shown:-translate-y-1/2
+                    peer-placeholder-shown:top-1/2
+                    peer-focus:top-2 peer-focus:scale-75
+                    peer-focus:-translate-y-6 ">
+                Mot de passe</label>
+        </div>
+
+
+        <!-- Matiere -->
+        <div class="relative ">
+            <label for="level" class="text-gray-500 text-xl mr-5">Matière</label>
+            <select name="courses"
+                    formControlName="course"
+                    id="courses"
+                    class=" border-b-2 border-amber-400">
+                <option *ngFor="let item of courses" [value]="item">{{item}}</option>
+            </select>
+        </div>
+
+
+        <!-- Level -->
+        <div class="relative ">
+            <label for="level" class="text-gray-500 text-xl mr-5">Niveau </label>
+            <select name="level"
+                    formControlName="level"
+                    id="level"
+                    class="border-b-2 border-amber-400">
+                <option *ngFor="let item of level" [value]="item.value">{{item.name}}</option>
+            </select>
+        </div>
+        
+        <div class="text-center">
+            <input 
+                type="submit"  
+                value="Ajouter"
+                class="cursor-pointer p-2 px-4 font-semibold border-2 rounded-2xl  drop-shadow-login-button bg-main-bg border-b-blue-300 border-r-blue-300"/>
+        </div>
+    </form>
+</div>
