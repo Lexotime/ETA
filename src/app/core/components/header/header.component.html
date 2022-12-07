@@ -46,16 +46,13 @@
                 <svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
             <!-- Dropdown menu -->
-            <div id="dropdown" #list  [ngClass]="{'right-5 top-[100%] z-50 w-44 bg-white rounded divide-y divide-gray-100 shadow': true, 'fixed': isOpen, 'hidden': !isOpen}">
+            <div id="dropdown" #menu  [ngClass]="{'right-5 top-[100%] z-50 w-44 bg-white rounded divide-y divide-gray-100 shadow': true, 'fixed': isOpen, 'hidden': !isOpen}">
                 <ul class="py-1 text-sm text-gray-700 " aria-labelledby="dropdownDefault">
                     <li>
-                        <a href="#" class="block py-2 px-4 hover:bg-gray-100">Dashboard</a>
+                        <a routerLink="etud/profil" class="block py-2 px-4 hover:bg-gray-100">Profil</a>
                     </li>
                     <li>
-                        <a href="#" class="block py-2 px-4 hover:bg-gray-100">Profil</a>
-                    </li>
-                    <li>
-                        <a  (click)="onLogout()" class="block py-2 px-4 hover:bg-gray-100">Se déconnecter</a>
+                        <a href="/"  (click)="onLogout()" class="block py-2 px-4 hover:bg-gray-100">Se déconnecter</a>
                     </li>
                     </ul>
             </div>
@@ -69,15 +66,15 @@
 
     <!-- Navbar     
     -->
-    <ul class="flex border-b  mt-10" *ngIf="isAuth()">
+    <ul class="flex border-b  mt-10 text-gray-400" *ngIf="isAuth()" >
         <li class="-mb-px mr-1 ml-10">
-            <a class="bg-white inline-block border-l border-t border-r rounded-t py-2 px-4 text-amber-600 font-semibold" href="#">Accueil</a>
+            <a class="bg-white inline-block py-2 px-4 font-semibold cursor-pointer" routerLinkActive="border-l border-t border-r rounded-t  text-amber-600" routerLink="etud/accueil">Accueil</a>
         </li>
-        <li class="mr-1">
-            <a class="bg-white inline-block py-2 px-4 text-gray-400 font-semibold" href="#">Mes cours</a>
+        <li class="-mb-px mr-1">
+            <a class="bg-white inline-block py-2 px-4 font-semibold cursor-pointer" routerLinkActive="border-l border-t border-r rounded-t  text-amber-600" routerLink='etud/cours'  ariaCurrentWhenActive="page">Mes cours</a>
         </li>
-        <li class="mr-1">
-            <a class="bg-white inline-block py-2 px-4 text-gray-400 font-semibold" href="#">Emploie du temps</a>
+        <li class="-mb-px mr-1">
+            <a class="bg-white inline-block py-2 px-4 font-semibold cursor-pointer" routerLinkActive="border-l border-t border-r rounded-t  text-amber-600" routerLink="etud/activite"  ariaCurrentWhenActive="page">Emploie du temps</a>
         </li>
        
     </ul>

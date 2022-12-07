@@ -7,17 +7,18 @@ import { Component, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 })
 export class HeaderComponent {
 
-  @ViewChild('toggleButton') toggleButton!: ElementRef;
-  @ViewChild('menu') list!: ElementRef;
+  @ViewChild('toggleButton') toggleButton!: ElementRef | undefined;
+  @ViewChild('menu') list!: ElementRef | undefined;
     
   constructor(private renderer: Renderer2) {
     
-    this.renderer.listen('window', 'click',(e:Event)=>{
-        
-      if(e.target !== this.toggleButton.nativeElement && e.target!==this.list.nativeElement){
-          this.isOpen=false;
-      }
-    });
+    if (this.toggleButton)
+      this.renderer.listen('window', 'click',(e:Event)=>{
+          //@ts-ignore
+        if(e.target !== this.toggleButton.nativeElement && e.target!==this.list.nativeElement){
+            this.isOpen=false;
+        }
+      });
   }
 
   isAuth (): boolean {

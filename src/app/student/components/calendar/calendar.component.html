@@ -1,0 +1,12 @@
+<section class="mt-20 ml-20">
+    <section *ngFor="let day of daysEvents">
+        <p class="text-3xl text-amber-600">{{day.name}}</p>
+        <div  class="ml-10 my-10 flex">
+            <div class="mx-6 p-2 px-4 drop-shadow bg-white rounded-md" *ngFor="let event of day.events">
+                <p class="text-gray-600 text-md">{{event.date}}</p>
+                <p class="">{{event.course}} avec {{event.teacher}}</p>
+                <p class="">lien : <a class="text-amber-400" [href]="event.link">google meet</a></p>
+            </div>
+        </div>
+    </section>
+</section>
