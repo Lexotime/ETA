@@ -34,7 +34,11 @@ export class HeaderComponent implements OnInit  {
   ] ;
 
 
-  tLinks: {name: string, href: string}[] = [];
+  tLinks: {name: string, href: string}[] = [
+    {name: 'Accueil', href: 'en/cours'},
+    {name: 'Emploi du temps', href: 'en/activite'},
+    {name: 'Mes Videos', href: 'en/videos'}
+  ];
 
 
   sLinks: {name: string, href: string}[] = [

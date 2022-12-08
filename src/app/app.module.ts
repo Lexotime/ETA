@@ -1,3 +1,4 @@
+import { TeacherModule } from './teacher/teacher.module';
 import { AdminModule } from './admin/admin.module';
 import { StudentModule } from './student/student.module';
 import { CoreModule } from './core/core.module';
@@ -23,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     StudentModule,
     AdminModule,
     AuthModule,
+    TeacherModule,
     BrowserAnimationsModule,
   ],
   providers: [],
