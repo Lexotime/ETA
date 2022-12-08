@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class TeacherComponent {
 
+
+  item: number = 0;
+
+  getItem (event: any) {
+    this.item = event;
+  }
 }

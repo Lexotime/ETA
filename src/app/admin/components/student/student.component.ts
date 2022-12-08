@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class StudentComponent {
 
+  item: number = 0;
+
+  getItem (event: any) {
+    this.item = event;
+  }
 }

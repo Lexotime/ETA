@@ -18,7 +18,7 @@
         <!-- Search -->
 
         
-        <form class="flex items-center" *ngIf="isAuth()">   
+        <form class="flex items-center" *ngIf="isAuth() && getUser() !== 'admin'">   
             <label for="simple-search" class="sr-only">Rechercher...</label>
             <div class="relative w-full">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -48,7 +48,7 @@
             <!-- Dropdown menu -->
             <div id="dropdown" #menu  [ngClass]="{'right-5 top-[100%] z-50 w-44 bg-white rounded divide-y divide-gray-100 shadow': true, 'fixed': isOpen, 'hidden': !isOpen}">
                 <ul class="py-1 text-sm text-gray-700 " aria-labelledby="dropdownDefault">
-                    <li>
+                    <li *ngIf="getUser() !== 'admin'">
                         <a routerLink="etud/profil" class="block py-2 px-4 hover:bg-gray-100">Profil</a>
                     </li>
                     <li>

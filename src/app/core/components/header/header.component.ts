@@ -28,7 +28,6 @@ export class HeaderComponent implements OnInit  {
   }
 
   aLinks: {name: string, href: string}[] = [
-    {name: 'Cours', href: 'admin/cours'},
     {name: 'Etudiant', href: 'admin/etudiants'},
     {name: 'Enseignant', href: 'admin/enseignants'},
     {name: 'Ajouter Enseignant', href: 'admin/ajouter'},
@@ -41,7 +40,8 @@ export class HeaderComponent implements OnInit  {
   sLinks: {name: string, href: string}[] = [
     {name: 'Accueil', href: 'etud/accueil'},
     {name: 'Mes cours', href: 'etud/cours'},
-    {name: 'Emploi du temps', href: 'etud/activite'}
+    {name: 'Emploi du temps', href: 'etud/activite'},
+    {name: 'Rediffusion', href: 'etud/rediffusion'},
   ];
  
 

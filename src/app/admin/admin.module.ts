@@ -1,5 +1,6 @@
+import { CoreModule } from './../core/core.module';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser'
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './components/home/home.component';
 import { CoursesComponent } from './components/courses/courses.component';
@@ -20,7 +21,9 @@ import { AddTeacherComponent } from './components/add-teacher/add-teacher.compon
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    ReactiveFormsModule,
+    AdminRoutingModule,
+    CoreModule
   ]
 })
 export class AdminModule { }

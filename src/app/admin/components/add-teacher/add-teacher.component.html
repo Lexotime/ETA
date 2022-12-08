@@ -2,8 +2,8 @@
 
 
 <div class="flex items-center justify-center mt-20">
-    <form class="p-4 px-16 space-y-12 bg-white drop-shadow">
-
+    <form class="p-4 px-16 space-y-12 bg-white drop-shadow" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <p class="text-3xl text-center mt-2 text-amber-500 font-bold">Ajouter Enseignant</p>
         <!-- Prenom -->
         <div class="relative ">
             <input type="text"
