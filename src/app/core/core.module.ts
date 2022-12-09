@@ -1,10 +1,6 @@
 import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatTabsModule} from '@angular/material/tabs';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatTableModule} from '@angular/material/table';
-import {MatSortModule} from '@angular/material/sort';
 
 
 import { HeaderComponent } from './components/header/header.component';
@@ -16,6 +12,7 @@ import { CoursePopUpComponent } from './components/course-pop-up/course-pop-up.c
 import { MessagesComponent } from './components/messages/messages.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ListItemsComponent } from './components/list-items/list-items.component';
+import { ForumComponent } from './components/forum/forum.component';
 
 
 
@@ -28,16 +25,14 @@ declarations: [
 	CoursePopUpComponent,
 	MessagesComponent,
 	FooterComponent,
-	ListItemsComponent
+	ListItemsComponent,
+ ForumComponent
 ],
 imports: [
 	CommonModule,
 	RouterModule,
 
-	MatTabsModule,
-	MatSortModule,
-	MatTableModule,
-	MatPaginatorModule
+	
 ],
 exports: [
 	HeaderComponent,
@@ -45,7 +40,8 @@ exports: [
 	CourseItemComponent,
 	LevelCoursesListComponent,
 	FooterComponent,
-	ListItemsComponent
+	ListItemsComponent,
+	ForumComponent
 ],
 providers: [
 		LocalStorageService

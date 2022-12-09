@@ -3,33 +3,50 @@
 
 <div class="mt-20 px-20">
 
-    <p class="text-3xl">Bonjour ...</p>
-
     <div class="flex justify-center items-center mt-10">
 
-        <div class="space-y-2 text-xl">
-            <div class="w-96">
-                <img src="assets/images/1172309.jpg" alt="">
+        <div class="w-1/2 flex justify-center items-center flex-col border border-amber-400 border-b-0">
+            <p class="text-center text-4xl bg-amber-400 text-white py-4 font-bold mb-4 w-full">Mes Cours</p>
+            <div class="w-full overflow-auto flex py-4 ">
+                <div (click)="getCourseVideos(course.id)" *ngFor="let course of getTeacherCourses()"  class="pb block my-2 min-w-[360px]  drop-shadow-md bg-white shadow-amber-800 mx-10 rounded-xl relative overflow-hidden">
+                    <!-- Checked -->
+                    <span class="absolute top-5 right-5" *ngIf="currentCourse.id === course.id">
+                         <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 40 40" width="30px" height="30px"><path fill="#bae0bd" d="M20,38.5C9.8,38.5,1.5,30.2,1.5,20S9.8,1.5,20,1.5S38.5,9.8,38.5,20S30.2,38.5,20,38.5z"/><path fill="#5e9c76" d="M20,2c9.9,0,18,8.1,18,18s-8.1,18-18,18S2,29.9,2,20S10.1,2,20,2 M20,1C9.5,1,1,9.5,1,20s8.5,19,19,19	s19-8.5,19-19S30.5,1,20,1L20,1z"/><path fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="3" d="M11.2,20.1l5.8,5.8l13.2-13.2"/></svg>
+                    </span>
+                     <!-- Cover -->
+                     <img src="" class=" bg-red-200 w-full h-[180px] " alt=" ">
+                 
+                     <!-- Courses info -->
+                     <p class="text-3xl text-amber-500 text-center mt-2">{{course.name}}</p>
+                     <p class="text-xl text-amber-500 text-start px-4 mt-1">{{course.day+" "+course.hours}}</p>
+                     <p class="p-4 py-0 text-justify">{{course.description}}</p>
+                    
+                      <!-- Action -->
+                    <div class="p-2 flex justify-end items-center">
+                        <p *ngIf="!course.link" class="text-blue-400 p-4">lien indisponible</p>
+                        <button *ngIf="course.link" class="text-blue-400 underline">{{course.link}}</button>
+                    </div>
+                 </div>
             </div>
-            <div>Cours : Math</div>
-            <div>Langue : Francais</div>
         </div>
 
         <div class="mx-10">
-            <p class="text-center text-4xl bg-amber-500 text-white py-4 font-bold">Participants</p>
-            <app-list-items></app-list-items>
+            <p class="text-center text-4xl py-4 font-bold mb-4 w-full text-gray-600">Participants</p>
+            <app-list-items [data]="[]" [columns]="[]"></app-list-items>
         </div>
 
     </div>
 
-    <p class="ml-10 mt-20 text-3xl">Emploi du temps</p>
+    <!-- <p class="ml-10 mt-20 text-3xl">Emploi du temps</p>
     <table>
         <thead>
             
         </thead>
-    </table>
+    </table> -->
     <!-- Teacher video list -->
-    <p class="ml-10 mt-20 text-3xl">Liste des videos mise en ligne</p>
+
+
+    <p class="ml-10 mt-20 text-3xl py-4 font-bold mb-4 w-full text-gray-600">Vidéos en ligne</p>
 
     <div class="mt-8 ml-16 flex overflow-auto">
 
@@ -48,11 +65,16 @@
 
         </form>
 
-        <div class="flex items-center justify-center w-[360px]">
-            <div  class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 rounded-lg cursor-pointer bg-gray-50  hover:bg-gray-100">
-            
+        <div  *ngFor="let video of currentVideo " class="flex items-center justify-center w-[360px] mx-2">
+            <div  class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 rounded-lg bg-gray-50  hover:bg-gray-100">
+                <p class="text-2xl text-amber-500">{{video.name}}</p>
+                <p class="text-xl">{{video.date}}</p>
+                <a href="" class="text-blue-400">{{video.link}}</a>
             </div>
         </div> 
 
     </div>
+
+    <app-forum></app-forum>
+    
 </div>

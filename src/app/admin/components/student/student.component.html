@@ -2,15 +2,15 @@
 <div class="mt-20 flex flex-wrap items-center justify-center">
 
     <!-- Student List -->
-    <app-list-items (itemEmitter)="getItem($event)" [data]="[{'nom' : 'diop', 'prenom': 'adja', 'id': 1}, {'nom' : 'bar', 'prenom': 'bamba', 'id': 2}, {'nom' : 'diop', 'prenom': 'adja', 'id':3}]" [columns]="['nom', 'prenom', 'id']"></app-list-items>   
+    <app-list-items (itemEmitter)="getItem($event)" [data]="students" [columns]="columns"></app-list-items>   
     
     <!--  Action -->
     <div class="mx-6 p-10 bg-white rounded-md drop-shadow">
-        <p class="text-3xl text-center text-amber-500">Etudiant alpha</p>
+        <p class="text-3xl text-center text-amber-500">{{currentStudent.firstname+" "+currentStudent.lastname}}</p>
         <p class=" text-center text-gray-500">date de naissance</p>
         <div class="mt-8 flex justify-between items-center">
-            <button class="p-4 px-5 bg-red-400 rounded-md text-white font-bold text-xl mx-2">Bloquer</button>
-            <button class="p-4 px-5 bg-green-400 rounded-md text-white font-bold text-xl mx-2">Debloquer</button>
+            <button *ngIf="currentStudent.status" (click)="onBlocked(true)" class="p-4 px-5 bg-red-400 rounded-md text-white font-bold text-xl mx-2">Bloquer</button>
+            <button *ngIf="!currentStudent.status" (click)="onBlocked(false)" class="p-4 px-5 bg-green-400 rounded-md text-white font-bold text-xl mx-2">Debloquer</button>
         </div>
     </div>
 </div>

@@ -10,41 +10,41 @@ import { LevelCoursesModel } from "src/app/core/models/level-courses.model";
 export class HomeComponent {
 
   mostViewList: CourseModel[] = [
-    {link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
-    {link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
-    {link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
-    {link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
-    {link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
-    {link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
-    {link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
+  //   {level: 'CI', link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
+  //   {level: 'CI', link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
+  //   {level: 'CI', link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
+  //   {level: 'CI', link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
+  //   {level: 'CI', link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
+  //   {level: 'CI', link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
+  //   {level: 'CI', link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
   ];
 
   levelCourses: LevelCoursesModel[] = [
-    {name: 'Math', courses: [
-      {link: 'assets/courses/', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
-      {link: 'assets/courses/', teacher: 'Amadou',language: '',name: 'math', description: 'this is desc'},
-      {link: 'assets/courses/', teacher: 'Amadou',language: '',name: 'math', description: 'this is m'}
-    ]},
-    {name: 'Francais', courses: [
-      {link: 'assets/courses/', teacher: 'Amadou',language: '', name: 'math', description: 'this is m'},
-      {link: 'assets/courses/', teacher: 'Amadou',language: '', name: 'francais', description: 'this is desc'}, 
-      {link: 'assets/courses/', teacher: 'Amadou',language: '', name: 'anglais', description: 'this is m'}
-    ]},
-    {name: 'anglais', courses: [
-      {link: 'assets/courses/', teacher: 'Amadou',language: '', name: 'math', description: 'this is m'}, 
-      {link: 'assets/courses/', teacher: 'Amadou',language: '', name: 'francais', description: 'this is desc'}, 
-      {link: 'assets/courses/', teacher: 'Amadou',language: '', name: 'anglais', description: 'this is m'}
-    ]},
-    {name: 'Histoire', courses: [
-      {link: 'assets/courses/', teacher: 'Amadou',language: '', name: 'math', description: 'this is m'}, 
-      {link: 'assets/courses/', teacher: 'Amadou',language: '', name: 'francais', description: 'this is desc'}, 
-      {link: 'assets/courses/', teacher: 'Amadou',language: '', name: 'anglais', description: 'this is m'}
-    ]},
-    {name: 'Geographie', courses: [
-      {link: 'assets/courses/', teacher: 'Amadou',language: '', name: 'math', description: 'this is m'}, 
-      {link: 'assets/courses/', teacher: 'Amadou',language: '', name: 'francais', description: 'this is desc'}, 
-      {link: 'assets/courses/', teacher: 'Amadou',language: '', name: 'anglais', description: 'this is m'}
-    ]},
+  //   {name: 'Math', courses: [
+  //     {level: 'CI', link: 'assets/courses/', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
+  //     {level: 'CI', link: 'assets/courses/', teacher: 'Amadou',language: '',name: 'math', description: 'this is desc'},
+  //     {level: 'CI', link: 'assets/courses/', teacher: 'Amadou',language: '',name: 'math', description: 'this is m'}
+  //   ]},
+  //   {name: 'Francais', courses: [
+  //     {level: 'CI', link: 'assets/courses/', teacher: 'Amadou',language: '', name: 'math', description: 'this is m'},
+  //     {level: 'CI', link: 'assets/courses/', teacher: 'Amadou',language: '', name: 'francais', description: 'this is desc'}, 
+  //     {level: 'CI', link: 'assets/courses/', teacher: 'Amadou',language: '', name: 'anglais', description: 'this is m'}
+  //   ]},
+  //   {name: 'anglais', courses: [
+  //     {level: 'CI', link: 'assets/courses/', teacher: 'Amadou',language: '', name: 'math', description: 'this is m'}, 
+  //     {level: 'CI', link: 'assets/courses/', teacher: 'Amadou',language: '', name: 'francais', description: 'this is desc'}, 
+  //     {level: 'CI', link: 'assets/courses/', teacher: 'Amadou',language: '', name: 'anglais', description: 'this is m'}
+  //   ]},
+  //   {name: 'Histoire', courses: [
+  //     {level: 'CI', link: 'assets/courses/', teacher: 'Amadou',language: '', name: 'math', description: 'this is m'}, 
+  //     {level: 'CI', link: 'assets/courses/', teacher: 'Amadou',language: '', name: 'francais', description: 'this is desc'}, 
+  //     {level: 'CI', link: 'assets/courses/', teacher: 'Amadou',language: '', name: 'anglais', description: 'this is m'}
+  //   ]},
+  //   {name: 'Geographie', courses: [
+  //     {level: 'CI', link: 'assets/courses/', teacher: 'Amadou',language: '', name: 'math', description: 'this is m'}, 
+  //     {level: 'CI', link: 'assets/courses/', teacher: 'Amadou',language: '', name: 'francais', description: 'this is desc'}, 
+  //     {level: 'CI', link: 'assets/courses/', teacher: 'Amadou',language: '', name: 'anglais', description: 'this is m'}
+  //   ]},
   ]
 
 

@@ -9,12 +9,12 @@ import { Component } from '@angular/core';
 export class CoursesComponent {
 
   courses: CourseModel[] = [
-    {link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
-    {link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
-    {link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
-    {link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
-    {link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
-    {link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
-    {link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
+    // {level: 'CP',link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
+    // {level: 'CP',link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
+    // {level: 'CP',link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
+    // {level: 'CP',link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
+    // {level: 'CP',link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
+    // {level: 'CP',link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
+    // {level: 'CP',link: 'assets/images/1172309.jpg', teacher: 'Amadou',language: '',name: 'math', description: 'this is m', },
   ];
 }

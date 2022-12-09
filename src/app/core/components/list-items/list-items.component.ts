@@ -19,6 +19,7 @@ export class ListItemsComponent implements OnInit {
   saveData: any;
   sens: boolean = false;
   saveColumn: string = '';
+  currentEmit: string = '1';
 
   page: number = 0;
   numberOfElement: number = 5;
@@ -30,7 +31,8 @@ export class ListItemsComponent implements OnInit {
   }
 
   emitItem (item: any) {
-    this.itemEmitter.emit(item.id);
+    this.currentEmit = item;
+    this.itemEmitter.emit(item);
   }
 
   getListFragment (page: number, numberOfElement: number) : {}[] {

@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+// import { AdminService } from './../../services/admin.service';
+import { Component, Output } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 //import {AuthModel} from "../../../core/models/auth.model";
 import {Router} from "@angular/router";
-import { LocalStorageService } from 'src/app/core/services/local-storage.service';
+import { TeacherModel } from 'src/app/core/models/teacher.model';
 
 @Component({
   selector: 'app-add-teacher',
@@ -10,6 +12,8 @@ import { LocalStorageService } from 'src/app/core/services/local-storage.service
   styleUrls: ['./add-teacher.component.css']
 })
 export class AddTeacherComponent {
+
+  @Output() teacher = new EventEmitter<TeacherModel>();
 
   level: {name: string, value: string}[] = [
     {name: 'CI', value: 'CI'},
@@ -32,6 +36,9 @@ export class AddTeacherComponent {
     'Anglais',
   ]
 
+  language: string[] = [
+    'francais', 'anglais', 'espagnol'
+  ]
 
 
     // @ts-ignore
@@ -44,7 +51,7 @@ export class AddTeacherComponent {
     constructor(
         private formBuilder: FormBuilder,
         private router: Router,
-        private storage: LocalStorageService ) 
+        ) 
     {  
 }
 
@@ -60,14 +67,14 @@ export class AddTeacherComponent {
                 email: ['', Validators.required],
                 level: ['', Validators.required],
                 course: ['', Validators.required],
+                language: ['', Validators.required],
                 password: ['', [Validators.required, Validators.pattern(/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/)]],
             }
         );
     }
 
     onSubmit() {
-       console.log(this.form.value);
-       
-        
+      this.teacher.emit(this.form.value);
+      this.initForm();
     }
 }

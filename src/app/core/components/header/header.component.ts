@@ -30,7 +30,6 @@ export class HeaderComponent implements OnInit  {
   aLinks: {name: string, href: string}[] = [
     {name: 'Etudiant', href: 'admin/etudiants'},
     {name: 'Enseignant', href: 'admin/enseignants'},
-    {name: 'Ajouter Enseignant', href: 'admin/ajouter'},
   ] ;
 
 

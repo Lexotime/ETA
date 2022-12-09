@@ -1,3 +1,5 @@
+import { filter } from 'rxjs';
+import { STUDENTS } from './../../../data/dummy';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,9 +9,22 @@ import { Component } from '@angular/core';
 })
 export class StudentComponent {
 
+  students: any = STUDENTS;
+  currentStudent: any = this.students[0];
+  columns: {name: string, value: string}[] =[
+    {name: 'firstname', value: 'nom'},
+    {name: 'lastname', value: 'prenom'},
+    {name: 'email', value: 'email'},
+    {name: 'status', value: 'etat'},
+  ];
   item: number = 0;
 
   getItem (event: any) {
-    this.item = event;
+
+    this.currentStudent = this.students.filter((item: any) => (item.id === event))
+  }
+
+  onBlocked (item : boolean) {
+  
   }
 }
