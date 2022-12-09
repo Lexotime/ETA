@@ -20,7 +20,8 @@ export class HomeComponent {
 
 
   ngOnInit(): void {
-    this.currentTeacher = this.teachers[0];
+    let email = localStorage.getItem('login')
+    this.currentTeacher = this.teachers.filter((teacher: TeacherModel) => (teacher.email === email))[0];
     this.currentCourse = this.getTeacherCourses()[0];
     this.getCourseVideos(this.currentCourse.id);
   }
