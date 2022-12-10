@@ -15,9 +15,9 @@ export const TEACHER: TeacherModel[] = [
 
 
 export const VIDEOS: any = [
-    {name: 'Proba partie 1', date: '10-12-2022', link: 'lien vers video', id: '1', course: '1'},
-    {name: 'Proba partie 2', date: '14-12-2022', link: 'lien vers video', id: '2', course: '1'},
-    {name: 'Proba partie 3', date: '21-12-2022', link: 'lien vers video', id: '3', course: '1'},
+    {name: 'Proba partie 1', date: '10-12-2022', link: 'lien vers video', id: '1', course: '5'},
+    {name: 'Proba partie 2', date: '14-12-2022', link: 'lien vers video', id: '2', course: '5'},
+    {name: 'Proba partie 3', date: '21-12-2022', link: 'lien vers video', id: '3', course: '5'},
 ]
 
 
@@ -34,7 +34,7 @@ export const COURSES: CourseModel[] = [
 
 
 export const STUDENTS: any = [
-    {level: '4e',firstname: 'Papa', lastname: 'Bar', email: 'bounabamba@gmail.com', status: true, courses: ['5','6'], picture: '', id: '1'},
-    {level: '4e',firstname: 'Amdy', lastname: 'Diop', email: 'amdy@gmail.com', status: true, courses: ['5','6'], picture: '', id: '2'},
-    {level: '4e',firstname: 'Sidy', lastname: 'Ndiaye', email: 'sylla@gmail.com', status: true, courses: ['5','6'], picture: '', id: '3'},
+    {level: 'CI',firstname: 'Papa', lastname: 'Bar', email: 'bounabamba@gmail.com', status: true, courses: ['5','6'], picture: '', id: '1'},
+    {level: 'CI',firstname: 'Amdy', lastname: 'Diop', email: 'amdy@gmail.com', status: true, courses: ['5'], picture: '', id: '2'},
+    {level: 'CI',firstname: 'Sidy', lastname: 'Ndiaye', email: 'sylla@gmail.com', status: true, courses: ['5','6'], picture: '', id: '3'},
 ]
