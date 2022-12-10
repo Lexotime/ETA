@@ -13,6 +13,7 @@ export class ListItemsComponent implements OnInit {
   @Input() data: any;
   @Input() columns: any;
   @Input() extra: any;
+  @Input() canSelect: boolean = true;
   @Output() itemEmitter = new EventEmitter<number>();
 
   listFragments: any;
