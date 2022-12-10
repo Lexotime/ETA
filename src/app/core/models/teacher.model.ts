@@ -8,6 +8,6 @@ export class TeacherModel {
         public email: string,
         public password: string,
         public courses: CourseModel['id'][],
-        public status: boolean,
+        public status: string,
     ) {}
 }

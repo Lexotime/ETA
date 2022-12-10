@@ -7,6 +7,6 @@ export class CourseModel {
         public email: string,
         public courses: CourseModel[],
         public picture: string,
-        public status: boolean
+        public status: string
     ) {}
 }

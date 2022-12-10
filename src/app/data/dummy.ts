@@ -6,11 +6,11 @@ export const ADMIN: any = [
 ]
 
 export const TEACHER: TeacherModel[] = [
-    {status: true ,id: '1', firstname: 'Amadou', lastname: 'Sall', email: 'amadou@gmail.com', password : 'Passer@123', courses: ['1', '2'],},
-    {status: true ,id: '2', firstname: 'Moustapha', lastname: 'Mbaye', email: 'moustapha@gmail.com', password : 'Passer@123', courses: ['3','4'],},
-    {status: true ,id: '3', firstname: 'Papa Bouna', lastname: 'Bar', email: 'bouna@gmail.com', password : 'Passer@123', courses: ['5','6'],},
-    {status: true ,id: '4', firstname: 'Ousmane', lastname: 'Ngom', email: 'ousmane@gmail.com', password : 'Passer@123', courses: ['7'],},
-    {status: true ,id: '5', firstname: 'Doudou', lastname: 'Fall', email: 'doudou@gmail.com', password : 'Passer@123', courses: ['8'],}
+    {status: 'actif' ,id: '1', firstname: 'Amadou', lastname: 'Sall', email: 'amadou@gmail.com', password : 'Passer@123', courses: ['1', '2'],},
+    {status: 'actif' ,id: '2', firstname: 'Moustapha', lastname: 'Mbaye', email: 'moustapha@gmail.com', password : 'Passer@123', courses: ['3','4'],},
+    {status: 'actif' ,id: '3', firstname: 'Papa Bouna', lastname: 'Bar', email: 'bouna@gmail.com', password : 'Passer@123', courses: ['5','6'],},
+    {status: 'actif' ,id: '4', firstname: 'Ousmane', lastname: 'Ngom', email: 'ousmane@gmail.com', password : 'Passer@123', courses: ['7'],},
+    {status: 'actif' ,id: '5', firstname: 'Doudou', lastname: 'Fall', email: 'doudou@gmail.com', password : 'Passer@123', courses: ['8'],}
 ]
 
 
@@ -34,7 +34,7 @@ export const COURSES: CourseModel[] = [
 
 
 export const STUDENTS: any = [
-    {level: 'CI',firstname: 'Papa', lastname: 'Bar', email: 'bounabamba@gmail.com', status: true, courses: ['5','6'], picture: '', id: '1'},
-    {level: 'CI',firstname: 'Amdy', lastname: 'Diop', email: 'amdy@gmail.com', status: true, courses: ['5'], picture: '', id: '2'},
-    {level: 'CI',firstname: 'Sidy', lastname: 'Ndiaye', email: 'sylla@gmail.com', status: true, courses: ['5','6'], picture: '', id: '3'},
+    {level: 'CI',firstname: 'Papa', lastname: 'Bar', email: 'bounabamba@gmail.com', status: 'inactif', courses: ['5','6'], picture: '', id: '1'},
+    {level: 'CI',firstname: 'Amdy', lastname: 'Diop', email: 'amdy@gmail.com', status: 'inactif', courses: ['5'], picture: '', id: '2'},
+    {level: 'CI',firstname: 'Sidy', lastname: 'Ndiaye', email: 'sylla@gmail.com', status: 'inactif', courses: ['5','6'], picture: '', id: '3'},
 ]

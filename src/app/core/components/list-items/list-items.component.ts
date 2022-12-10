@@ -81,16 +81,28 @@ export class ListItemsComponent implements OnInit {
   filter (search: string) {
     
     this.page = 0;
-    this.saveData = this.data.filter((data: any) => {
-      for (const column of this.columns) {
-        if (search.search(data[`${column}`].toString()) != -1){
-          
-          console.log("hey");
-          return true;
+    
+    if (search) {
+
+      this.saveData = this.data.filter((data: any) => {
+        for (const column of this.columns) {
+          if (search.toUpperCase().search(data[`${column.name}`].toString().toUpperCase()) != -1){
+            
+            return true;
+          }
         }
-      }
-      return false;
-    });
+        return false;
+      });
+    } else {
+      this.saveData = this.data;
+    }
+
+
+    if (!this.saveData)
+      this.saveData = this.data;
+
+      console.log(this.saveData);
+      
     
     this.listFragments = this.getListFragment(this.page, this.numberOfElement);
     

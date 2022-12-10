@@ -3,9 +3,9 @@
 
 <div class="mt-20 px-20">
 
-    <div class="flex justify-center items-center mt-10">
+    <div class="flex flex-wrap justify-center items-center mt-10">
 
-        <div class="w-1/2 flex justify-center items-center flex-col border border-amber-400 border-b-0">
+        <div class="md:w-8/12  flex justify-center items-center flex-col border border-amber-400 ">
             <p class="text-center text-4xl bg-amber-400 text-white py-4 font-bold mb-4 w-full">Mes Cours</p>
             <div class="w-full overflow-auto flex py-4 ">
                 <div (click)="getCourseVideos(course.id)" *ngFor="let course of getTeacherCourses()"  class="pb block my-2 min-w-[360px]  drop-shadow-md bg-white shadow-amber-800 mx-10 rounded-xl relative overflow-hidden">
@@ -48,7 +48,7 @@
 
     <p class="ml-10 mt-20 text-3xl py-4 font-bold mb-4 w-full text-gray-600">Vidéos en ligne</p>
 
-    <div class="mt-8 ml-16 flex overflow-auto">
+    <div class="mt-8 ml-16 flex w-full items-center overflow-auto">
 
         <form class="mr-6">
             
@@ -65,7 +65,7 @@
 
         </form>
 
-        <div  *ngFor="let video of currentVideo " class="flex items-center justify-center w-[360px] mx-2">
+        <div  *ngFor="let video of currentVideo " class="flex items-center justify-center min-w-[360px] mx-2 py-4">
             <div  class="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 rounded-lg bg-gray-50  hover:bg-gray-100">
                 <p class="text-2xl text-amber-500">{{video.name}}</p>
                 <p class="text-xl">{{video.date}}</p>

@@ -48,8 +48,6 @@ export class HomeComponent {
     this.currentStudentList = this.students.filter((student: any) => {
       
       if (student.courses.filter((course: any) => ( course === this.currentCourse.id))[0]){
-      console.log(student);
-
         return true;}
       return false
     });
