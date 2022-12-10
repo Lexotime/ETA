@@ -1,25 +1,28 @@
 
-<div class="h-screen p-20">
-    <div class="text-3xl text-amber-400">Forum</div>
+<div class="h-screen mt-20 w-7/12 mx-auto rounded-xl border border-amber-100 p-20 py-10 bg-amber-50 bg-opacity-50">
+    <div class="text-3xl text-amber-400 ">Forum de {{course}} {{level}}</div>
 
 
-    <div class="h-3/4 overflow-auto w-full">
+    <div class="h-3/4 overflow-auto w-full border-b">
 
-        <div *ngFor="let item of [1,2,3,4,5,6]" [ngClass]="{'w-1/2': true, '': true}">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam, sunt voluptates non, harum, voluptatem maiores officia culpa minus laborum atque numquam ratione illo magnam alias dolorum quas! Quaerat, veritatis repudiandae.
-        </div>
+       <div class="flex items-center" *ngFor="let item of [1,2,3,4,5,6]">
+            <div>Utilisateur</div>
+            <div class="mx-8 my-4 p-4 bg-gray-100 rounded-xl"  [ngClass]="{'w-1/2': true, '': true}">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam, sunt voluptates non, harum, voluptatem maiores officia culpa minus laborum atque numquam ratione illo magnam alias dolorum quas! Quaerat, veritatis repudiandae.
+            </div>
+       </div>
 
 
     </div>
 
     <!-- Search -->
-    <div class="mb-10 bg-white">
-        <div class="flex space-x-4 items-center">
-            <div class="relative ">
+    <div class="mt-10">
+        <div class="flex  justify-center items-center">
+            <div class="relative  ">
                 <input type="text"
                        id="email"
                        #search
-                       class="w-full md:block p-1 md:w-[320px] peer appearance-none bg-transparent focus:outline focus:outline-0 border-b-2 border-amber-400"
+                       class=" w-full md:block p-1 md:w-[320px] peer appearance-none bg-transparent focus:outline focus:outline-0 border-b-2 border-amber-400"
                        placeholder=""
                 />
                 <label for="email"

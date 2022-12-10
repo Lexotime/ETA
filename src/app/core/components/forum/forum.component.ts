@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-forum',
@@ -6,6 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./forum.component.css']
 })
 export class ForumComponent {
+
+  @Input() course!: string;
+  @Input() level!: string;
+
 
   sendMessage () {
     
