@@ -1,3 +1,5 @@
+import { filter } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 import { AdminService } from './../../services/admin.service';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
@@ -20,10 +22,12 @@ export class VideoListComponent {
 	saveColumn: string = '';
 	currentEmit: string = '1';
 
+	courses!: string;
+
 	page: number = 0;
 	numberOfElement: number = 20;
 
-	constructor (private adminService: AdminService) {}
+	constructor (private adminService: AdminService, private route: ActivatedRoute) {}
 
 	ngOnInit () {
 		this.adminService.getAllVideos().subscribe( s => {
@@ -31,15 +35,18 @@ export class VideoListComponent {
 				this.data.push(ss.data());
 			})
 			console.log(this.data);
-			
-			this.saveData = this.data;
+			let id = this.route.snapshot.params['id'];
+			if (!id)
+				this.saveData = this.data;
+			else 
+				this.saveData = this.data.filter((d: any) => (d.courses === id));
 			this.listFragments = this.getListFragment(this.page, this.numberOfElement);
 		})
 	}
 
 	emitItem (item: any) {
-	this.currentEmit = item;
-	this.itemEmitter.emit(item);
+		this.currentEmit = item;
+		this.itemEmitter.emit(item);
 	}
 
 	getListFragment (page: number, numberOfElement: number) : {}[] {

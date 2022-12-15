@@ -1,6 +1,6 @@
-<div class="flex items-center justify-center flex-1 ">
+<div class="flex items-center justify-center flex-1">
 
-    <div class="flex flex-col justify-center items-center w-full mx-10">
+    <div class="flex flex-col justify-center items-center w-full mx-10 relative">
         <!-- Search -->
         <div class="my-10">
             <div class="flex space-x-4 items-center">
@@ -13,6 +13,10 @@
                     <span class="sr-only">Search</span>
                 </button>
             </div>
+        </div>
+
+        <div class="absolute top-10 right-10">
+            <a routerLink="/admin/ajouter/enseignant">Ajouter enseignants</a>
         </div>
 
         <table class="w-full">
@@ -42,7 +46,8 @@
                             <div class=" flex justify-between">
                                 <button class=" px-4 py-1 rounded bg-green-500 text-white font-bold"><a [routerLink]="'/admin/ajouter/cours/'+listItem.id">+ matières</a></button>
                                 <button class=" px-4 py-1 rounded bg-blue-500 text-white font-bold"><a [routerLink]="'/admin/cours/'+listItem.id">voir matières</a></button>
-                                <button (click)="onBlock(listItem.id)" class=" py-1 px-4 rounded bg-red-400 text-white font-bold">bloquer</button>
+                                <button *ngIf="listItem.status === 'actif'" (click)="onBlock(listItem.id)" class=" py-1 px-4 rounded bg-red-400 text-white font-bold">bloquer</button>
+                                <button *ngIf="listItem.status === 'inactif'" (click)="onUnBlock(listItem.id)" class=" py-1 px-4 rounded bg-green-400 text-white font-bold">débloquer</button>
                             </div>
                         </td>
                     </tr>

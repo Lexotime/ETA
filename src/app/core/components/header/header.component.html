@@ -1,6 +1,6 @@
 
     <!-- Head -->
-<div [ngClass]="{'z-[100] fixed  top-0 left-[280px] right-0  flex items-center justify-between px-8 bg-gray-100': true, 'p-1' : isAuth(), 'p-6': !isAuth()}">
+<div [ngClass]="{'z-[100] fixed  top-0 left-[280px] right-0  flex items-center justify-between px-8 bg-gray-100': true, 'p-1' : isAuth(), 'p-6': !isAuth()}" *ngIf="isAuth()">
     
    
         <div class="text-black text-2xl">Etoile d'afrique</div>

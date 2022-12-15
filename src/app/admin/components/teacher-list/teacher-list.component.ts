@@ -1,3 +1,4 @@
+import { Observable, filter } from 'rxjs';
 import { AdminService } from './../../services/admin.service';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
@@ -35,6 +36,11 @@ export class TeacherListComponent {
 
 	async ngOnInit () {
 
+		this.initTable();		
+	}
+
+	initTable () {
+		this.data = [];
 		this.adminService.getAllTeachers().subscribe( s => {
 			s.docs.forEach(ss => {
 				this.data.push(ss.data());
@@ -45,8 +51,6 @@ export class TeacherListComponent {
 			this.listFragments = this.getListFragment(this.page, this.numberOfElement);
 		})
 	}
-
-	
 	
 
 	emitItem (item: any) {
@@ -173,6 +177,16 @@ export class TeacherListComponent {
 	}
 
 	onBlock (id: string) {
-		this.message = this.adminService.blockUser(id, 'Teachers');
+		
+		this.adminService.blockUser(id, 'Teachers');
+		this.data.filter((e: any) => (e.id === id))[0].status = 'inactif';
+		
+		
+	}
+
+	onUnBlock (id: string) {
+		if(this.adminService.unBlockUser(id, 'Teachers'))
+		this.data.filter((e: any) => (e.id === id))[0].status = 'actif';
+		
 	}
 }

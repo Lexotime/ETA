@@ -18,8 +18,9 @@ const routes: Routes = [
     { path: 'enseignants', component:  TeacherComponent},
     { path: 'etudiants', component:  StudentComponent},
     { path: 'videos', component: VideoComponent},
+    { path: 'videos/:id', component: VideoComponent},
     { path: 'ajouter/cours/:id', component:  AddCourseComponent},
-    { path: 'ajouter/enseignants', component: AddTeacherComponent},
+    { path: 'ajouter/enseignant', component: AddTeacherComponent},
     { path: 'ajouter/video/:id', component: AddVideoComponent},
     
     

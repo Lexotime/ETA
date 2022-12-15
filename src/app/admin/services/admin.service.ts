@@ -32,7 +32,7 @@ export class AdminService {
 
 		for (let i = 0; i <= passwordLength; i++) {
 			let randomNumber = Math.floor(Math.random() * this.chars.length);
-			password += chars.substring(randomNumber, randomNumber +1);
+			password += chars.substring(randomNumber, randomNumber +1) + '';
 		}
 		
 		return password;
@@ -44,7 +44,7 @@ export class AdminService {
 		teacher.courses = [];
 		console.log(teacher);
 
-		const password = this.generatePassword(this.CHARS, 1) + this.generatePassword(this.chars, 4) + "@" + this.generatePassword("123456789", 2)
+		const password = this.generatePassword(this.CHARS, 1) + this.generatePassword(this.chars, 4) + "@" + this.generatePassword(this.num, 2)
 		console.log(password);
 		
 		return this.fireAuth.createUserWithEmailAndPassword(email, password).then( res => {
@@ -53,34 +53,63 @@ export class AdminService {
 			return new Promise((resolve, reject) => {
 				this.fireStore
 				.collection("Teachers")
-				.add(teacher)
+				.add({...teacher, status: 'actif'})
 				.then(res => {
 				resolve(res)
 				}, err => reject(err))
 			})
 			}
 			else
-			return "Une erreur c'est produite";
+				return "Une erreur c'est produite";
 		})
     }
 
 	createCourse (course: any)  {
 		course.id = this.fireStore.createId();
-
-		return this.fireStore.collection("Teachers", ref => ref.where("email", '==', course.teacher)).get().subscribe(s => {
-			//@ts-ignore
-			let courses:any = s.docs[0].data().courses;
-			
-			this.fireStore.collection("Teachers", ref => ref.where("email", '==', course.teacher)).doc().set({courses: courses});
-			this.fireStore.collection("Courses").add(course).then(res => {
-				return "Cours créée vec succès"
-			}, err =>{ return "Une erreur est survenue impossible de continuer l'opération"})
+		let i = 0;
+		return this.fireStore.collection("Teachers", ref => ref.where("email", '==', course.teacher)).snapshotChanges().subscribe(s => {
+			i ++;
+			if (i == 1) {
+				//@ts-ignore
+				let courses:any = s[0].payload.doc.data().courses;
+				courses.push(course.id)
+				console.log(courses);
+				
+				this.fireStore.collection("Teachers").doc(s[0].payload.doc['id']).update({courses: courses}).then(res => {
+					return;
+				}, err => {return;});
+				
+				new Promise  ((resolve, reject) => {
+					this.fireStore.collection("Courses").add({...course, link: '', videos: []}).then(res => {
+						resolve("Cours créée vec succès")
+					}, err =>{ reject ("Une erreur est survenue impossible de continuer l'opération")})
+				})
+			}
 		})
-		
 	}
 
 	createVideo (video: any, course: string) {
-
+		video.id = this.fireStore.createId();
+		let i = 0;
+		return this.fireStore.collection("Courses", ref => ref.where("id", '==', course)).snapshotChanges().subscribe(s => {
+			i ++;
+			if (i == 1) {
+				//@ts-ignore
+				let videos:any = s[0].payload.doc.data().videos;
+				videos.push(video.id)
+				console.log(videos);
+				
+				this.fireStore.collection("Courses").doc(s[0].payload.doc['id']).update({videos: videos}).then(res => {
+					return;
+				}, err => {return;});
+				
+				new Promise  ((resolve, reject) => {
+					this.fireStore.collection("Videos").add({...video, link: ''}).then(res => {
+						resolve("Vidéo créée vec succès")
+					}, err =>{ reject ("Une erreur est survenue impossible de continuer l'opération")})
+				})
+			}
+		})
 	}
 
   
@@ -89,17 +118,26 @@ export class AdminService {
     }
   
     blockUser (uid: string, collection: string) {
-		console.log("hey");
-		this.fireStore.collection(`${collection}`).valueChanges({ id: uid}).forEach(e => {
-			console.log(e);
+		return this.fireStore.collection(`${collection}`, ref => ref.where("id","==", uid )).snapshotChanges().subscribe(e => {
 			
+			this.fireStore.collection(`${collection}`).doc(e[0].payload.doc['id']).update({'status' : 'inactif'}).then(res => {
+				return "Utilisateur bloquer";
+			}).catch(err => {
+				return "Une erreur c'est produite veuillez ressager";
+			});
 		})
-      	// this.fireStore.collection(`${collection}`).doc().set({'status' : 'inactif'}).then(res => {
-		// 	console.log(res+"humm");
-		// }).catch(err => {
-		// 	console.log(err);
-		// });
     }
+
+	unBlockUser (uid: string, collection: string) {
+		return this.fireStore.collection(`${collection}`, ref => ref.where("id","==", uid )).snapshotChanges().subscribe(e => {
+			
+			return this.fireStore.collection(`${collection}`).doc(e[0].payload.doc['id']).update({'status' : 'actif'}).then(res => {
+				return "Utilisateur débloquer";
+			}).catch(err => {
+				return "Une erreur c'est produite veuillez ressager";
+			});
+		})
+	}
   
   
 	getAllTeachers () {

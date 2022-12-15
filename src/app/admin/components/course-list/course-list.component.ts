@@ -1,5 +1,7 @@
+import { filter } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 import { AdminService } from './../../services/admin.service';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-course-list-admin',
@@ -15,11 +17,10 @@ export class CourseListComponent {
 		{name: 'day', value: 'Jour'},
 		{name: 'hours', value: 'Heure'},
 		{name: 'level', value: 'Niveau'},
-		{name: 'language', value: 'Langue'}
+		{name: 'language', value: 'Langue'},
+		{name: 'link', value: 'lien'},
 	];
-	@Input() extra: any;
-	@Input() canSelect: boolean = true;
-	@Output() itemEmitter = new EventEmitter<number>();
+
 
 	listFragments: any;
 	saveData: any;
@@ -30,24 +31,35 @@ export class CourseListComponent {
 	page: number = 0;
 	numberOfElement: number = 20;
 
-	constructor (private adminService: AdminService) {}
+	idParams !: string;
+	teacher!: string;
+
+	constructor (private adminService: AdminService, private route: ActivatedRoute) {
+		
+	}
 
 	ngOnInit () {
+
 		this.adminService.getAllCourses().subscribe( s => {
 			s.docs.forEach(ss => {
 				this.data.push(ss.data());
 			})
-			console.log(this.data);
-			
-			this.saveData = this.data;
-			this.listFragments = this.getListFragment(this.page, this.numberOfElement);
+			let id = this.route.snapshot.params['id'];
+			if (!id) {
+				this.saveData = this.data;
+				this.listFragments = this.getListFragment(this.page, this.numberOfElement);
+			} else {
+				this.adminService.getItem(id, 'Teachers').subscribe((s: any) => {
+
+					this.teacher = s.docs[0].data().email;
+					this.saveData = this.data.filter((d: any) => (d.teacher === this.teacher));
+					this.listFragments = this.getListFragment(this.page, this.numberOfElement);
+				})
+				
+			}
 		})
 	}
 
-	emitItem (item: any) {
-		this.currentEmit = item;
-		this.itemEmitter.emit(item);
-	}
 
 	getListFragment (page: number, numberOfElement: number) : {}[] {
 
