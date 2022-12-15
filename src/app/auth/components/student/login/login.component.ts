@@ -1,3 +1,4 @@
+import { AuthService } from './../../../services/auth.service';
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 //import {AuthModel} from "../../../core/models/auth.model";
@@ -15,17 +16,15 @@ import { LocalStorageService } from 'src/app/core/services/local-storage.service
 export class LoginComponent {
 
 
-    // @ts-ignore
-    loginForm: FormGroup;
+    loginForm!: FormGroup;
     
     errorMessage: any;
-    // @ts-ignore
     isAuth: boolean = false;
 
     constructor(
         private formBuilder: FormBuilder,
         private router: Router,
-        private storage: LocalStorageService ) 
+        private authService: AuthService) 
     {  localStorage.clear()
 }
 
@@ -38,6 +37,7 @@ export class LoginComponent {
             {
                 login: ['', Validators.required],
                 password: ['', [Validators.required, Validators.pattern(/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/)]],
+                role: ['Student', Validators.required]
             }
         );
     }
@@ -48,15 +48,14 @@ export class LoginComponent {
         // @ts-ignore
         const password = this.loginForm.get('password').value;
 
-        this.storage.setLocalData('login', login);
-        this.storage.setLocalData('user', 'student');
-        
-        this.router.navigateByUrl('/etud/accueil');
-        //const auth: AuthModel = {
-        //    login: login,
-        //    password: password
-        //}
         // @ts-ignore
+        const role = this.loginForm.get('role').value;
         
+
+        this.authService.login(login, password, role).then((res: any) => {
+            this.errorMessage = res.toString();
+            console.log(this.errorMessage);
+            
+        })
     }
 }

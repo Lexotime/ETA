@@ -1,3 +1,6 @@
+import { AddVideoComponent } from './components/add-video/add-video.component';
+import { VideoComponent } from './components/video/video.component';
+import { AddCourseComponent } from './components/add-course/add-course.component';
 import { AddTeacherComponent } from './components/add-teacher/add-teacher.component';
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
@@ -8,11 +11,18 @@ import { TeacherComponent } from "./components/teacher/teacher.component";
 
 
 const routes: Routes = [
-    { path: '', component:  CoursesComponent},
+
+
     { path: 'cours', component:  CoursesComponent},
+    { path: 'cours/:id', component:  CoursesComponent},
     { path: 'enseignants', component:  TeacherComponent},
     { path: 'etudiants', component:  StudentComponent},
-    // { path: 'ajouter', component:  AddTeacherComponent},
+    { path: 'videos', component: VideoComponent},
+    { path: 'ajouter/cours/:id', component:  AddCourseComponent},
+    { path: 'ajouter/enseignants', component: AddTeacherComponent},
+    { path: 'ajouter/video/:id', component: AddVideoComponent},
+    
+    
 ]
 
 @NgModule({

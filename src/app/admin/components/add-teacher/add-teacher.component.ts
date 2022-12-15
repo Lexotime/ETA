@@ -64,11 +64,8 @@ export class AddTeacherComponent {
             {
                 firstname: ['', Validators.required],
                 lastname: ['', Validators.required],
-                email: ['', Validators.required],
-                level: ['', Validators.required],
-                course: ['', Validators.required],
-                language: ['', Validators.required],
-                password: ['', [Validators.required, Validators.pattern(/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/)]],
+                email: ['', [Validators.email, Validators.required]],
+                // password: ['', [Validators.required, Validators.pattern(/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/)]],
             }
         );
     }

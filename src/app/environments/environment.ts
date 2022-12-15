@@ -6,18 +6,17 @@
 // Initialize Firebase
 export const environment = {
 
-     firebaseConfig : {
-        apiKey: "AIzaSyCdoPpX83wJoDzz937hvfeUeykRPb_T65U",
-        authDomain: "etoile-d-afrique.firebaseapp.com",
-        databaseURL: "https://etoile-d-afrique-default-rtdb.firebaseio.com",
-        projectId: "etoile-d-afrique",
-        storageBucket: "etoile-d-afrique.appspot.com",
-        messagingSenderId: "100418135319",
-        appId: "1:100418135319:web:e0117e93f6654fa48e4352",
-        measurementId: "G-BK52N7CXVE"
-      },
-      
-    production: false,
+  firebaseConfig : {
+    apiKey: "AIzaSyCyHU_plKTd0126vYiCXxmB3z7GMOZC0kE",
+    authDomain: "etoile-d-afrique-app-827db.firebaseapp.com",
+    projectId: "etoile-d-afrique-app-827db",
+    storageBucket: "etoile-d-afrique-app-827db.appspot.com",
+    messagingSenderId: "243030714558",
+    appId: "1:243030714558:web:d5dbd001cfc50ceb4056ef",
+    measurementId: "G-DPK52XZGRT"
+  },
+
+  production: false,
 };
 
 /*

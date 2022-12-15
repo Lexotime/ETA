@@ -9,15 +9,14 @@ import {AuthRoutingModule} from './auth-routing.module';
 
 import { FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AdminAuthComponent } from './components/admin-auth/admin-auth.component';
-import { TeacherAuthComponent } from './components/teacher-auth/teacher-auth.component';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 
 @NgModule({
 	declarations: [
 		RegisterComponent,
 		LoginComponent,
-  AdminAuthComponent,
-  TeacherAuthComponent
+  		AdminAuthComponent,
 	],
 	imports: [
 		CommonModule,
@@ -25,6 +24,8 @@ import { TeacherAuthComponent } from './components/teacher-auth/teacher-auth.com
 		AuthRoutingModule,
 		FormsModule,
 		ReactiveFormsModule,
+
+		AngularFireAuthModule
 	],
 	providers: [
 		AuthService

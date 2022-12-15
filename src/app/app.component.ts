@@ -7,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'etoile-afrique-app';
+  	title = 'etoile-afrique-app';
+
+	isAuth () : boolean {
+		return localStorage.getItem('login') ? true : false;
+	}
+
 }

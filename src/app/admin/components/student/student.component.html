@@ -1,16 +1,14 @@
 
-<div class="mt-20 flex flex-wrap items-center justify-center">
+<div class="bg-gray-100 pt-32">
 
-    <!-- Student List -->
-    <app-list-items (itemEmitter)="getItem($event)" [data]="students" [columns]="columns"></app-list-items>   
+    <p class="text-4xl text-center mb-16">
+        Liste des Etudiants 
+    </p>
+   
+    <div class="mt-10 rounded-t-[60px] bg-white rounde-t-xl mx-4">
+         <!-- Student List -->
+        <app-student-list (itemEmitter)="getItem($event)" [columns]="columns"></app-student-list>   
     
-    <!--  Action -->
-    <div class="mx-6 p-10 bg-white rounded-md drop-shadow">
-        <p class="text-3xl text-center text-amber-500">{{currentStudent.firstname+" "+currentStudent.lastname}}</p>
-        <p class=" text-center text-gray-500">date de naissance</p>
-        <div class="mt-8 flex justify-between items-center">
-            <button *ngIf="currentStudent.status" (click)="onBlocked(true)" class="p-4 px-5 bg-red-400 rounded-md text-white font-bold text-xl mx-2">Bloquer</button>
-            <button *ngIf="!currentStudent.status" (click)="onBlocked(false)" class="p-4 px-5 bg-green-400 rounded-md text-white font-bold text-xl mx-2">Debloquer</button>
-        </div>
     </div>
+   
 </div>

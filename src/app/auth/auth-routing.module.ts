@@ -1,4 +1,3 @@
-import { TeacherAuthComponent } from './components/teacher-auth/teacher-auth.component';
 import { AdminAuthComponent } from './components/admin-auth/admin-auth.component';
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
@@ -12,9 +11,6 @@ const routes: Routes = [
     { path: 'connexion', component: LoginComponent },
     { path: 'inscription', component: RegisterComponent },
     { path: 'admin', component: AdminAuthComponent },
-    { path: 'admin/connexion', component: AdminAuthComponent },
-    { path: 'en', component: TeacherAuthComponent },
-    { path: 'en/connexion', component: TeacherAuthComponent },
 ]
 
 @NgModule({

@@ -6,13 +6,21 @@
 
 <div class="overflow-hidden ">
 	<div class="min-h-screen " role="main">
-		<!-- header -->
-		<app-header></app-header>
-		<!-- main content -->
-	
-		<router-outlet ></router-outlet>
 		
-		<!-- footer -->
-		<app-footer></app-footer>
+		<app-sidebar *ngIf="isAuth()"></app-sidebar>
+
+
+		<div [ngClass]="{'ml-[280px]': isAuth()}">
+
+			<!-- header -->
+			<app-header></app-header>
+
+			<!-- main content -->
+			<router-outlet ></router-outlet>
+
+			<!-- footer -->
+			<!-- <app-footer></app-footer> -->
+		</div>
+		
 	</div>
 </div>

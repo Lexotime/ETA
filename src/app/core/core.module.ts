@@ -13,6 +13,7 @@ import { MessagesComponent } from './components/messages/messages.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ListItemsComponent } from './components/list-items/list-items.component';
 import { ForumComponent } from './components/forum/forum.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 
 
 
@@ -26,7 +27,8 @@ declarations: [
 	MessagesComponent,
 	FooterComponent,
 	ListItemsComponent,
- ForumComponent
+	ForumComponent,
+	SidebarComponent
 ],
 imports: [
 	CommonModule,
@@ -41,7 +43,8 @@ exports: [
 	LevelCoursesListComponent,
 	FooterComponent,
 	ListItemsComponent,
-	ForumComponent
+	ForumComponent,
+	SidebarComponent
 ],
 providers: [
 		LocalStorageService

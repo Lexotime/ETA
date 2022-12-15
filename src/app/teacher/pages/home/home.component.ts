@@ -32,10 +32,6 @@ export class HomeComponent {
 
   ngOnInit(): void {
     let email = localStorage.getItem('login')
-    this.currentTeacher = this.teachers.filter((teacher: TeacherModel) => (teacher.email === email))[0];
-    this.currentCourse = this.getTeacherCourses()[0];
-    this.getCourseVideos(this.currentCourse.id);
-    this.currentStudentList = this.students.filter((student: any) => (student.courses.filter((course: any) => ( course === this.currentCourse.id))));
   }
 
   getTeacherCourses () : CourseModel [] {
