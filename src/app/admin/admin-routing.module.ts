@@ -1,3 +1,4 @@
+import { LookVideoComponent } from './components/look-video/look-video.component';
 import { AddVideoComponent } from './components/add-video/add-video.component';
 import { VideoComponent } from './components/video/video.component';
 import { AddCourseComponent } from './components/add-course/add-course.component';
@@ -19,10 +20,10 @@ const routes: Routes = [
     { path: 'etudiants', component:  StudentComponent},
     { path: 'videos', component: VideoComponent},
     { path: 'videos/:id', component: VideoComponent},
-    { path: 'ajouter/cours/:id', component:  AddCourseComponent},
-    { path: 'ajouter/enseignant', component: AddTeacherComponent},
-    { path: 'ajouter/video/:id', component: AddVideoComponent},
-    
+    { path: 'cours/ajouter/:id', component:  AddCourseComponent},
+    { path: 'enseignants/ajouter', component: AddTeacherComponent},
+    { path: 'videos/ajouter/:id', component: AddVideoComponent},
+    { path: 'videos/visionner/:id', component: LookVideoComponent}
     
 ]
 

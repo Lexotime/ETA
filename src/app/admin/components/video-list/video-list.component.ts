@@ -11,7 +11,10 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class VideoListComponent {
 
 	data: any = [];
-	@Input() columns: any;
+	columns: any = [
+		{name: 'name', value: 'nom'},
+		{name: 'description', value: 'description'},
+	];
 	@Input() extra: any;
 	@Input() canSelect: boolean = true;
 	@Output() itemEmitter = new EventEmitter<number>();
@@ -22,7 +25,7 @@ export class VideoListComponent {
 	saveColumn: string = '';
 	currentEmit: string = '1';
 
-	courses!: string;
+	course: any = {name: '', level: ''};
 
 	page: number = 0;
 	numberOfElement: number = 20;
@@ -39,8 +42,9 @@ export class VideoListComponent {
 			if (!id)
 				this.saveData = this.data;
 			else 
-				this.saveData = this.data.filter((d: any) => (d.courses === id));
+				this.saveData = this.data.filter((d: any) => (d.course === id));
 			this.listFragments = this.getListFragment(this.page, this.numberOfElement);
+
 		})
 	}
 

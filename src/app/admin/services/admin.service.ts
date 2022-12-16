@@ -20,20 +20,14 @@ import {
 export class AdminService {
 
   	constructor(public fireStore: AngularFirestore, private fireAuth: AngularFireAuth, private readonly storage: AngularFireStorage) { 
-		// this.teachers = this.getAllTeachers();
-		// this.courses = this.getAllCourses();
-		// this.students = this.getAllStudents();
-		// this.videos = this.getAllVideos();
+		
 	} 
 
 	chars = "abcdefghijklmnopqrstuvwxyz";
 	CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	num = "123456789";
 
-	teachers!: Observable<any[]>;
-	courses!: Observable<any[]>;
-	students!: Observable<any[]>;
-	videos!: Observable<any[]>;
+	
 
 	passwordLength = 3;
 
@@ -98,7 +92,7 @@ export class AdminService {
 		})
 	}
 
-	createVideo (video: any, course: string) {
+	createVideo (video: any, course: string, file: any) {
 		video.id = this.fireStore.createId();
 		let i = 0;
 		return this.fireStore.collection("Courses", ref => ref.where("id", '==', course)).snapshotChanges().subscribe(s => {
@@ -107,17 +101,20 @@ export class AdminService {
 				//@ts-ignore
 				let videos:any = s[0].payload.doc.data().videos;
 				videos.push(video.id)
-				console.log(videos);
 				
 				this.fireStore.collection("Courses").doc(s[0].payload.doc['id']).update({videos: videos}).then(res => {
 					return;
 				}, err => {return;});
-				
-				new Promise  ((resolve, reject) => {
-					this.fireStore.collection("Videos").add({...video, link: ''}).then(res => {
-						resolve("Vidéo créée vec succès")
-					}, err =>{ reject ("Une erreur est survenue impossible de continuer l'opération")})
-				})
+
+
+				this.uploadFileAndGetMetadata('videos', file).downloadUrl$.subscribe(s => {
+					new Promise  ((resolve, reject) => {
+						
+						return this.fireStore.collection("Videos").add({...video, link: s}).then(res => {
+							resolve("Vidéo créée vec succès");
+						}, err =>{ reject ("Une erreur est survenue impossible de continuer l'opération")})
+					})
+				});
 			}
 		})
 	}
@@ -209,6 +206,10 @@ export class AdminService {
 			uploadProgress$: uploadTask.percentageChanges() ? uploadTask.percentageChanges() : 0 ,
 			downloadUrl$: this.getDownloadUrl$(uploadTask, filePath),
 		};
+	}
+
+	getVideoLink () {
+		return this.storage.ref('videos/1671190561399_122476.jpg').getDownloadURL()
 	}
 	
 	private getDownloadUrl$(

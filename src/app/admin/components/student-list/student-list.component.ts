@@ -9,10 +9,10 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 export class StudentListComponent {
 
 	data: any = [];
-	@Input() columns: any;
-	@Input() extra: any;
-	@Input() canSelect: boolean = true;
-	@Output() itemEmitter = new EventEmitter<number>();
+	columns: any = [
+		{name: 'name', value: 'pseudo'},
+		{name: 'status', value: 'status'},
+	];
 
 	listFragments: any;
 	saveData: any;

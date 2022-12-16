@@ -15,6 +15,7 @@ import { CourseListComponent } from './components/course-list/course-list.compon
 import { VideoListComponent } from './components/video-list/video-list.component';
 import { VideoComponent } from './components/video/video.component';
 import { AddVideoComponent } from './components/add-video/add-video.component';
+import { LookVideoComponent } from './components/look-video/look-video.component';
 
 
 
@@ -38,7 +39,8 @@ import { AddVideoComponent } from './components/add-video/add-video.component';
 		CourseListComponent,
 		VideoListComponent,
 		VideoComponent,
-		AddVideoComponent
+		AddVideoComponent,
+  LookVideoComponent
 
 	],
 	imports: [

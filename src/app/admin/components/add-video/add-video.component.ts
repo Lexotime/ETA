@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { AdminService } from './../../services/admin.service';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -9,16 +11,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddVideoComponent  implements OnInit{
 
-	course!: string;
+	course: any = {name: '', level: ''};
 
 	form!: FormGroup;
 	file!: FormData;
 	
 
-	constructor (private formBuilder: FormBuilder, private adminService: AdminService) {}
+	constructor (private formBuilder: FormBuilder, private adminService: AdminService, private route: ActivatedRoute, private router: Router) {}
 
 	ngOnInit () {
 		this.initForm();
+		this.route.params.subscribe(params => {
+			let id = params['id'];
+
+			this.adminService.getItem(id, 'Courses').subscribe((s: any) => {
+				this.course = s.docs[0].data();
+			})
+		})
 	}
 
 	initForm () {
@@ -32,9 +41,14 @@ export class AddVideoComponent  implements OnInit{
 	}
 
 	onSubmit () {
-
-		console.log(this.form.value);
-		
+		//@ts-ignore
+		let name = this.form.get('name').value
+		//@ts-ignore
+		let description = this.form.get('description').value
+		//@ts-ignore
+		let file = this.form.get('file').value
+		this.adminService.createVideo({name: name, description: description, course: this.course.id, id: ''}, this.course.id, file);
+		this.router.navigate(['/admin/videos']);
 	}
 
 	onFileSelect (event: any) {
