@@ -11,6 +11,7 @@ export class StudentListComponent {
 	data: any = [];
 	columns: any = [
 		{name: 'name', value: 'pseudo'},
+		{name: 'email', value: 'email'},
 		{name: 'status', value: 'status'},
 	];
 
@@ -145,6 +146,14 @@ export class StudentListComponent {
 
 	onBlock (id: string) {
 		this.message = this.adminService.blockUser(id, 'Students');
+		this.data.filter((e: any) => (e.id === id))[0].status = 'inactif';
+
+	}
+
+	onUnblock (id: string) {
+		this.message = this.adminService.unBlockUser(id, 'Students');
+		this.data.filter((e: any) => (e.id === id))[0].status = 'actif';
+
 	}
 
 }

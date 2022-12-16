@@ -1,7 +1,7 @@
 import { DatabaseService } from './../../../../core/services/database.service';
 import { AuthService } from './../../../services/auth.service';
 import { Component } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {EmailValidator, FormBuilder, FormGroup, Validators} from "@angular/forms";
 //import {AuthModel} from "../../../core/models/auth.model";
 import {Router} from "@angular/router";
 
@@ -64,8 +64,9 @@ export class RegisterComponent {
                         const student = {
                             id: '',
                             uid: res.uid,
-                            course: [],
+                            courses: [],
                             name: name,
+                            email: login,
                             status: 'actif'
                         }
                         this.dataService.createStudent(student).then(res => {

@@ -125,24 +125,28 @@ export class AdminService {
     }
   
     blockUser (uid: string, collection: string) {
+		let i = 0;
 		return this.fireStore.collection(`${collection}`, ref => ref.where("id","==", uid )).snapshotChanges().subscribe(e => {
-			
-			this.fireStore.collection(`${collection}`).doc(e[0].payload.doc['id']).update({'status' : 'inactif'}).then(res => {
-				return "Utilisateur bloquer";
-			}).catch(err => {
-				return "Une erreur c'est produite veuillez ressager";
-			});
+			i ++;
+			if (i === 1)
+				this.fireStore.collection(`${collection}`).doc(e[0].payload.doc['id']).update({'status' : 'inactif'}).then(res => {
+					return "Utilisateur bloquer";
+				}).catch(err => {
+					return "Une erreur c'est produite veuillez ressager";
+				});
 		})
     }
 
 	unBlockUser (uid: string, collection: string) {
+		let i = 0;
 		return this.fireStore.collection(`${collection}`, ref => ref.where("id","==", uid )).snapshotChanges().subscribe(e => {
-			
-			return this.fireStore.collection(`${collection}`).doc(e[0].payload.doc['id']).update({'status' : 'actif'}).then(res => {
-				return "Utilisateur débloquer";
-			}).catch(err => {
-				return "Une erreur c'est produite veuillez ressager";
-			});
+			i ++;
+			if (i === 1)
+				return this.fireStore.collection(`${collection}`).doc(e[0].payload.doc['id']).update({'status' : 'actif'}).then(res => {
+					return "Utilisateur débloquer";
+				}).catch(err => {
+					return "Une erreur c'est produite veuillez ressager";
+				});
 		})
 	}
   

@@ -16,8 +16,6 @@ export class AuthService {
     }
 
     private token!: string;
-    private userId!: string;
-    private errorMessage!: string;
 
     getToken (): string {
         return this.token;
@@ -113,24 +111,24 @@ export class AuthService {
         return response;
     }
     
-      // sign out
-      logout() {
-        this.fireAuth.signOut().then( () => {
-          localStorage.removeItem('token');
-          this.router.navigate(['/connexion']);
-        }, err => {
-          alert(err.message);
-        })
-      }
-    
-      // forgot password
-      forgotPassword(email : string) {
-          this.fireAuth.sendPasswordResetEmail(email).then(() => {
-            this.router.navigate(['/varify-email']);
-          }, err => {
-            alert('Something went wrong');
-          })
-      }
+	// sign out
+	logout() {
+		this.fireAuth.signOut().then( () => {
+			localStorage.removeItem('token');
+			this.router.navigate(['/connexion']);
+		}, err => {
+			alert(err.message);
+		})
+	}
+
+	// forgot password
+	forgotPassword(email : string) {
+		this.fireAuth.sendPasswordResetEmail(email).then(() => {
+			this.router.navigate(['/varify-email']);
+			}, err => {
+			alert('Something went wrong');
+		})
+	}
     
     //   // email varification
     //   sendEmailForVarification(user : any) {
