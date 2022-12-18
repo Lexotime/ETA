@@ -1,3 +1,4 @@
+import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CoreModule } from './../core/core.module';
 import { StudentRoutingModule } from './student-routing.module';
@@ -8,6 +9,11 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { CoursesComponent } from './components/courses/courses.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { BrowserModule } from '@angular/platform-browser';
+import { CoursesListItemComponent } from './components/courses-list-item/courses-list-item.component';
+import { LevelPageComponent } from './components/level-page/level-page.component';
+import { VideoComponent } from './components/video/video.component';
+import { VideoListItemComponent } from './components/video-list-item/video-list-item.component';
+import { VideoListComponent } from './components/video-list/video-list.component';
 
 
 
@@ -16,12 +22,17 @@ import { BrowserModule } from '@angular/platform-browser';
     HomeComponent,
     ProfileComponent,
     CoursesComponent,
-    CalendarComponent
+    CalendarComponent,
+    CoursesListItemComponent,
+    LevelPageComponent,
+    VideoComponent,
+    VideoListItemComponent,
+    VideoListComponent
   ],
   imports: [
     StudentRoutingModule,
     CommonModule,
-
+    ReactiveFormsModule,
     CoreModule,
   ]
 })

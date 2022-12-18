@@ -8,6 +8,7 @@ import {
 	AngularFireUploadTask,
   } from '@angular/fire/compat/storage';
   import { switchMap } from 'rxjs/operators';
+  import emailjs, { EmailJSResponseStatus } from '@emailjs/browser'
 
 
   export interface FilesUploadMetadata {
@@ -59,7 +60,8 @@ export class AdminService {
 				.collection("Teachers")
 				.add({...teacher, status: 'actif'})
 				.then(res => {
-				resolve(res)
+					this.sendEmail({password: password,email: email, name: teacher.firstname+" "+teacher.lastname })
+					resolve(res)
 				}, err => reject(err))
 			})
 			}
@@ -147,6 +149,9 @@ export class AdminService {
 				}).catch(err => {
 					return "Une erreur c'est produite veuillez ressager";
 				});
+			else {
+				return;
+			}
 		})
 	}
   
@@ -237,5 +242,18 @@ export class AdminService {
 	deleteCourse () {
 
 	}
+
+	public sendEmail(data: any) {
+		emailjs.send('etoile-d-afrique-web-app',
+					'etoile-afrique-send-pass',
+					data,
+					'BCidLL6hrWDmpzwyN'
+					)
+		  .then((result: EmailJSResponseStatus) => {
+			console.log(result.text);
+		  }, (error: any) => {
+			console.log(error.text);
+		  });
+	  }
 
 }

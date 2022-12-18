@@ -1,14 +1,17 @@
-import { ProfileComponent } from './pages/profile/profile.component';
-import { HomeComponent } from './pages/home/home.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { HomeComponent } from './components/home/home.component';
 import {NgModule} from "@angular/core";
 import {RouterModule, Routes} from "@angular/router";
+import { VideoComponent } from './components/video/video.component';
 
 
 const routes: Routes = [
-   {path: '', component: HomeComponent},
-   {path: 'cours', component: HomeComponent},
-   {path: 'activite', component: HomeComponent},
-   {path: 'videos', component: HomeComponent},
+   {path: 'accueil', component: HomeComponent},
+   {path: 'activite', component: CalendarComponent},
+   {path: 'videos/:id', component: VideoComponent},
+   {path: 'videos', component: VideoComponent},
+   {path: 'videos/ajouter/:id', component: VideoComponent},
    {path: 'profil', component: ProfileComponent}
 ]
 

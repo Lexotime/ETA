@@ -2,10 +2,8 @@ import { EventEmitter } from '@angular/core';
 import { AdminService } from './../../services/admin.service';
 import { Component, Output } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-//import {AuthModel} from "../../../core/models/auth.model";
 import {Router} from "@angular/router";
 import { TeacherModel } from 'src/app/core/models/teacher.model';
-
 @Component({
 	selector: 'app-add-teacher',
 	templateUrl: './add-teacher.component.html',
@@ -83,6 +81,5 @@ export class AddTeacherComponent {
 			else
 				this.errorMessage = "Une erreur c'est produit veuillez ressayer";
 		})
-		
 	}
 }

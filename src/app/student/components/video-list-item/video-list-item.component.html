@@ -1,0 +1,48 @@
+
+<div class="flex justify-between items-center">
+    <p class=" text-xl mr-10">- {{name}}</p>
+    <div class="flex justify-between items-center flex-1">
+        <button (click)="previous()" class="flex h-10 items-center text-amber-400">
+            <svg fill="#FBBF24" width="2.5rem" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m13.789 7.155c.141-.108.3-.157.456-.157.389 0 .755.306.755.749v8.501c0 .445-.367.75-.755.75-.157 0-.316-.05-.457-.159-1.554-1.203-4.199-3.252-5.498-4.258-.184-.142-.29-.36-.29-.592 0-.23.107-.449.291-.591 1.299-1.002 3.945-3.044 5.498-4.243z"/></svg>
+            précedent
+        </button>
+        <button (click)="next()" class="flex items-center h-10 text-amber-400">
+            suivant <svg fill="#FBBF24" width="2.5rem" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m10.211 7.155c-.141-.108-.3-.157-.456-.157-.389 0-.755.306-.755.749v8.501c0 .445.367.75.755.75.157 0 .316-.05.457-.159 1.554-1.203 4.199-3.252 5.498-4.258.184-.142.29-.36.29-.592 0-.23-.107-.449-.291-.591-1.299-1.002-3.945-3.044-5.498-4.243z"/></svg>
+        </button>
+    </div>
+</div>
+
+
+<div class="flex items-center overflow-hidden">
+    
+    
+    <div *ngFor="let item of data" class="relative m-4 bg-white flex flex-col h-64 space-y-1 shadow p-4 px-2 rounded-[20px]">
+                    
+        <div class="flex items-center flex-1">
+            <div class="mr-4">
+                <div class="items-center relative w-full space-y-4">
+                    <p class="w-full text-3xl text-center text-amber-400">{{item.data.day}}</p>
+                    <p class="text-gray-700 text-center">{{item.data.hours}}</p>
+                    <img class="w-20 h-20 mx-auto" [src]="item.data.picture" alt=" ">
+                </div> 
+                <div>
+        
+                </div>
+            </div>
+         
+            <div class="flex flex-col h-full w-[280px] justify-center">
+                <div class="flex justify-between w-full items-center space-x-6">
+                    <p>Langue: <span class="text-gray-700">{{item.data.language}}</span></p>
+                </div>
+                <p class="w-full">Description: </p>
+                <p class="w-full text-justify overflow-auto pr-1 text-gray-700">
+                    {{item.data.description}}
+                </p>
+            </div>
+        </div>
+        <p class="w-full">Présenter par : {{item.data.teacherName}}</p>
+    
+    </div>
+           
+
+</div>

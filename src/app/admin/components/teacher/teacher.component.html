@@ -1,10 +1,10 @@
-<div class="bg-gray-100 pt-32">
+<div class="bg-white pt-32 flex flex-col min-h-screen">
 
     <p class="text-4xl text-center pb-24">
         Liste des Enseignants 
     </p>
    
-    <div class=" rounded-t-[60px] bg-white rounde-t-xl mx-4">
+    <div class=" rounded-t-[60px] bg-white  drop-shadow-xl shadow shadow-gray-300 rounde-t-xl mx-4 flex-1">
          <!-- Teacher List -->
         <app-teacher-list (itemEmitter)="getItem($event)" [columns]="columns" ></app-teacher-list>
     </div>

@@ -1,27 +1,52 @@
-import { Component } from '@angular/core';
+import { StudentService } from './../../services/student.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
-export class CalendarComponent {
+export class CalendarComponent implements OnInit {
 
-  daysEvents: {name: string, events: {date: string, teacher:string, course:string, link: string}[]}[] = [
-    {name: 'Lundi', events: [
-      {link: '', date: 'string', teacher:'string', course:'string'},
-      {link: '', date: 'string', teacher:'string', course:'string'},
-      {link: '', date: 'string', teacher:'string', course:'string'}
-    ]},
-    {name: 'Mardi', events: [
-      {link: '', date: 'string', teacher:'string', course:'string'},
-      {link: '', date: 'string', teacher:'string', course:'string'},
-      {link: '', date: 'string', teacher:'string', course:'string'}
-    ]},
-    {name: 'Mercredi', events: [
-      {link: '', date: 'string', teacher:'string', course:'string'},
-      {link: '', date: 'string', teacher:'string', course:'string'},
-      {link: '', date: 'string', teacher:'string', course:'string'}
-    ]}
-  ]
+	days: string[] = [
+		'Lundi',
+		'Mardi',
+		'Mercredi',
+		'Jeudi',
+		'Vendredi',
+		'Samedi',
+	]
+	
+	hours: string[] = [
+		'8h-10h',
+		'10h-12h',
+		'15h-17h',
+		'17h-19h',
+		'20h-22h',
+	];
+	
+	student: any = {};
+	courses: any = [];
+
+	constructor (private studentService: StudentService) {}
+
+	ngOnInit () {
+		this.studentService.getStudent().subscribe(s => {
+			s.forEach(ss => {
+				this.student = ss.payload.doc.data();
+			})
+			
+			this.studentService.getStudentCourses(this.student.courses).subscribe(s => {
+				this.courses = [];
+				s.forEach(ss => {
+					this.courses.push(ss.payload.doc.data());
+					
+				})
+			})
+		})
+	}
+
+	getCourses (day: string, hours: string) {
+		return this.courses.filter((c: any) => (c.hours == hours && day == c.day))
+	}
 }

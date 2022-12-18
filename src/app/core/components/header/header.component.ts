@@ -7,18 +7,18 @@ import { Component, ViewChild, ElementRef, Renderer2, SimpleChanges, OnInit } fr
 })
 export class HeaderComponent implements OnInit  {
 
-  @ViewChild('toggleButton') toggleButton!: ElementRef | undefined;
-  @ViewChild('menu') list!: ElementRef | undefined;
+  @ViewChild('toggleButton') toggleButton!: ElementRef ;
+  @ViewChild('menu') list!: ElementRef ;
+  @ViewChild('tF') tF!: ElementRef ;
+  @ViewChild('tF1') tF1!: ElementRef ;
 
   constructor(private renderer: Renderer2) {
     
-    if (this.toggleButton)
-      this.renderer.listen('window', 'click',(e:Event)=>{
-          //@ts-ignore
-        if(e.target !== this.toggleButton.nativeElement && e.target!==this.list.nativeElement){
-            this.isOpen=false;
-        }
-      });
+    this.renderer.listen('window', 'click',(e:Event)=>{
+      if(e.target !== this.toggleButton.nativeElement && e.target!==this.list.nativeElement && e.target!==this.tF.nativeElement && e.target!==this.tF1.nativeElement){
+          this.isOpen=false;
+      }
+    });
   }
 
 
@@ -68,8 +68,6 @@ export class HeaderComponent implements OnInit  {
   isOpen: boolean = false;
 
   onDrop (open: boolean)  {
-   console.log(open);
-   
     this.isOpen = open;
   }
 }

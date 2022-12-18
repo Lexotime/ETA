@@ -58,7 +58,7 @@ export class AddCourseComponent {
 	]
 	
 	language: string[] = [
-		'français', 'anglais', 'espagnol', 'allemand', 'arable'
+		'français', 'anglais', 'espagnol', 'allemand', 'arabe'
 	]
 	
 	days: string[] = [

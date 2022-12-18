@@ -1,0 +1,8 @@
+<section class="mx-20">
+    <p class="text-amber-400 text-3xl my-10">Liste des cours de {{currentLink}}</p>
+    <div  class="ml-4" *ngFor="let item of courses">
+
+    <app-courses-list-item (event)="getEvent($event)" [name]="item[0].name" [data]="item" [courses]="student.courses"></app-courses-list-item>
+    
+    </div>
+</section>

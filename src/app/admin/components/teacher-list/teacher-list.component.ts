@@ -1,7 +1,8 @@
 import { Observable, filter } from 'rxjs';
 import { AdminService } from './../../services/admin.service';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-
+//@ts-ignore
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 
 @Component({
   selector: 'app-teacher-list',
@@ -12,6 +13,8 @@ export class TeacherListComponent {
 
 	data: any= [];
 	message: any;
+
+	alertVisible: boolean = false;
 
 	@Input() columns: any;
 	@Input() extra: any;
@@ -35,7 +38,6 @@ export class TeacherListComponent {
 	}
 
 	async ngOnInit () {
-
 		this.initTable();		
 	}
 
@@ -188,5 +190,14 @@ export class TeacherListComponent {
 		if(this.adminService.unBlockUser(id, 'Teachers'))
 		this.data.filter((e: any) => (e.id === id))[0].status = 'actif';
 		
+	}
+
+	getNotifyResponse (event: any) {
+		console.log(event);
+		this.alertVisible = false;
+		return event;
+	}
+
+	showNotification (action: string, id: string) {
 	}
 }

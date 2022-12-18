@@ -1,0 +1,12 @@
+<div *ngIf="visible" class="absolute left-0 top-0 right-0 bottom-0 flex items-center justify-center  z-[2000] bg-black bg-opacity-20">
+    <div class="w-96 space-y-2 p-10 fixed bg-white flex flex-col items-center justify-between rounded">
+
+        <p class="text-xl">{{icon}}</p>
+        <p class="text-xl">{{title}} </p>
+        <p class="text-xl">{{message}} </p>
+        <div class="text-xl w-full flex justify-between">
+            <button (click)="emitResponse(true)" class="px-6 py-1 bg-green-500 text-white font-bold rounded">Valider</button>
+            <button (click)="emitResponse(false)" class="px-6 py-1 bg-red-500 text-white font-bold rounded">Annuler</button>
+        </div>
+    </div>
+</div>

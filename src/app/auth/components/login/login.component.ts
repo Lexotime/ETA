@@ -1,4 +1,4 @@
-import { AuthService } from './../../../services/auth.service';
+import { AuthService } from '../../services/auth.service';
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 //import {AuthModel} from "../../../core/models/auth.model";
@@ -54,8 +54,7 @@ export class LoginComponent {
 
         this.authService.login(login, password, role).then((res: any) => {
             this.errorMessage = res.toString();
-            console.log(this.errorMessage);
-            
+                        
         })
     }
 }

@@ -9,7 +9,7 @@ import { CourseModel } from '../../models/course.model';
 
 export class CourseItemComponent {
 
-  @Input() course!: CourseModel;
+  @Input() course!: any;
   
   isLinkHover: boolean = false;
   

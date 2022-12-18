@@ -1,15 +1,68 @@
+<div class=" py-32 min-h-screen px-4">
 
+    <!-- Cover -->
+    <section class="relative bg-gray-100 w-11/12 mx-auto flex items-center shadow h-[45vh] rounded-[40px] overflow-hidden">
 
+        <button class="block left-0 w-1/12 p-8 absolute z-10">
+            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;"
+                xml:space="preserve">
+                <g>
+                <path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
+                    c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
+                    c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"/>
+                </g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
+            </svg>
 
+        </button>
 
-<!-- Section 1 les plus suivi -->
-<section class="w-screen mb-10">
-    <p class="text-3xl mt-10 ml-10 text-amber-600">
-        Les plus suivis 
-    </p>
-    <app-course-list [courses]="mostViewList"></app-course-list>
-</section>
+        <div class="relative flex-1 h-full flex items-center justify-center ">
 
-<section>
-    <app-level-courses-list [levelCourses]="levelCourses"></app-level-courses-list>
-</section>
+            <div class="">
+
+            </div>
+            <div>
+
+            </div>
+            <div>
+
+            </div>
+
+            <div class="space-x-10 flex items-center bottom-10 absolute ">
+                <button class="w-4 h-4 bg-amber-400 rounded-full"></button>
+                <button class="w-4 h-4 bg-amber-400 rounded-full"></button>
+                <button class="w-4 h-4 bg-amber-400 rounded-full"></button>
+            </div>
+        </div>
+
+        <button class="absolute right-0 rotate-180 block w-1/12 p-8">
+            <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;"
+                xml:space="preserve">
+                <g>
+                <path d="M97.141,225.92c0-8.095,3.091-16.192,9.259-22.366L300.689,9.27c12.359-12.359,32.397-12.359,44.751,0
+                    c12.354,12.354,12.354,32.388,0,44.748L173.525,225.92l171.903,171.909c12.354,12.354,12.354,32.391,0,44.744
+                    c-12.354,12.365-32.386,12.365-44.745,0l-194.29-194.281C100.226,242.115,97.141,234.018,97.141,225.92z"/>
+                </g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
+            </svg>
+        </button>
+    </section>
+
+    <div class="bg-white rounded-[20px] mt-8 pt-8">
+        
+        <ul class="flex mx-10 rounded-[20px]   items-center justify-center bg-amber-400">
+            <li class="mr-5" *ngFor="let item of levelLink">
+                <a [routerLink]="'/etud/accueil/'+item.name" routerLinkActive="text-black bg-white"  [ngClass]="{'text-white font-bold inline-block  py-2 px-4 text-xl ': true}">{{item.value}}</a>
+            </li>
+        </ul>
+
+        <section class="mx-20">
+            <p class="text-amber-400 text-3xl my-10">Liste des cours de {{currentLink}}</p>
+            <div  class="ml-4" *ngFor="let item of courses">
+
+            <app-courses-list-item (event)="getEvent($event)" [name]="item[0].name" [data]="item" [courses]="student.courses"></app-courses-list-item>
+            
+            </div>
+        </section>
+    </div>
+</div>

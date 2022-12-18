@@ -1,3 +1,4 @@
+import { filter } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/compat/firestore/';
 import { DatabaseService } from './../../core/services/database.service';
 import { Router } from '@angular/router';
@@ -29,6 +30,14 @@ export class AuthService {
         this.token = token;
         console.log(this.token)
     }
+    
+    adminLogin (email : string, password : string) {
+        return this.fireAuth.signInWithEmailAndPassword (email, password);
+    }
+
+    searchAdmin (email: string) {
+        return this.fireStore.collection("Admins", ref => ref.where("email", "==", email)).get();
+    }
 
     login(email : string, password : string, role: string) : any {
 		
@@ -47,9 +56,10 @@ export class AuthService {
 									if (student.uid === res.user?.uid){
 
 										localStorage.setItem('login', res.user?.uid ? res.user?.uid : '');
+                                        localStorage.setItem('user', 'student')
 										localStorage.setItem('token', token);
 
-										return this.router.navigate(['/etud']);
+										return this.router.navigate(['/etud/accueil/CI']);
 									}else 
 										return "Vérifiez les informations saisies"
 									
@@ -68,8 +78,9 @@ export class AuthService {
 
 										localStorage.setItem('login', res.user?.uid ? res.user?.uid : '');
 										localStorage.setItem('token', token);
+                                        localStorage.setItem('user', 'teacher')
 
-										return this.router.navigate(['/en']);
+										return this.router.navigate(['/en/accueil']);
 									}else 
 										return "Vérifiez les informations saisies"
 									

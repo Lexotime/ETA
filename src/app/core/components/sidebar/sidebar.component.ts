@@ -16,17 +16,19 @@ export class SidebarComponent {
 	
 	
 	tLinks: {name: string, href: string}[] = [
-		{name: 'Accueil', href: 'en/cours'},
+		{name: 'Accueil', href: 'en/accueil'},
 		{name: 'Emploi du temps', href: 'en/activite'},
-		{name: 'Mes Videos', href: 'en/videos'}
+		{name: 'Mes Videos', href: 'en/videos'},
+		{name: 'Profil', href: 'en/profil'}
 	];
 	
 	
-		sLinks: {name: string, href: string}[] = [
+	sLinks: {name: string, href: string}[] = [
 		{name: 'Accueil', href: 'etud/accueil'},
 		{name: 'Mes cours', href: 'etud/cours'},
 		{name: 'Emploi du temps', href: 'etud/activite'},
 		{name: 'Rediffusion', href: 'etud/rediffusion'},
+		{name: 'Profil', href: 'etud/profil'}
 	];
 	
 	

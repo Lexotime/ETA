@@ -1,5 +1,5 @@
-import { DatabaseService } from './../../../../core/services/database.service';
-import { AuthService } from './../../../services/auth.service';
+import { DatabaseService } from './../../../core/services/database.service';
+import { AuthService } from './../../services/auth.service';
 import { Component } from '@angular/core';
 import {EmailValidator, FormBuilder, FormGroup, Validators} from "@angular/forms";
 //import {AuthModel} from "../../../core/models/auth.model";
@@ -19,6 +19,8 @@ export class RegisterComponent {
     errorMessage: any;
     // @ts-ignore
     isAuth: boolean = false;
+
+    message!: string;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -69,9 +71,9 @@ export class RegisterComponent {
                             email: login,
                             status: 'actif'
                         }
-                        this.dataService.createStudent(student).then(res => {
-                            
-                        }).catch(err => {
+                        this.dataService.createStudent(student).then((res: any) => {
+                            this.message = ""
+                        }).catch((err: any) => {
                             
                         });
                         console.log(this.dataService.getStudent(res.uid));

@@ -14,6 +14,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ListItemsComponent } from './components/list-items/list-items.component';
 import { ForumComponent } from './components/forum/forum.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { AlertComponent } from './components/alert/alert.component';
 
 
 
@@ -28,7 +29,8 @@ declarations: [
 	FooterComponent,
 	ListItemsComponent,
 	ForumComponent,
-	SidebarComponent
+	SidebarComponent,
+ AlertComponent
 ],
 imports: [
 	CommonModule,
@@ -44,7 +46,8 @@ exports: [
 	FooterComponent,
 	ListItemsComponent,
 	ForumComponent,
-	SidebarComponent
+	SidebarComponent,
+	AlertComponent
 ],
 providers: [
 		LocalStorageService

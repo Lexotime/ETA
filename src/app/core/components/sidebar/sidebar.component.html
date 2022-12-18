@@ -1,4 +1,4 @@
-<div class="z-[1000] w-[280px] h-screen top-0 pt-8  pl-4 bg-amber-400 fixed">
+<div class="z-[1000] w-[280px] h-screen top-0 pt-8  pl-4 bg-amber-400 fixed flex flex-col justify-between">
 
     <div>
         <div class="mb-8">
@@ -9,36 +9,39 @@
             <img src="" alt="logo">
             <a href="" class=" text-2xl text-white font-extrabold ">Etoile d'afrique</a>
         </div>
-       <!-- Teacher link -->
-    
+
+       <!-- Teacher link -->   
         
-        <ul  class="" *ngIf="isAuth() && getUser() === 'teacher'" >
-            <li class="-mb-px mr-1 " *ngFor="let link of tLinks">
-                <a class="bg-white inline-block py-2 px-4 font-semibold cursor-pointer" routerLinkActive="border-l border-t border-r rounded-t  text-amber-600" [routerLink]="link.href">{{link.name}}</a>
-            </li>
-        </ul>
+       <ul  class="mt-5" *ngIf="isAuth() && getUser() === 'teacher'" >
+        <li class=""  *ngFor="let link of tLinks">
+            <a class="block px-2 py-3 text-gray-900 bg-white bg-opacity-20 mb-2 rounded-xl text-xl mx-5 text-center" routerLinkActive="mr-0 rounded-r-none font-extrabold  text-amber-500 bg-opacity-100" [routerLink]="link.href">{{link.name}}</a>
+        </li> 
+    </ul>
        
         
         <!-- Admin link -->
     
         <ul  class="mt-5" *ngIf="isAuth() && getUser() === 'admin'" >
             <li class=""  *ngFor="let link of aLinks">
-                <a class="block px-2 py-3 text-gray-900 bg-white bg-opacity-20 mb-2 rounded-xl text-xl mx-5 text-center" routerLinkActive="mr-0 rounded-r-none font-extrabold bg-gray-100 bg-opacity-100" [routerLink]="link.href">{{link.name}}</a>
+                <a class="block px-2 py-3 text-gray-900 bg-white bg-opacity-20 mb-2 rounded-xl text-xl mx-5 text-center" routerLinkActive="mr-0 rounded-r-none font-extrabold text-amber-500 bg-opacity-100" [routerLink]="link.href">{{link.name}}</a>
             </li> 
         </ul>
     
         <!-- Student link -->
     
-        <ul  class="" *ngIf="isAuth() && getUser() === 'student'" >
-            <li class="-mb-px mr-1 ml-10" *ngFor="let link of sLinks">
-                <a class="bg-white inline-block py-2 px-4 font-bold cursor-pointer" routerLinkActive="border-l border-t border-r rounded-t font-extrabold text-amber-600" [routerLink]="link.href">{{link.name}}</a>
-            </li>
-           
+        <ul  class="mt-5" *ngIf="isAuth() && getUser() === 'student'" >
+            <li class=""  *ngFor="let link of sLinks">
+                <a class="block px-2 py-3 text-gray-900 bg-white bg-opacity-20 mb-2 rounded-xl text-xl mx-5 text-center" routerLinkActive="mr-0 rounded-r-none font-extrabold text-amber-500 bg-opacity-100" [routerLink]="link.href">{{link.name}}</a>
+            </li> 
         </ul>
+
     </div>
 
-    <div>
-        
+    <div class="mb-10">
+        <img src="" alt="logo" class="bg-white w-48 h-48 mx-auto">
+        <div class="mt-10">
+            © 2022 Étoile d'afrique, Inc. 
+        </div>
     </div>
 
 </div>

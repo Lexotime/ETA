@@ -6,16 +6,10 @@
 <a [href]="course.name" class="block cursor-pointer w-[360px] h-[240px] drop-shadow-md bg-white shadow-amber-800 mx-10 rounded-xl relative overflow-hidden">
 
     <!-- Cover -->
-    <img [src]="course.link" class="absolute bg-red-200 w-full h-3/4 " alt=" ">
+    <img [src]="course.picture" class="absolute  h-3/4 " alt=" ">
 
     <!-- Courses info -->
     <div class="w-full h-1/4 absolute bottom-0 p-1 ">
-        Cours de {{course.name}} par {{course.teacher}}
+        Cours de {{course.name}} par {{course.teacherName}}
     </div>
-
-    <!-- register -->
-    <button  (mouseover)="onHoverLink()" (mouseout)="onMouseOut()" [ngClass]="{'flex items-center absolute top-4 right-4  py-0.5 ease-linear duration-75 rounded': true, 'bg-white drop-shadow-sm px-4': isLinkHover}">
-        <p [ngClass]="{'hidden': !isLinkHover}">S'inscrire</p>
-        <img src="assets/images/icons8-plus-math-30.png" class="" alt="icons">
-    </button>
 </a>

@@ -1,4 +1,3 @@
-import { filter } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { AdminService } from './../../services/admin.service';
 import { Component } from '@angular/core';
@@ -12,8 +11,7 @@ export class CourseListComponent {
 
 	data: any = [];
 	columns: any = [
-		{name: 'name', value: 'Libelé'},
-		{name: 'teacher', value: 'Enseignant'},
+		{name: 'name', value: 'Libellé'},
 		{name: 'day', value: 'Jour'},
 		{name: 'hours', value: 'Heure'},
 		{name: 'level', value: 'Niveau'},

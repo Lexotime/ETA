@@ -1,3 +1,4 @@
+import { AuthService } from './../../services/auth.service';
 import { Component } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 //import {AuthModel} from "../../../core/models/auth.model";
@@ -21,7 +22,8 @@ export class AdminAuthComponent {
    constructor(
        private formBuilder: FormBuilder,
        private router: Router,
-       private storage: LocalStorageService ) 
+       private authService: AuthService
+       ) 
    {  localStorage.clear()
 }
 
@@ -44,15 +46,26 @@ export class AdminAuthComponent {
        // @ts-ignore
        const password = this.loginForm.get('password').value;
 
-       this.storage.setLocalData('login', login);
-       this.storage.setLocalData('user', 'admin');
+       this.authService.searchAdmin(login).subscribe(e => {
+            let search: any = null;
+            e.forEach(ee => {
+                search = ee.data();
+            })
+            if (search)
+                this.authService.adminLogin(login, password).then(res => {
+                    localStorage.setItem('login', res.user?.uid ? res.user?.uid : '');
 
-       this.router.navigateByUrl('/admin/cours');
-       //const auth: AuthModel = {
-       //    login: login,
-       //    password: password
-       //}
-       // @ts-ignore
-       
+                    res.user?.getIdToken().then(token => {
+                        localStorage.setItem('token', token);
+                        localStorage.setItem('user', 'admin')
+                        this.router.navigateByUrl('/admin/cours');
+                    }, err => {
+                        this.errorMessage = "Login ou mot de passe incorrect"
+                    })
+                })
+            else 
+                this.errorMessage = "Login ou mot de passe incorrect"
+
+       })       
    }
 }

@@ -1,33 +1,77 @@
 
 
-<section class="mt-20 pl-20 flex flex-col items-center justify-center space-y-5">
+<section class="pt-20 flex flex-col items-center justify-center space-y-5 mx-10 mb-10">
+    <div class="font-extrabold text-center flex justify-center items-center h-[10vh] rounded-[20px] text-white text-4xl bg-amber-400 w-full">
+        Mes Cours
+    </div>
     <form action="" class="flex space-x-4 items-center">
-        <div class="relative ">
-            <input type="email"
-                   id="email"
-                   formControlName="login"
-                   class="w-full md:block p-1 md:w-[320px] peer appearance-none bg-transparent focus:outline focus:outline-0 border-b-2 border-amber-400"
-                   placeholder=""
-            />
-            <label for="email"
-                   class="absolute italic text-[18px]
-                    text-gray-500 duration-300
-                    transform -translate-y-1/2 scale-75 z-10
-                    origin-[0] peer-focus:px-0
-                    peer-focus:text-cyan-400
-                    peer-placeholder-shown:scale-100
-                    peer-placeholder-shown:-translate-y-1/2
-                    peer-placeholder-shown:top-1/2
-                    peer-focus:top-2 peer-focus:scale-75
-                    peer-focus:-translate-y-6 ">
-                Rechercher</label>
+        <!-- Search -->
+        <div class="my-10">
+            <div class="flex space-x-4 items-center">
+                <div class="relative z-0">
+                    <input #search type="text" id="floating_standard" class=" w-80 block py-2.5 px-0 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-amber-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+                    <label for="floating_standard" class="w-80 absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Rechercher...</label>
+                </div>
+                <button (click)="filter(search.value)" class="p-2.5 ml-2 text-sm font-medium text-white bg-amber-400 rounded-lg border  hover:bg-amber-500 focus:ring-4 focus:outline-none focus:ring-amber-300 ">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <span class="sr-only">Search</span>
+                </button>
+            </div>
         </div>
-        <button type="submit" class="p-2.5 ml-2 text-sm font-medium text-white bg-amber-600 rounded-lg border border-amber-600 hover:bg-amber-700 focus:ring-4 focus:outline-none focus:ring-amber-300 ">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-            <span class="sr-only">Search</span>
-        </button>
     </form>
-    <section class="flex flex-wrap">
-        <app-course-item class="my-4" *ngFor="let item of courses" [course]="item"></app-course-item>
+    <section class="w-11/12 ">
+        <div class="flex">
+            <p class="text-xl my-2">Nombres de matières : {{courses.length}}</p>
+            <div class="flex justify-between items-center flex-1">
+                <button (click)="previous()" class="flex h-10 items-center text-amber-400">
+                    <svg fill="#FBBF24" width="2.5rem" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m13.789 7.155c.141-.108.3-.157.456-.157.389 0 .755.306.755.749v8.501c0 .445-.367.75-.755.75-.157 0-.316-.05-.457-.159-1.554-1.203-4.199-3.252-5.498-4.258-.184-.142-.29-.36-.29-.592 0-.23.107-.449.291-.591 1.299-1.002 3.945-3.044 5.498-4.243z"/></svg>
+                    précedent
+                </button>
+                <button (click)="next()" class="flex items-center h-10 text-amber-400">
+                    suivant <svg fill="#FBBF24" width="2.5rem" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m10.211 7.155c-.141-.108-.3-.157-.456-.157-.389 0-.755.306-.755.749v8.501c0 .445.367.75.755.75.157 0 .316-.05.457-.159 1.554-1.203 4.199-3.252 5.498-4.258.184-.142.29-.36.29-.592 0-.23-.107-.449-.291-.591-1.299-1.002-3.945-3.044-5.498-4.243z"/></svg>
+                </button>
+            </div>
+        </div>
+        <div class=" bg-white rounded-[20px] drop-shadow min-w-[340px]" *ngFor="let item of fragCourses">
+            <div class="w-full p-4 ">
+                <div class="flex flex-wrap items-center space-x-4">
+                    <div class="pr-2 border-r">
+                        <img class="min-h-24 max-h-24" [src]="item.picture" alt="">
+                    </div>
+
+                    <div cclass="pr-2 border-r">
+                        <p class="text-amber-500 text-3xl">{{item.name}} </p>
+                        <p>Tous les  {{item.day}} à <span>{{item.hours}} </span></p>
+                    </div>
+
+                    <div class="pr-2 border-r space-y-2">
+
+                        <p><span class="underline">Présenter par :</span> {{item.teacherName}} </p>
+                        <p class=""><span class="underline">lien :</span> <a class="ml-4 text-blue-400" [href]="item.link">meeting</a> </p>
+                       
+                    </div>
+                    <div class="space-x-4">
+                        <button class="text-white font-bold rounded py-1 px-6 bg-red-400">quitter</button>
+                        <button class="text-white font-bold rounded py-1 px-6 bg-blue-400">voir vidéos</button>
+                    </div>
+                </div>
+                <div>
+                    <p class="underline text-xl">Description :</p>
+                    <p>{{item.description}} 
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor velit amet distinctio ducimus consectetur alias. Tempora, praesentium ipsum! Quia sed blanditiis itaque nisi ad consectetur sequi sint quae dolores unde.
+                    </p>
+                </div>
+
+            </div>
+        </div>
     </section>
+    <div class="flex justify-between items-center w-11/12">
+        <button (click)="previous()" class="flex h-10 items-center text-amber-400">
+            <svg fill="#FBBF24" width="2.5rem" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m13.789 7.155c.141-.108.3-.157.456-.157.389 0 .755.306.755.749v8.501c0 .445-.367.75-.755.75-.157 0-.316-.05-.457-.159-1.554-1.203-4.199-3.252-5.498-4.258-.184-.142-.29-.36-.29-.592 0-.23.107-.449.291-.591 1.299-1.002 3.945-3.044 5.498-4.243z"/></svg>
+            précedent
+        </button>
+        <button (click)="next()" class="flex items-center h-10 text-amber-400">
+            suivant <svg fill="#FBBF24" width="2.5rem" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m10.211 7.155c-.141-.108-.3-.157-.456-.157-.389 0-.755.306-.755.749v8.501c0 .445.367.75.755.75.157 0 .316-.05.457-.159 1.554-1.203 4.199-3.252 5.498-4.258.184-.142.29-.36.29-.592 0-.23-.107-.449-.291-.591-1.299-1.002-3.945-3.044-5.498-4.243z"/></svg>
+        </button>
+    </div>
 </section>
