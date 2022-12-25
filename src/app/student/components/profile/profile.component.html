@@ -1,42 +1,37 @@
-<div class="relative top-0 pt-40 flex flex-col w-11/12 mx-auto items-center justify-center">
+<div class="relative top-0 md:pt-30 pt-20 flex flex-col md:w-11/12 mx-auto items-center justify-center">
 
-    <div class="mb-10 font-extrabold text-center flex justify-center items-center h-[10vh] rounded-[20px] text-white text-4xl bg-amber-400 w-full">
+    <div class="mb-10 font-extrabold text-center flex justify-center items-center md:mx-0  py-4 rounded-[20px] text-white text-4xl bg-amber-400 w-full">
         Profil
     </div>
 
     <div class="">
-        <div class="flex items-center justify-center mb-4">
+        <div class="flex flex-wrap items-center justify-center mb-4">
             <div class="w-80 h-80 rounded-full bg-amber-200">
                 <img src="" alt="logo">
             </div>
-            <form class="p-4 space-y-8" [formGroup]="form">
-                <p class="text-3xl text-center mt-2 text-amber-400 font-bold">Informations personnelles</p>
+            <form class="md:w-auto w-full p-4 space-y-8" [formGroup]="form">
+                <p class="md:text-3xl text-xl md:text-center mt-2 text-amber-400 font-bold">Informations personnelles</p>
         
                 <p class="text-red-400">{{this.errorMessage}}</p>
-                <!-- Prenom -->
-                <div class="relative z-0 mx-2 w-full">
-                    <input formControlName="firstname" type="text" id="floating_standard" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-amber-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-                    <label for="floating_standard" class="absolute text-sm text-gray-400  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Prenom</label>
-                </div>
     
-                <!-- Nom -->
-                <div class="relative z-0 mx-2 w-full">
-                    <input formControlName="lastname" type="text" id="floating_standard" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-amber-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-                    <label for="floating_standard" class="absolute text-sm text-gray-400  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nom</label>
+                <!-- Pseudo -->
+                <div class="relative z-0 md:mx-2 md:w-full">
+                    <input formControlName="name" type="text" id="floating_standard" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-amber-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+                    <label for="floating_standard" class="absolute text-sm text-gray-400  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Pseudo</label>
                 </div>
     
                 <!-- Email -->
-                <div class="relative z-0  mx-2 w-full">
+                <div class="relative z-0  md:mx-2 md:w-full">
                     <input formControlName="email" type="email" id="floating_standard" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-amber-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
                     <label for="floating_standard" class="absolute text-sm text-gray-400  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
                 </div>    
         
             </form>
         </div>
-        <p *ngIf="!modifier" class="w-full">
+        <p *ngIf="!modifier" class="w-full text-end p-4 pt-0 text-blue-400">
             <a href="">Modifier le mot de passe ?</a>
         </p>
-        <form class="w-full space-y-5" [formGroup]="formPassword" (ngSubmit)="submitPassword()">
+        <form class="w-full space-y-5 p-4" [formGroup]="formPassword" (ngSubmit)="submitPassword()" *ngIf="modifier">
             <p  class="text-xl mt-2 text-amber-400 font-bold">Modifier le mot de passe </p>
     
             <!-- Mot de passe -->

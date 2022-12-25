@@ -59,40 +59,35 @@ export class HomeComponent implements OnInit {
 		})
 
 		this.router.params.subscribe(s => {
-			if (s['id'])
-				this.currentLink = s['id']
-			else
-				this.currentLink = "CI";
-
-			this.getCourses();
+			// this.getCourses();
 		})
 	}
 
-	getCourses () {
-		this.studentService.getCoursesByLevel(this.currentLink).subscribe( s => {
-			this.courses = []
-			s.forEach(ss => {
-				this.courses.push(ss.payload.doc.data());
-			})
+	// getCourses () {
+	// 	this.studentService.getCoursesByLevel(this.currentLink).subscribe( s => {
+	// 		this.courses = []
+	// 		s.forEach(ss => {
+	// 			this.courses.push(ss.payload.doc.data());
+	// 		})
 			
-			let tmp = this.courses.reduce((r: any, o: any) => {
-				r[o.name] = r[o.name] || []
-				r[o.name].push(o)
-				return r;
-			},
-				Object.create(null)			
-			);
-			let result: any = [];
-            Object.keys(tmp).forEach(k => {
-                result.push(
-                    tmp[k].map((v: any) => ({name: k, data: v}))
-                );
-            })
-			this.courses = result;	
-			console.log(this.courses);
+	// 		let tmp = this.courses.reduce((r: any, o: any) => {
+	// 			r[o.name] = r[o.name] || []
+	// 			r[o.name].push(o)
+	// 			return r;
+	// 		},
+	// 			Object.create(null)			
+	// 		);
+	// 		let result: any = [];
+    //         Object.keys(tmp).forEach(k => {
+    //             result.push(
+    //                 tmp[k].map((v: any) => ({name: k, data: v}))
+    //             );
+    //         })
+	// 		this.courses = result;	
+	// 		console.log(this.courses);
 
-		})
-	}
+	// 	})
+	// }
 
 	register (id: string) {
 		let studentCourses = this.student.courses;
@@ -120,13 +115,6 @@ export class HomeComponent implements OnInit {
 		})
 	}
 
-
-	onChangeLink (link: string) {
-		if (this.levelLink.filter((l: any) => (l.name === link))[0])
-			this.currentLink = this.levelLink.filter((l: any) => (l.name === link))[0].value;
-
-		this.getCourses();
-	}
 
 	getEvent(event: any) {
 		this.register(event);

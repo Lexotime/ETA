@@ -40,8 +40,7 @@ export class ProfileComponent implements OnInit {
 	}
 
 	form = new FormGroup({
-		firstname: new FormControl(),
-		lastname: new FormControl(),
+		name: new FormControl(),
 		email: new FormControl(),
 	});
 
@@ -58,8 +57,7 @@ export class ProfileComponent implements OnInit {
 	initForm(student: any) {
 		this.form = this.formBuilder.group(
 			{
-				firstname: [{value: student.firstname, disabled: true}, Validators.required],
-				lastname: [{value :student.lastname, disabled: true}, Validators.required],
+				name: [{value :student.name, disabled: true}, Validators.required],
 				email: [{value : student.email, disabled: true},  ],
 			}
 		);

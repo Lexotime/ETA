@@ -13,27 +13,31 @@
                     <span class="sr-only">Search</span>
                 </button>
             </div>
+
+            <div class="absolute top-10 right-10">
+                <a routerLink="/admin/cours/ajouter">Ajouter cours</a>
+            </div>
         </div>
 
         <table class="w-full">
                 
                 <!-- Head -->
                 <thead class="bg-amber-400 text-white rounded-xl">
-                    <th class="p-2 text-xl capitalize text-start cursor-pointer" *ngFor="let item of columns" (click)="sort(item.name)">
+                    <th class="p-2 text-sm capitalize text-start cursor-pointer" *ngFor="let item of columns" (click)="sort(item.name)">
                         {{item.value}}
                     </th>
-                    <th class="p-2 text-xl capitalize text-start">Actions</th>
+                    <th class="p-2 text-sm capitalize text-start">Actions</th>
                 </thead>
 
                 <!-- Body -->
                 <tbody class="border-b border-amber-500">
                     <tr *ngFor="let listItem of listFragments" >
 
-                        <td class="p-2 text-md  max-w-44" *ngFor="let column of columns">
+                        <td class="p-2 text-sm  max-w-44" *ngFor="let column of columns">
                             {{listItem[column.name]}}
                         </td>
 
-                        <td class="p-2 text-md max-44">
+                        <td class="p-2 text-sm max-44">
                             <div class=" flex justify-between">
                                 <button *ngIf="!listItem.link" class=" px-4 py-1 rounded bg-blue-500 text-white font-bold">générer lien</button>
                                 <button class=" px-4 py-1 rounded bg-blue-500 text-white font-bold"><a [href]="'/admin/videos/ajouter/'+listItem.id">+ vidéo</a></button>
@@ -46,7 +50,7 @@
         </table>
 
         <!-- Pagination -->
-        <div class="flex w-full items-center mt-10 text-xl justify-between">
+        <div class="flex w-full items-center mt-10 text-sm justify-between">
            <div class="flex items-center">
                 <div class="mr-2 border-r-2 border-black">
                     tableau de :

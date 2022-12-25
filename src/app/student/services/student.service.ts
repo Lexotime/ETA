@@ -28,8 +28,8 @@ export class StudentService {
 		return this.fireStore.collection("Courses", ref => ref.where("id", "==", idCourse)).snapshotChanges();
 	}
 
-	getStudentCourses (idCourses: string []) {
-		return this.fireStore.collection("Courses", ref => ref.where("id", "in", idCourses)).snapshotChanges();
+	getStudentCourses (level: string) {
+		return this.fireStore.collection("Courses", ref => ref.where("level", "==", level)).snapshotChanges();
 	}
 
 	getCoursesByLevel (level: string) {

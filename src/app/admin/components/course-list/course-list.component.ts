@@ -15,7 +15,6 @@ export class CourseListComponent {
 		{name: 'day', value: 'Jour'},
 		{name: 'hours', value: 'Heure'},
 		{name: 'level', value: 'Niveau'},
-		{name: 'language', value: 'Langue'},
 		{name: 'link', value: 'lien'},
 	];
 
@@ -39,9 +38,10 @@ export class CourseListComponent {
 	ngOnInit () {
 
 		this.adminService.getAllCourses().subscribe( s => {
-			s.docs.forEach(ss => {
-				this.data.push(ss.data());
-			})
+			this.data = []
+			s.forEach(ss => {
+				this.data.push(ss.payload.doc.data());
+			});
 			let id = this.route.snapshot.params['id'];
 			if (!id) {
 				this.saveData = this.data;

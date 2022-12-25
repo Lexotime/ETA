@@ -1,4 +1,4 @@
-<div class=" py-32 min-h-screen px-4">
+<div class=" md:py-32 pt-32 pb-2  min-h-screen px-4">
 
     <!-- Cover -->
     <section class="relative bg-gray-100 w-11/12 mx-auto flex items-center shadow h-[45vh] rounded-[40px] overflow-hidden">
@@ -48,21 +48,15 @@
         </button>
     </section>
 
-    <div class="bg-white rounded-[20px] mt-8 pt-8">
+    <div class="bg-white rounded-[20px]  pt-8">
         
-        <ul class="flex mx-10 rounded-[20px]   items-center justify-center bg-amber-400">
-            <li class="mr-5" *ngFor="let item of levelLink">
-                <a [routerLink]="'/etud/accueil/'+item.name" routerLinkActive="text-black bg-white"  [ngClass]="{'text-white font-bold inline-block  py-2 px-4 text-xl ': true}">{{item.value}}</a>
-            </li>
-        </ul>
-
-        <section class="mx-20">
-            <p class="text-amber-400 text-3xl my-10">Liste des cours de {{currentLink}}</p>
-            <div  class="ml-4" *ngFor="let item of courses">
-
-            <app-courses-list-item (event)="getEvent($event)" [name]="item[0].name" [data]="item" [courses]="student.courses"></app-courses-list-item>
-            
+        <app-courses></app-courses>
+<!-- 
+        <section class="md:mx-20">
+            <p class="text-amber-400 md:text-3xl text-xl my-10">Liste des cours de {{currentLink}}</p>
+            <div  class="md:ml-4 ml-1" *ngFor="let item of courses">
+                <app-courses-list-item (event)="getEvent($event)" [name]="item[0].name" [data]="item" [courses]="student.courses"></app-courses-list-item>
             </div>
-        </section>
+        </section> -->
     </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2, OnInit } from '@angular/core';
 
 
 @Component({
@@ -6,11 +6,28 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
-  	title = 'etoile-afrique-app';
+export class AppComponent implements OnInit {
+  	title = "Étoiles d'afrique";
 
 	isAuth () : boolean {
 		return localStorage.getItem('login') ? true : false;
+	}
+	screenSize!: number;
+	sideVisible = false;
+
+	ngOnInit(): void {
+		this.screenSize = window.innerWidth;
+		
+	}
+
+	constructor (private renderer: Renderer2) {
+		this.renderer.listen('window', 'resize',(e:Event)=>{
+			this.screenSize = window.innerWidth;
+		});
+	}
+
+	getVisible (event: boolean) {
+		this.sideVisible = event		
 	}
 
 }

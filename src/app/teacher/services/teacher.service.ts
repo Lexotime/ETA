@@ -28,8 +28,8 @@ export class TeacherService {
 		return this.fireStore.collection("Teachers", ref => ref.where("uid", "==", uid)).snapshotChanges()
 	}
 
-	getTeacherCourses (idCourses: string []) {
-		return this.fireStore.collection("Courses", ref => ref.where("id", "in", idCourses)).snapshotChanges();
+	getTeacherCourses (idTeacher: string) {
+		return this.fireStore.collection("Courses", ref => ref.where("teacher", "==", idTeacher)).snapshotChanges();
 	}
 
 	getAllVideos () {

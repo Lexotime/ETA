@@ -12,6 +12,7 @@ export class StudentListComponent {
 	columns: any = [
 		{name: 'name', value: 'pseudo'},
 		{name: 'email', value: 'email'},
+		{name: 'level', value: 'niveau'},
 		{name: 'status', value: 'status'},
 	];
 

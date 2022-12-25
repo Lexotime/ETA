@@ -1,10 +1,10 @@
-<div class="relative top-0 pt-40 flex flex-col w-11/12 mx-auto items-center justify-center">
+<div class="relative top-0 pt-20 flex flex-col w-11/12 mx-auto items-center justify-center">
 
-    <div class="mb-10 font-extrabold text-center flex justify-center items-center h-[10vh] rounded-[20px] text-white text-4xl bg-amber-400 w-full">
+    <div class="mb-10 font-extrabold text-center flex justify-center items-center py-4 rounded-[20px] text-white md:text-3xl text-xl bg-amber-400 w-full">
         Emploi du temps
     </div>
 
-    <table class="table">
+    <table class="md:table hidden">
         <thead>
             <th></th>
             <th class="border py-4 text-amber-500 text-xl w-44" *ngFor="let day of days">{{day}}</th>
@@ -15,11 +15,25 @@
                 <td class="p-4 border" *ngFor="let day of days">
                     <p class="text-sm bg-gray-50 my-0.5 py-1" *ngFor="let course of getCourses(day, item)">
                         <a [href]="course.link" class="text-blue-400 mr-1">{{course.name}}</a>
-                        <span>{{course.level}}</span>
                     </p>
                 </td>
             </tr>
         </tbody>
     </table>
+
+    <div class="md:hidden w-full">
+        <div class="" *ngFor="let day of days">
+            <p class="ml-4 text-amber-500 text-xl ">-{{day}}</p>
+            <div class=" flex overflow-auto scroll-m-1 pb-2">
+                <div class="text-sm p-4 drop-shadow shadow bg-white m-2 rounded-[10px]" *ngFor="let hour of hours">
+                    <p class="text-gray-500">{{hour}}</p>
+                    <p class="text-sm bg-gray-50 my-0.5 py-1" *ngFor="let course of getCourses(day, hour)">
+                        <a [href]="course.link" class="text-blue-400 mr-1">{{course.name}}</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+   
    
 </div>

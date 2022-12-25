@@ -1,4 +1,4 @@
-import { StudentService } from './../../services/student.service';
+import { TeacherService } from './../../services/teacher.service';
 import { CourseModel } from 'src/app/core/models/course.model';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,9 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoursesComponent implements OnInit {
 
-	constructor (private studentService: StudentService) {}
+	constructor (private teacherService: TeacherService) {}
 
-	student: any = {};
+	teacher: any = {};
 	courses: any = [];
 	fragCourses: any = [];
 	page: number = 1;
@@ -19,20 +19,15 @@ export class CoursesComponent implements OnInit {
 	
 	ngOnInit(): void {
 
-		this.studentService.getStudent().subscribe(s => {
+		this.teacherService.getTeacher().subscribe(s => {
 			s.forEach(ss => {
-				this.student = ss.payload.doc.data();
+				this.teacher = ss.payload.doc.data();
 			})
 			
-			this.studentService.getStudentCourses(this.student.level).subscribe(s => {
+			this.teacherService.getTeacherCourses(this.teacher.id).subscribe(s => {
 				this.courses = [];
-				console.log(this.student.option);
 				
 				s.forEach(ss => {
-					console.log(ss);
-					
-					//@ts-ignore
-					if (ss.payload.doc.data().option === this.student.option)
 						this.courses.push(ss.payload.doc.data());
 				})
 				this.fragCourses = [];

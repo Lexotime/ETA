@@ -25,7 +25,7 @@ export class CalendarComponent implements OnInit {
 		'20h-22h',
 	];
 	
-	student: any = {};
+	teacher: any = {};
 	courses: any = [];
 
 	constructor (private teacherService: TeacherService) {}
@@ -33,10 +33,10 @@ export class CalendarComponent implements OnInit {
 	ngOnInit () {
 		this.teacherService.getTeacher().subscribe(s => {
 			s.forEach(ss => {
-				this.student = ss.payload.doc.data();
+				this.teacher = ss.payload.doc.data();
 			})
 			
-			this.teacherService.getTeacherCourses(this.student.courses).subscribe(s => {
+			this.teacherService.getTeacherCourses(this.teacher.id).subscribe(s => {
 				this.courses = [];
 				s.forEach(ss => {
 					this.courses.push(ss.payload.doc.data());

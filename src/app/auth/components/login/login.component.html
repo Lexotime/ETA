@@ -2,7 +2,7 @@
 
 
 <div class=" min-h-screen flex items-center justify-center ">
-    <div class="w-2/5 bg-amber-400 h-screen flex flex-col items-center justify-center ">
+    <div class="md:flex hidden w-2/5 bg-amber-400 h-screen flex-col items-center justify-center ">
 
         <img src="" alt=" " class="w-80 h-44 bg-red-400 mb-4">
 
@@ -11,9 +11,9 @@
         </p>
     </div>
     <div class="flex justify-center flex-1">
-        <div class="p-10 mb-16 bg-white drop-shadow shadow-md shadow-amber-50  rounded-3xl overflow-hidden">
+        <div class="md:p-10 py-10 mb-16 bg-white md:drop-shadow md:shadow-md shadow-amber-50  rounded-3xl overflow-hidden">
             <p class="text-center text-3xl">Connexion</p>
-            <form class="p-4 px-16 space-y-12" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <form class="md:p-4 px-16 space-y-12" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <p class="text-red-500">{{errorMessage}}</p>
                     <!-- Email -->
                 <div class="relative z-0 w-80">

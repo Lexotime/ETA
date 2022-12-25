@@ -36,7 +36,7 @@ export class CalendarComponent implements OnInit {
 				this.student = ss.payload.doc.data();
 			})
 			
-			this.studentService.getStudentCourses(this.student.courses).subscribe(s => {
+			this.studentService.getStudentCourses(this.student.level).subscribe(s => {
 				this.courses = [];
 				s.forEach(ss => {
 					this.courses.push(ss.payload.doc.data());

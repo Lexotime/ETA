@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Renderer2 } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +6,12 @@ import { Injectable } from '@angular/core';
 export class LocalStorageService {
 
   
-  constructor () { }
+  screenSize!: number;
+	constructor (private renderer: Renderer2) {
+		this.renderer.listen('window', 'resize',(e:Event)=>{
+			this.screenSize = window.innerWidth;
+		});
+	}
 
   getLocalData (dataName: string) : string | null{
     return localStorage.getItem(dataName);

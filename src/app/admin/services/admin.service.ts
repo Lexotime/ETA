@@ -72,26 +72,17 @@ export class AdminService {
 
 	createCourse (course: any)  {
 		course.id = this.fireStore.createId();
-		let i = 0;
-		return this.fireStore.collection("Teachers", ref => ref.where("email", '==', course.teacher)).snapshotChanges().subscribe(s => {
-			i ++;
-			if (i == 1) {
-				//@ts-ignore
-				let courses:any = s[0].payload.doc.data().courses;
-				courses.push(course.id)
-				console.log(courses);
-				
-				this.fireStore.collection("Teachers").doc(s[0].payload.doc['id']).update({courses: courses}).then(res => {
-					return;
-				}, err => {return;});
-				
-				new Promise  ((resolve, reject) => {
-					this.fireStore.collection("Courses").add({...course, link: '', videos: []}).then(res => {
-						resolve("Cours créée vec succès")
-					}, err =>{ reject ("Une erreur est survenue impossible de continuer l'opération")})
-				})
-			}
+		console.log("hey");
+		
+		return new Promise  ((resolve, reject) => {
+			this.fireStore.collection("Courses").add({...course, link: '', videos: [], teacherName: ""}).then(res => {
+				resolve("Cours créée vec succès")
+			}, err =>{ reject ("Une erreur est survenue impossible de continuer l'opération")})
 		})
+	}
+
+	updateCourseTeacher (idTeacher: string, idCourses: string, teacher: string) {
+		return this.fireStore.collection("Courses").doc(idCourses).update({teacher: idTeacher, teacherName: teacher});
 	}
 
 	createVideo (video: any, course: string, file: any) {
@@ -184,6 +175,10 @@ export class AdminService {
 		// 		videos.push(ss.data());
 		// 	})
 		// })
+		return this.fireStore.collection('/Courses').snapshotChanges();
+	}
+
+	getCourseId () {
 		return this.fireStore.collection('/Courses').get();
 	}
 

@@ -1,9 +1,9 @@
 
     <!-- Head -->
-<div [ngClass]="{'z-[100] fixed  top-0 left-[280px] right-0 shadow flex items-center justify-between px-8 bg-white': true, 'p-1' : isAuth(), 'p-6': !isAuth()}" *ngIf="isAuth()">
+<div [ngClass]="{'z-[100] fixed left-0 top-0 right-0 shadow flex items-center justify-between px-8 bg-white': true, 'p-1' : isAuth(), 'p-6': !isAuth(), 'left-[280px]': screenSize >= 950 && sideVisible}" *ngIf="isAuth()">
     
    
-        <div class="text-black text-2xl">Etoile d'afrique</div>
+        <div [ngClass]="{'text-black text-xl': true, 'ml-8': screenSize < 950 || !sideVisible}">Étoiles d'afrique</div>
 
 
         <!-- Search -->
@@ -31,7 +31,8 @@
             id="dropdownDefault" 
             (click)="onDrop(!isOpen)"
             class="font-medium rounded-full text-sm px-4 py-2 text-center flex items-center justify-center " type="button">
-            <img #tF src="assets/images/adminLogo.png" alt=" " class="h-10 text-centerrounded-full" >
+            <img #tF src="assets/images/adminLogo.png" alt=" " class="h-8 text-centerrounded-full" *ngIf="getUser() === 'admin'">
+            <img #tF src="assets/images/user1.png" alt=" " class="h-8 text-centerrounded-full" *ngIf="getUser() !== 'admin'">
             <svg #tF1 class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
         </button>
         <!-- Dropdown menu -->

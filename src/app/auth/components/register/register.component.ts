@@ -12,6 +12,27 @@ import {Router} from "@angular/router";
 })
 export class RegisterComponent {
 
+    level: {name: string, value: string, option: any[]}[] = [
+		{name: 'CI', value: 'CI', option: ['néan']},
+		{name: 'CP', value: 'CP', option: ['néan']},
+		{name: 'CE1', value: 'CE1', option: ['néan']},
+		{name: 'CE1', value: 'CE1', option: ['néan']},
+		{name: 'CM1', value: 'CM1', option: ['néan']},
+		{name: 'CM2', value: 'CM2', option: ['néan']},
+		{name: '6e', value: '6éme', option: ['néan']},
+		{name: '5e', value: '5éme', option: ['néan']},
+		{name: '4e', value: '4éme', option: ['néan']},
+		{name: '3e', value: '3éme', option: ['néan']},
+		{name: 'Second', value: 'Second', option: ['L', 'S']},
+		{name: 'Première', value: 'Première', option: ['L', 'S']},
+		{name: 'Terminale', value: 'Terminale', option: ['L', 'S']},
+	]
+	
+	option = [
+		{name: 'néan', value: 'none'},
+		{name: 'L', value: 'L'},
+		{name: 'S', value: 'S'},
+	]
 
     // @ts-ignore
     registerForm: FormGroup;
@@ -40,10 +61,16 @@ export class RegisterComponent {
             {
                 login: ['', Validators.required],
                 name: ['', Validators.required],
+                level: ['CI', Validators.required],
+                option: [, Validators.required],
                 password: ['', [Validators.required, Validators.pattern(/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/)]],
                 confirmPassword: ['', [Validators.required, Validators.pattern(/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/)]],
             }
         );
+    }
+
+    getOption () {
+        return this.level.filter((l) => (l.value == this.registerForm.get('level')?.value))[0].option;
     }
 
     onSubmit() {
