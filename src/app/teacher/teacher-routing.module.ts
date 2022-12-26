@@ -1,3 +1,5 @@
+import { VideoViewComponent } from './../student/components/video-view/video-view.component';
+import { VideoLinkComponent } from './components/video-link/video-link.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { HomeComponent } from './components/home/home.component';
@@ -12,6 +14,7 @@ const routes: Routes = [
    {path: 'videos/:id', component: VideoComponent},
    {path: 'videos', component: VideoComponent},
    {path: 'videos/ajouter/:id', component: VideoComponent},
+   {path: 'videos/voir/:id', component: VideoViewComponent},
    {path: 'profil', component: ProfileComponent}
 ]
 

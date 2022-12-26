@@ -48,8 +48,8 @@ export class StudentService {
 		return this.fireStore.collection("Teachers", ref => ref.where("email", "==", email)).get();
 	}
 
-	getCoursesVideo (idV : string[]) {
-		return this.fireStore.collection("Videos", ref => ref.where("id", "in", idV)).snapshotChanges();
+	getCoursesVideo (idCourse : string[]) {
+		return this.fireStore.collection("Videos", ref => ref.where("course", "==", idCourse)).snapshotChanges();
 	}
 
 
@@ -57,6 +57,13 @@ export class StudentService {
 		return this.fireStore.collection("Students").doc(id).update({courses: courses})
 	}
 
+	getVideo (idV: string) {
+		return this.fireStore.collection("Videos", ref => ref.where("id", "==", idV)).snapshotChanges();
+	}
+
+	getCourse (idC: string) {
+		return this.fireStore.collection("Courses", ref => ref.where("id", "==", idC)).snapshotChanges();
+	}
 	
 
 }

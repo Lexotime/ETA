@@ -13,7 +13,9 @@ export class VideoComponent implements OnInit {
 	courses: any = [];
 	student: any;
 	message: string = "";
-	
+	fragCourses: any = [];
+	page: number = 1;
+	numberOfElement: number = 10;
 
 	constructor( private studentService: StudentService, private router: ActivatedRoute) {}
 
@@ -23,33 +25,39 @@ export class VideoComponent implements OnInit {
 				this.student = ss.payload.doc.data();
 			})
 			
-			this.studentService.getStudentCourses(this.student.courses).subscribe(s => {
+			this.studentService.getStudentCourses(this.student.level).subscribe(s => {
 				this.courses = [];
+				console.log(this.student.option);
+				
 				s.forEach(ss => {
-					this.courses.push(ss.payload.doc.data());
 					
+					//@ts-ignore
+					if (ss.payload.doc.data().option === this.student.option) {
+						this.courses.push(ss.payload.doc.data());
+						
+					}
 				})
-
-				let tmp = this.courses.reduce((r: any, o: any) => {
-					r[o.name] = r[o.name] || []
-					r[o.name].push(o)
-					return r;
-				},
-					Object.create(null)			
-				);
-				let result: any = [];
-				Object.keys(tmp).forEach(k => {
-					result.push(
-						tmp[k].map((v: any) => ({name: k, data: v}))
-					);
-				})
-				this.courses = result;	
 			})
 		})
 	}
 
+	getCourseVideos (idCourse: string) {
+		let videos
+	}
 
 	getEvent(event: any) {
 		
+	}
+
+	filter (search: string) {
+
+	}
+
+	previous () {
+
+	}
+
+	next () {
+
 	}
 }

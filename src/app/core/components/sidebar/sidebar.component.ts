@@ -26,7 +26,7 @@ export class SidebarComponent implements OnInit {
 	sLinks: {name: string, href: string}[] = [
 		{name: 'Accueil', href: 'etud/accueil'},
 		{name: 'Emploi du temps', href: 'etud/activite'},
-		{name: 'Rediffusion', href: 'etud/rediffusion'},
+		{name: 'Vidéos', href: 'etud/videos'},
 		{name: 'Profil', href: 'etud/profil'}
 	];
 	

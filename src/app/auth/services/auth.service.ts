@@ -59,7 +59,7 @@ export class AuthService {
                                         localStorage.setItem('user', 'student')
 										localStorage.setItem('token', token);
 
-										return this.router.navigate(['/etud/accueil/CI']);
+										return this.router.navigate(['/etud/accueil']);
 									}else 
 										return "Vérifiez les informations saisies"
 									

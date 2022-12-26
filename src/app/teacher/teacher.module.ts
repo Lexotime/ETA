@@ -10,6 +10,8 @@ import { VideoListComponent } from './components/video-list/video-list.component
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { CoursesListComponent } from './components/courses-list/courses-list.component';
 import { CoursesComponent } from './components/courses/courses.component';
+import { VideoLinkComponent } from './components/video-link/video-link.component';
+import { VideoViewComponent } from './components/video-view/video-view.component';
 
 
 
@@ -22,6 +24,8 @@ import { CoursesComponent } from './components/courses/courses.component';
     CalendarComponent,
     CoursesListComponent,
     CoursesComponent,
+    VideoLinkComponent,
+    VideoViewComponent,
   ],
   imports: [
     CommonModule,

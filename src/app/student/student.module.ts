@@ -14,6 +14,7 @@ import { LevelPageComponent } from './components/level-page/level-page.component
 import { VideoComponent } from './components/video/video.component';
 import { VideoListItemComponent } from './components/video-list-item/video-list-item.component';
 import { VideoListComponent } from './components/video-list/video-list.component';
+import { VideoViewComponent } from './components/video-view/video-view.component';
 
 
 
@@ -27,7 +28,8 @@ import { VideoListComponent } from './components/video-list/video-list.component
     LevelPageComponent,
     VideoComponent,
     VideoListItemComponent,
-    VideoListComponent
+    VideoListComponent,
+    VideoViewComponent
   ],
   imports: [
     StudentRoutingModule,
