@@ -20,10 +20,8 @@
         </div>
     </form>
 
-    <div>
-        <div *ngFor="let course of courses">
-            <app-video-list [course]="course"></app-video-list>
-        </div>
+    <div *ngFor="let course of courses">
+        <app-video-list [course]="course"></app-video-list>
     </div>
     
 </div>

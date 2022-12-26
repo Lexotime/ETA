@@ -1,3 +1,4 @@
+import { AddVideoComponent } from './components/add-video/add-video.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CoreModule } from './../core/core.module';
@@ -26,6 +27,7 @@ import { VideoViewComponent } from './components/video-view/video-view.component
     CoursesComponent,
     VideoLinkComponent,
     VideoViewComponent,
+    AddVideoComponent
   ],
   imports: [
     CommonModule,
