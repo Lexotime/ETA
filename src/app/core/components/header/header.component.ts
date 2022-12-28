@@ -7,7 +7,7 @@ import { Component, ViewChild, ElementRef, Renderer2, SimpleChanges, OnInit, Inp
 })
 export class HeaderComponent implements OnInit  {
 
-	@ViewChild('toggleButton') toggleButton!: ElementRef ;
+	@ViewChild('toggleButton') toggleButton!: ElementRef  ;
 	@ViewChild('menu') list!: ElementRef ;
 	@ViewChild('tF') tF!: ElementRef ;
 	@ViewChild('tF1') tF1!: ElementRef ;

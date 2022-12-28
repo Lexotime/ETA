@@ -1,1 +1,29 @@
-<p>video-list works!</p>
+<div class="flex items-center">
+    <p class="">{{course.name}}</p>
+    <div class="flex-1">
+        <div class="flex justify-between items-center flex-1">
+            <button (click)="previous()" class="flex h-10 items-center text-amber-400">
+                <svg fill="#FBBF24" width="2.5rem" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m13.789 7.155c.141-.108.3-.157.456-.157.389 0 .755.306.755.749v8.501c0 .445-.367.75-.755.75-.157 0-.316-.05-.457-.159-1.554-1.203-4.199-3.252-5.498-4.258-.184-.142-.29-.36-.29-.592 0-.23.107-.449.291-.591 1.299-1.002 3.945-3.044 5.498-4.243z"/></svg>
+                précedent
+            </button>
+            <button (click)="next()" class="flex items-center h-10 text-amber-400">
+                suivant <svg fill="#FBBF24" width="2.5rem" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m10.211 7.155c-.141-.108-.3-.157-.456-.157-.389 0-.755.306-.755.749v8.501c0 .445.367.75.755.75.157 0 .316-.05.457-.159 1.554-1.203 4.199-3.252 5.498-4.258.184-.142.29-.36.29-.592 0-.23-.107-.449-.291-.591-1.299-1.002-3.945-3.044-5.498-4.243z"/></svg>
+            </button>
+        </div>
+    </div>
+</div>
+<div class="flex items-center space-x-2 overflow-hidden">
+    <div class="flex flex-wrap md:flex-nowrap md:space-x-3 p-2 my-3" *ngFor="let video of videos">
+        <div [routerLink]="'/etud/videos/voir/'+video.id">
+            <video [src]="video.link" alt="" class="w-auto h-32"></video>
+        </div>
+        <div class="text-sm w-52">
+            <p>Titre: {{video.name}} </p>
+            <p>Description: {{video.description}} </p>
+        </div>
+    </div>
+</div>
+
+<div class="h-16 flex text-sm items-center justify-center" *ngIf="videos[0] == undefined">
+    Videos non disponible.
+</div>

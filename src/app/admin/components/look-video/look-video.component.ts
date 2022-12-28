@@ -11,12 +11,16 @@ export class LookVideoComponent implements OnInit {
 
 	constructor (private router: ActivatedRoute, private adminService: AdminService) {}
 
-	link!: string;
+	video: any = {};
 
 	ngOnInit(): void {
-
-		this.adminService.getVideoLink().subscribe( s => {
-			this.link = s;
+		let idV = this.router.snapshot.params['id'];
+		this.adminService.getVideoLink(idV).subscribe( s => {
+			s.forEach(ss => {
+				this.video = ss.payload.doc.data();
+			})
+			console.log(this.video);
+			
 		})
 	}
 }

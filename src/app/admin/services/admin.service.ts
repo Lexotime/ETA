@@ -212,8 +212,8 @@ export class AdminService {
 		};
 	}
 
-	getVideoLink () {
-		return this.storage.ref('videos/1671190561399_122476.jpg').getDownloadURL()
+	getVideoLink (idVideo: string) {
+		return this.fireStore.collection("Videos", ref => ref.where("id", "==", idVideo)).snapshotChanges();
 	}
 	
 	private getDownloadUrl$(

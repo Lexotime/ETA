@@ -4,6 +4,16 @@
         Vidéos
     </div>
 
+    <div class="h-full w-auto bg-white  p-10">
+        <div>
+            <video [src]="video.link" class="h-full w-auto mx-auto" alt="" controls></video>
+        </div>
+        <div class="mt-4 pt-4 border-t">
+            <p><span class="font-semibold underline">Titre :</span> {{video.name}} </p>
+            <p><span class="font-semibold underline">Description :</span> {{video.description}} </p>
+        </div>
+    </div>
+
     <form action="" class="flex md:space-x-4 items-center justify-center">
         <!-- Search -->
         <div class="md:my-10 my-6">
@@ -20,10 +30,8 @@
         </div>
     </form>
 
-    <div>
-        <div *ngFor="let course of courses">
-            <app-video-list [course]="course"></app-video-list>
-        </div>
+    <div  *ngFor="let course of courses">
+        <app-video-list [course]="course"></app-video-list>
     </div>
     
 </div>

@@ -1,14 +1,27 @@
+<div class="md:pt-20 md:w-11/12 mx-auto">
 
-<div class="bg-white pt-32 flex flex-col min-h-screen">
-
-    <p class="text-4xl text-center mb-16">
-        Liste des videos 
-    </p>
-   
-    <div class="mt-10 rounded-t-[60px] bg-white  drop-shadow-xl shadow shadow-gray-300 rounde-t-xl mx-4 flex-1">
-         <!-- Student List -->
-        <app-video-list ></app-video-list>   
-    
+    <div class="mb-10 font-extrabold text-center flex justify-center items-center py-4 rounded-[20px] text-white md:text-3xl text-xl bg-amber-400 w-full">
+        Vidéos
     </div>
-   
+
+    <form action="" class="flex md:space-x-4 items-center justify-center">
+        <!-- Search -->
+        <div class="md:my-10 my-6">
+            <div class="flex md:space-x-4 items-center">
+                <div class="relative z-0">
+                    <input #search type="text" id="floating_standard" class=" md:w-80 block py-2.5 px-0 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-amber-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+                    <label for="floating_standard" class="w-80 absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Rechercher...</label>
+                </div>
+                <button (click)="filter(search.value)" class="p-2.5 ml-2 text-sm font-medium text-white bg-amber-400 rounded-lg border  hover:bg-amber-500 focus:ring-4 focus:outline-none focus:ring-amber-300 ">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                    <span class="sr-only">Search</span>
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <div *ngFor="let course of courses">
+        <app-video-list [course]="course"></app-video-list>
+    </div>
+    
 </div>

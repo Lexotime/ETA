@@ -1,3 +1,4 @@
+import { VideoViewComponent } from './components/video-view/video-view.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { VideoComponent } from './components/video/video.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
@@ -9,11 +10,12 @@ import {RouterModule, Routes} from "@angular/router";
 
 const routes: Routes = [
    {path: 'accueil', component: HomeComponent},
-   {path: 'accueil/:id', component: HomeComponent},
    {path: 'activite', component: CalendarComponent},
    {path: 'cours', component: CoursesComponent},
    {path: 'profil', component: ProfileComponent},
-   {path: 'rediffusion', component: VideoComponent}
+   {path: 'videos', component: VideoComponent},
+   {path: 'videos/voir/:id', component: VideoViewComponent},
+   {path: '*', component: HomeComponent}
 ]
 
 

@@ -1,7 +1,14 @@
-<div class="h-screen flex items-center justify-center bg-gray-100">
+<div class="min-h-screen flex items-center justify-center ">
+    
     
     <div class="w-3/4 h-2/3 bg-white shadow rounded p-10">
-        <img [src]="link" class="h-full w-auto mx-auto" alt="">
+        <div>
+            <video [src]="video.link" class="h-full w-auto mx-auto" alt="" controls></video>
+        </div>
+        <div>
+            <p>Titre : {{video.name}} </p>
+            <p>Description : {{video.description}} </p>
+        </div>
     </div>
 
 </div>
