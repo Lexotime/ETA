@@ -1,6 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { AdminService } from './../../services/admin.service';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-course-list-admin',
@@ -18,8 +18,11 @@ export class CourseListComponent {
 		{name: 'link', value: 'lien'},
 	];
 
+	@ViewChild("lien") link!: ElementRef;
+
 
 	listFragments: any;
+	message!: string;
 	saveData: any;
 	sens: boolean = false;
 	saveColumn: string = '';
@@ -30,6 +33,8 @@ export class CourseListComponent {
 
 	idParams !: string;
 	teacher!: string;
+
+	currentData!: string ;
 
 	constructor (private adminService: AdminService, private route: ActivatedRoute) {
 		
@@ -99,6 +104,33 @@ export class CourseListComponent {
 	previousPage () {
 		if (this.page > this.getPages()[0])
 			this.listFragments = this.getListFragment (--this.page, this.numberOfElement)
+	}
+
+	addingLink!: boolean;
+
+	addLink(link: string) {
+		if (link === "") {
+			this.message = "Veuillez saisir le lien";
+			return;
+		}
+
+		this.adminService.addLink(this.currentData, link).then( res => {
+			console.log("yes");
+			
+		}).catch(err => {
+			console.log("no");
+
+		})
+		this.addingLink = false;
+	}
+
+	generateLink (data: string) {
+		this.adminService.getCourseId(data).subscribe(s => {
+			s.forEach(ss => {
+				this.currentData = ss.payload.doc['id'];
+			})
+		})
+		this.addingLink = true;
 	}
 
 	filter (search: string) {

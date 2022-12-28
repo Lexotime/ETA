@@ -130,23 +130,18 @@ export class AdminService {
 		})
     }
 
-	unBlockUser (uid: string, collection: string) {
-		let i = 0;
-		return this.fireStore.collection(`${collection}`, ref => ref.where("id","==", uid )).snapshotChanges().subscribe(e => {
-			i ++;
-			if (i === 1)
-				return this.fireStore.collection(`${collection}`).doc(e[0].payload.doc['id']).update({'status' : 'actif'}).then(res => {
-					return "Utilisateur débloquer";
-				}).catch(err => {
-					return "Une erreur c'est produite veuillez ressager";
-				});
-			else {
-				return;
-			}
-		})
+	userStatus (uid: string, collection: string, status: string) {
+		return this.fireStore.collection(collection).doc().update({status: status})
+	}
+
+	getTeacherId (id: string) {
+		return this.fireStore.collection("Teachers", ref => ref.where("id", '==', id)).snapshotChanges()
 	}
   
-  
+	getStudentId (id: string) {
+		return this.fireStore.collection("Students", ref => ref.where("id", '==', id)).snapshotChanges()
+	}
+	
 	getAllTeachers () {
 		// let teachers: any = [];
 		// this.fireStore.collection('/Teachers').get().subscribe( s => {
@@ -178,8 +173,12 @@ export class AdminService {
 		return this.fireStore.collection('/Courses').snapshotChanges();
 	}
 
-	getCourseId () {
-		return this.fireStore.collection('/Courses').get();
+	getCourseId (course: String) {
+		return this.fireStore.collection('/Courses', ref => ref.where("id", "==", course)).snapshotChanges();
+	}
+
+	addLink(course: string, link: string) {
+		return this.fireStore.collection("Courses").doc(course).update({link: link});
 	}
 
 	getAllVideos () {

@@ -38,7 +38,16 @@ export class TeacherListComponent {
 	}
 
 	async ngOnInit () {
-		this.initTable();		
+		this.data = [];
+		this.adminService.getAllTeachers().subscribe( s => {
+			s.docs.forEach(ss => {
+				this.data.push(ss.data());
+			})
+			console.log(this.data);
+			
+			this.saveData = this.data;
+			this.listFragments = this.getListFragment(this.page, this.numberOfElement);
+		})	
 	}
 
 	initTable () {
@@ -179,17 +188,35 @@ export class TeacherListComponent {
 	}
 
 	onBlock (id: string) {
-		
-		this.adminService.blockUser(id, 'Teachers');
-		this.data.filter((e: any) => (e.id === id))[0].status = 'inactif';
-		
-		
+		this.adminService.getTeacherId(id).subscribe(s => {
+			let uid: string = "";
+			s.forEach(ss => {
+				uid = ss.payload.doc['id']
+			});
+			this.adminService.userStatus(uid, 'Teachers', "inactif").then(res => {
+				console.log(res);
+				
+			}).catch(err => {
+				console.log(err);
+				
+			})
+		})
 	}
 
 	onUnBlock (id: string) {
-		if(this.adminService.unBlockUser(id, 'Teachers'))
-		this.data.filter((e: any) => (e.id === id))[0].status = 'actif';
-		
+		this.adminService.getTeacherId(id).subscribe(s => {
+			let uid: string = "";
+			s.forEach(ss => {
+				uid = ss.payload.doc['id']
+			});
+			this.adminService.userStatus(uid, 'Teachers', "actif").then(res => {
+				console.log(res);
+				
+			}).catch(err => {
+				console.log(err);
+				
+			})
+		})
 	}
 
 	getNotifyResponse (event: any) {

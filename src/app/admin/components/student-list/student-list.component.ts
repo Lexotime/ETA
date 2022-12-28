@@ -146,15 +146,35 @@ export class StudentListComponent {
 	}
 
 	onBlock (id: string) {
-		this.message = this.adminService.blockUser(id, 'Students');
-		this.data.filter((e: any) => (e.id === id))[0].status = 'inactif';
-
+		this.adminService.getStudentId(id).subscribe(s => {
+			let uid: string = "";
+			s.forEach(ss => {
+				uid = ss.payload.doc['id']
+			});
+			this.adminService.userStatus(uid, 'Students', "inactif").then(res => {
+				console.log(res);
+				
+			}).catch(err => {
+				console.log(err);
+				
+			})
+		})
 	}
 
-	onUnblock (id: string) {
-		this.message = this.adminService.unBlockUser(id, 'Students');
-		this.data.filter((e: any) => (e.id === id))[0].status = 'actif';
-
+	onUnBlock (id: string) {
+		this.adminService.getStudentId(id).subscribe(s => {
+			let uid: string = "";
+			s.forEach(ss => {
+				uid = ss.payload.doc['id']
+			});
+			this.adminService.userStatus(uid, 'Students', "actif").then(res => {
+				console.log(res);
+				
+			}).catch(err => {
+				console.log(err);
+				
+			})
+		})
 	}
 
 }
