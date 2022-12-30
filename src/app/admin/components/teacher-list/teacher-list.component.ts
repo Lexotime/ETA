@@ -38,12 +38,12 @@ export class TeacherListComponent {
 	}
 
 	async ngOnInit () {
-		this.data = [];
 		this.adminService.getAllTeachers().subscribe( s => {
-			s.docs.forEach(ss => {
-				this.data.push(ss.data());
+			this.data = [];
+
+			s.forEach(ss => {
+				this.data.push(ss.payload.doc.data());
 			})
-			console.log(this.data);
 			
 			this.saveData = this.data;
 			this.listFragments = this.getListFragment(this.page, this.numberOfElement);
@@ -53,10 +53,9 @@ export class TeacherListComponent {
 	initTable () {
 		this.data = [];
 		this.adminService.getAllTeachers().subscribe( s => {
-			s.docs.forEach(ss => {
-				this.data.push(ss.data());
+			s.forEach(ss => {
+				this.data.push(ss.payload.doc.data());
 			})
-			console.log(this.data);
 			
 			this.saveData = this.data;
 			this.listFragments = this.getListFragment(this.page, this.numberOfElement);
@@ -113,29 +112,27 @@ export class TeacherListComponent {
 
 	filter (search: string) {
 
-	this.page = 0;
+		this.page = 0;
 
-	if (search) {
+		if (search) {
 
-		this.saveData = this.data.filter((data: any) => {
-		for (const column of this.columns) {
-			if (search.toUpperCase().search(data[`${column.name}`].toString().toUpperCase()) != -1){
-			
-			return true;
+			this.saveData = this.data.filter((data: any) => {
+			for (const column of this.columns) {
+				if (search.toUpperCase().search(data[`${column.name}`].toString().toUpperCase()) != -1){
+				
+				return true;
+				}
 			}
+			return false;
+			});
+		} else {
+			this.saveData = this.data;
 		}
-		return false;
-		});
-	} else {
-		this.saveData = this.data;
-	}
 
 
-	if (!this.saveData)
-		this.saveData = this.data;
+		if (!this.saveData)
+			this.saveData = this.data;
 
-		console.log(this.saveData);
-		
 
 		this.listFragments = this.getListFragment(this.page, this.numberOfElement);
 
@@ -191,13 +188,11 @@ export class TeacherListComponent {
 		this.adminService.getTeacherId(id).subscribe(s => {
 			let uid: string = "";
 			s.forEach(ss => {
-				uid = ss.payload.doc['id']
+				uid = ss.id;
 			});
 			this.adminService.userStatus(uid, 'Teachers', "inactif").then(res => {
-				console.log(res);
 				
 			}).catch(err => {
-				console.log(err);
 				
 			})
 		})
@@ -207,20 +202,17 @@ export class TeacherListComponent {
 		this.adminService.getTeacherId(id).subscribe(s => {
 			let uid: string = "";
 			s.forEach(ss => {
-				uid = ss.payload.doc['id']
+				uid = ss.id;
 			});
 			this.adminService.userStatus(uid, 'Teachers', "actif").then(res => {
-				console.log(res);
 				
 			}).catch(err => {
-				console.log(err);
 				
 			})
 		})
 	}
 
 	getNotifyResponse (event: any) {
-		console.log(event);
 		this.alertVisible = false;
 		return event;
 	}

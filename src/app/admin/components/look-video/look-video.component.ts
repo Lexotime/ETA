@@ -19,7 +19,6 @@ export class LookVideoComponent implements OnInit {
 			s.forEach(ss => {
 				this.video = ss.payload.doc.data();
 			})
-			console.log(this.video);
 			
 		})
 	}

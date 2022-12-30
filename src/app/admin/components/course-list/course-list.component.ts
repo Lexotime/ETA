@@ -115,10 +115,8 @@ export class CourseListComponent {
 		}
 
 		this.adminService.addLink(this.currentData, link).then( res => {
-			console.log("yes");
 			
 		}).catch(err => {
-			console.log("no");
 
 		})
 		this.addingLink = false;
@@ -135,29 +133,27 @@ export class CourseListComponent {
 
 	filter (search: string) {
 
-	this.page = 0;
+		this.page = 0;
 
-	if (search) {
+		if (search) {
 
-		this.saveData = this.data.filter((data: any) => {
-		for (const column of this.columns) {
-			if (search.toUpperCase().search(data[`${column.name}`].toString().toUpperCase()) != -1){
-			
-			return true;
+			this.saveData = this.data.filter((data: any) => {
+			for (const column of this.columns) {
+				if (search.toUpperCase().search(data[`${column.name}`].toString().toUpperCase()) != -1){
+				
+				return true;
+				}
 			}
+			return false;
+			});
+		} else {
+			this.saveData = this.data;
 		}
-		return false;
-		});
-	} else {
-		this.saveData = this.data;
-	}
 
 
-	if (!this.saveData)
-		this.saveData = this.data;
+		if (!this.saveData)
+			this.saveData = this.data;
 
-		console.log(this.saveData);
-		
 
 		this.listFragments = this.getListFragment(this.page, this.numberOfElement);
 

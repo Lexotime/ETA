@@ -131,36 +131,26 @@ export class AdminService {
     }
 
 	userStatus (uid: string, collection: string, status: string) {
-		return this.fireStore.collection(collection).doc().update({status: status})
+		return this.fireStore.collection(collection).doc(uid).update({status: status})
 	}
 
 	getTeacherId (id: string) {
-		return this.fireStore.collection("Teachers", ref => ref.where("id", '==', id)).snapshotChanges()
+		return this.fireStore.collection("/Teachers", ref => ref.where("id", '==', id)).get()
 	}
   
 	getStudentId (id: string) {
-		return this.fireStore.collection("Students", ref => ref.where("id", '==', id)).snapshotChanges()
+		return this.fireStore.collection("/Students", ref => ref.where("id", '==', id)).get()
 	}
 	
 	getAllTeachers () {
-		// let teachers: any = [];
-		// this.fireStore.collection('/Teachers').get().subscribe( s => {
-		// 	s.docs.forEach(ss => {
-		// 		teachers.push(ss.data());
-		// 	})
-		// })
-		return this.fireStore.collection('/Teachers').get()
+	
+		return this.fireStore.collection('/Teachers').snapshotChanges()
 	
 	}
 
 	getAllStudents () {
-		// let videos: any = [];
-		//  this.fireStore.collection('/Students').get().subscribe( s => {
-		// 	s.docs.forEach(ss => {
-		// 		videos.push(ss.data());
-		// 	})
-		// })
-		return this.fireStore.collection('/Students').get();
+		
+		return this.fireStore.collection('/Students').snapshotChanges();
 	}
 	
 	getAllCourses () {

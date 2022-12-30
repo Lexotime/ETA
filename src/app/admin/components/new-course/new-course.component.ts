@@ -94,10 +94,8 @@ export class NewCourseComponent implements OnInit {
 		let course = {...this.newForm.value};
 		
 		this.adminService.createCourse(course).then(res => {
-			console.log(res);
 			this.router.navigate(["/admin/cours"])
 		}, err => {
-			console.log(err);
 		});
 		this.initNewForm();
 	}

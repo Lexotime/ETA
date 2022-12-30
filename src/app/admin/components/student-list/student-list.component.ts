@@ -30,10 +30,10 @@ export class StudentListComponent {
 
 	ngOnInit () {
 		this.adminService.getAllStudents().subscribe( s => {
-			s.docs.forEach(ss => {
-				this.data.push(ss.data());
+			this.data = [];
+			s.forEach(ss => {
+				this.data.push(ss.payload.doc.data());
 			})
-			console.log(this.data);
 			
 			this.saveData = this.data;
 			this.listFragments = this.getListFragment(this.page, this.numberOfElement);
@@ -107,7 +107,6 @@ export class StudentListComponent {
 	if (!this.saveData)
 		this.saveData = this.data;
 
-		console.log(this.saveData);
 		
 
 		this.listFragments = this.getListFragment(this.page, this.numberOfElement);
@@ -149,13 +148,11 @@ export class StudentListComponent {
 		this.adminService.getStudentId(id).subscribe(s => {
 			let uid: string = "";
 			s.forEach(ss => {
-				uid = ss.payload.doc['id']
+				uid = ss.id;
 			});
 			this.adminService.userStatus(uid, 'Students', "inactif").then(res => {
-				console.log(res);
 				
 			}).catch(err => {
-				console.log(err);
 				
 			})
 		})
@@ -165,13 +162,11 @@ export class StudentListComponent {
 		this.adminService.getStudentId(id).subscribe(s => {
 			let uid: string = "";
 			s.forEach(ss => {
-				uid = ss.payload.doc['id']
+				uid = ss.id
 			});
 			this.adminService.userStatus(uid, 'Students', "actif").then(res => {
-				console.log(res);
 				
 			}).catch(err => {
-				console.log(err);
 				
 			})
 		})
