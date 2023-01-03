@@ -9,7 +9,6 @@ const routes: Routes = [
   { path: 'etud',canActivate: [AuthGuard], loadChildren: () => import('./student/student-routing.module').then(m => m.StudentRoutingModule) },
   { path: 'en',canActivate: [AuthGuard], loadChildren: () => import('./teacher/teacher-routing.module').then(m => m.TeacherRoutingModule) },
   { path: 'admin', canActivate: [AdminGuard], loadChildren: () => import('./admin/admin-routing.module').then(m => m.AdminRoutingModule) },
-  
 ];
 
 @NgModule({
