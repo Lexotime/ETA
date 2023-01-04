@@ -12,13 +12,13 @@ export class ForumService {
 
 
 	getUser () {
-		let uid = localStorage.getItem("login");
-		if (!uid || localStorage.getItem("user") === "admin")
+		let uid = localStorage.getItem("li");
+		if (!uid || (localStorage.getItem("us") !== "st7865mt" && localStorage.getItem("us") !== "te12sdz"))
 			this.router.navigate(["/"]);
 
-		if (localStorage.getItem("user") === "student")
+		if (localStorage.getItem("us") === "st7865mt")
 			return this.fireStore.collection("Students", ref => ref.where("uid", "==", uid), ).snapshotChanges();
-		else if (localStorage.getItem("user") === "teacher")
+		else if (localStorage.getItem("us") === "te12sdz")
 			return this.fireStore.collection("Teachers", ref => ref.where("uid", "==", uid), ).snapshotChanges();
 		else 
 			this.router.navigate(["/"]);

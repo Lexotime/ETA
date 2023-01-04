@@ -17,9 +17,11 @@ export class CoursesComponent implements OnInit {
 	fragCourses: any = [];
 	page: number = 1;
 	numberOfElement: number = 10;
+
+	isLoading: boolean = true;
 	
 	ngOnInit(): void {
-
+		this.isLoading = true;
 		this.studentService.getStudent().subscribe(s => {
 			s.forEach(ss => {
 				this.student = ss.payload.doc.data();
@@ -40,6 +42,7 @@ export class CoursesComponent implements OnInit {
 					this.fragCourses.push(this.courses[i])
 					i++;
 				}
+				this.isLoading = false;
 			})
 		})
 	}

@@ -34,27 +34,32 @@ export class ForumComponent implements OnInit {
 			s.forEach(ss => {
 				this.user = ss.payload.doc.data()
 			})
+			if (this.user) {
+				if (localStorage.getItem("us") === "st7865mt")
+					this.forumService.getStudentCourses(this.user.level).subscribe(c => {
+						this.courses = [];
+						c.forEach(cc => {
+							this.courses.push(cc.payload.doc.data())
+						})
+						if (this.courses[0])
+							this.getMessages(this.courses[0])					
+					})
+				else if (localStorage.getItem("us") === "te12sdz")
+					this.forumService.getTeacherCourses(this.user.id).subscribe(c => {
+						this.courses = [];
+						c.forEach(cc => {
+							this.courses.push(cc.payload.doc.data())
+						})
+						if (this.courses[0])
+							this.getMessages(this.courses[0])					
+					})
+				else 
+					this.router.navigate(['/'])
+			}
+			// } else {
+			// 	this.router.navigate(['/'])
+			// }
 			
-			if (localStorage.getItem("us") === "st7865mt")
-				this.forumService.getStudentCourses(this.user.level).subscribe(c => {
-					this.courses = [];
-					c.forEach(cc => {
-						this.courses.push(cc.payload.doc.data())
-					})
-					if (this.courses[0])
-						this.getMessages(this.courses[0])					
-				})
-			else if (localStorage.getItem("us") === "te12sdz")
-				this.forumService.getTeacherCourses(this.user.id).subscribe(c => {
-					this.courses = [];
-					c.forEach(cc => {
-						this.courses.push(cc.payload.doc.data())
-					})
-					if (this.courses[0])
-						this.getMessages(this.courses[0])					
-				})
-			else 
-				this.router.navigate(['/'])
 		});
 		
 	}
