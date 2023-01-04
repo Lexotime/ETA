@@ -10,7 +10,7 @@ export class AppComponent implements OnInit {
   	title = "Étoiles d'afrique";
 
 	isAuth () : boolean {
-		return localStorage.getItem('login') ? true : false;
+		return localStorage.getItem('li') ? true : false;
 	}
 	screenSize!: number;
 	sideVisible = false;

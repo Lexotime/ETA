@@ -65,6 +65,8 @@ export class RegisterComponent {
                 option: [, Validators.required],
                 password: ['', [Validators.required, Validators.pattern(/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/)]],
                 confirmPassword: ['', [Validators.required, Validators.pattern(/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/)]],
+                provenance: ['', Validators.required],
+                recommand: ['', Validators.required],
             }
         );
     }
@@ -96,7 +98,9 @@ export class RegisterComponent {
                             courses: [],
                             name: name,
                             email: login,
-                            status: 'actif'
+                            status: 'actif',
+                            provenance: this.registerForm.get('provenance')?.value,
+                            recommand: this.registerForm.get('recommand')?.value
                         }
                         this.dataService.createStudent(student).then((res: any) => {
                             this.message = ""

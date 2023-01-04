@@ -100,11 +100,8 @@ export class AddCourseComponent implements OnInit{
 		if (this.teacher && this.courseForm.get("name")?.value) {
 			this.adminService.updateCourseTeacher(this.teacher.id, this.courseForm.get("name")?.value, this.teacher.firstname+" "+this.teacher.lastname)
 			.then(res => {
-				console.log(res);
 				this.router.navigate(["/admin/enseignants"]);
 			}).catch (err => {
-				console.log(err);
-				
 			})			
 		}
 	}

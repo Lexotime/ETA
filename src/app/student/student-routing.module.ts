@@ -1,3 +1,4 @@
+import { ForumComponent } from './../core/components/forum/forum.component';
 import { VideoViewComponent } from './components/video-view/video-view.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { VideoComponent } from './components/video/video.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
    {path: 'activite', component: CalendarComponent},
    {path: 'cours', component: CoursesComponent},
    {path: 'profil', component: ProfileComponent},
+   {path: 'forum', component: ForumComponent},
    {path: 'videos', component: VideoComponent},
    {path: 'videos/voir/:id', component: VideoViewComponent},
    {path: '*', component: HomeComponent}

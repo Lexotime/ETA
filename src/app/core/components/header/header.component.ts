@@ -7,17 +7,17 @@ import { Component, ViewChild, ElementRef, Renderer2, SimpleChanges, OnInit, Inp
 })
 export class HeaderComponent implements OnInit  {
 
-	@ViewChild('toggleButton') toggleButton!: ElementRef  ;
-	@ViewChild('menu') list!: ElementRef ;
-	@ViewChild('tF') tF!: ElementRef ;
-	@ViewChild('tF1') tF1!: ElementRef ;
+	@ViewChild('toggleButton') toggleButton: ElementRef | null = null  ;
+	@ViewChild('menu') list: ElementRef | null = null ;
+	@ViewChild('tF') tF: ElementRef | null = null ;
+	@ViewChild('tF1') tF1: ElementRef | null = null ;
 	@Input() sideVisible!: boolean;
 
 	screenSize!: number;
 	constructor(private renderer: Renderer2) {
 		
 		this.renderer.listen('window', 'click',(e:Event)=>{
-			if(e.target !== this.toggleButton.nativeElement && e.target!==this.list.nativeElement && e.target!==this.tF.nativeElement && e.target!==this.tF1.nativeElement){
+			if(e.target !== this.toggleButton?.nativeElement && e.target!==this.list?.nativeElement && e.target!==this.tF?.nativeElement && e.target!==this.tF1?.nativeElement){
 					this.isOpen=false;
 			}
 		});
@@ -56,11 +56,11 @@ export class HeaderComponent implements OnInit  {
 
 
 	isAuth (): boolean {
-		return localStorage.getItem('login') ? true : false;
+		return localStorage.getItem('li') ? true : false;
 	}
 	
 	getUser() : string | null{
-		return localStorage.getItem('user');
+		return localStorage.getItem('us');
 	}
 
 	onLogout () {

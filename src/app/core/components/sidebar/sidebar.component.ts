@@ -19,7 +19,8 @@ export class SidebarComponent implements OnInit {
 		{name: 'Accueil', href: 'en/accueil'},
 		{name: 'Emploi du temps', href: 'en/activite'},
 		{name: 'Mes Videos', href: 'en/videos'},
-		{name: 'Profil', href: 'en/profil'}
+		{name: 'Profil', href: 'en/profil'},
+		{name: 'Forum', href: 'en/forum'}
 	];
 	
 	
@@ -27,7 +28,8 @@ export class SidebarComponent implements OnInit {
 		{name: 'Accueil', href: 'etud/accueil'},
 		{name: 'Emploi du temps', href: 'etud/activite'},
 		{name: 'Vidéos', href: 'etud/videos'},
-		{name: 'Profil', href: 'etud/profil'}
+		{name: 'Profil', href: 'etud/profil'},
+		{name: 'Forum', href: 'etud/forum'}
 	];
 	
 	screenSize!: number;
@@ -45,7 +47,6 @@ export class SidebarComponent implements OnInit {
 			if (this.toggleButton)
 				if(e.target !== this.toggleButton.nativeElement && e.target!==this.list.nativeElement){
 					this.isOpen=false;
-					console.log(e.target);
 					
 				}
 		});
@@ -66,16 +67,15 @@ export class SidebarComponent implements OnInit {
 	}
 
 	onOpen (open: boolean) {
-		console.log(open);
 		
 		this.isOpen = open;
 	}
 	
 	isAuth (): boolean {
-		return localStorage.getItem('login') ? true : false;
+		return localStorage.getItem('li') ? true : false;
 	}
 	  
 	getUser() : string | null{
-			return localStorage.getItem('user');
+		return localStorage.getItem('us');
 	}
 }

@@ -11,14 +11,12 @@ export class StudentService {
 
   	constructor(
 		public fireStore: AngularFirestore,
-		private fireAuth: AngularFireAuth, 
-		private readonly storage: AngularFireStorage,
 		private router: Router
 		) { }
 
 	getStudent () {
-		let uid = localStorage.getItem("login");
-		if (!uid || localStorage.getItem("user") === "admin" || localStorage.getItem("user") === "teacher")
+		let uid = localStorage.getItem("li");
+		if (!uid || localStorage.getItem("us") === "a7sdsdn" || localStorage.getItem("us") === "te12sdz")
 			this.router.navigate(["/"]);
 		
 		return this.fireStore.collection("Students", ref => ref.where("uid", "==", uid)).snapshotChanges()

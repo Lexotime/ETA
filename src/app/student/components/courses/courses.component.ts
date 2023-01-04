@@ -29,8 +29,6 @@ export class CoursesComponent implements OnInit {
 				this.courses = [];
 				
 				s.forEach(ss => {
-					console.log(ss);
-					
 					//@ts-ignore
 					if (ss.payload.doc.data().option === this.student.option)
 						this.courses.push(ss.payload.doc.data());
