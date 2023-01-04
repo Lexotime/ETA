@@ -28,9 +28,9 @@
         
             </form>
         </div>
-        <p *ngIf="!modifier" class="w-full text-end p-4 pt-0 text-blue-400">
+        <!-- <p *ngIf="!modifier" class="w-full text-end p-4 pt-0 text-blue-400">
             <a href="">Modifier le mot de passe ?</a>
-        </p>
+        </p> -->
         <form class="w-full space-y-5 p-4" [formGroup]="formPassword" (ngSubmit)="submitPassword()" *ngIf="modifier">
             <p  class="text-xl mt-2 text-amber-400 font-bold">Modifier le mot de passe </p>
     
