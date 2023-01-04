@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ForumService } from './../../services/forum.service';
 import { Component, Input, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 
@@ -20,7 +21,7 @@ export class ForumComponent implements OnInit {
 
 	@ViewChild("text") text!: ElementRef<any>;
 
-	constructor (private  forumService: ForumService,private renderer: Renderer2) {
+	constructor (private  forumService: ForumService,private renderer: Renderer2, private router: Router) {
 		this.renderer.listen('window', 'resize',(e:Event)=>{
 			this.screenSize = window.innerWidth;
 		});
@@ -34,7 +35,7 @@ export class ForumComponent implements OnInit {
 				this.user = ss.payload.doc.data()
 			})
 			
-			if (localStorage.getItem("user") === "student")
+			if (localStorage.getItem("us") === "st7865mt")
 				this.forumService.getStudentCourses(this.user.level).subscribe(c => {
 					this.courses = [];
 					c.forEach(cc => {
@@ -43,7 +44,7 @@ export class ForumComponent implements OnInit {
 					if (this.courses[0])
 						this.getMessages(this.courses[0])					
 				})
-			else 
+			else if (localStorage.getItem("us") === "te12sdz")
 				this.forumService.getTeacherCourses(this.user.id).subscribe(c => {
 					this.courses = [];
 					c.forEach(cc => {
@@ -52,6 +53,8 @@ export class ForumComponent implements OnInit {
 					if (this.courses[0])
 						this.getMessages(this.courses[0])					
 				})
+			else 
+				this.router.navigate(['/'])
 		});
 		
 	}

@@ -47,51 +47,6 @@ export class AuthService {
     login(email : string, password : string) : any {
 		
         return this.fireAuth.signInWithEmailAndPassword(email,password)
-        //.then( res => {
-
-            // return res.user?.getIdToken().then(token => {
-
-			// 	switch (role) {
-			// 		case "Student":
-
-						
-			// 			break;
-		
-			// 		case "Teacher":
-			// 			this.fireStore.collection("Teachers", ref => ref.where("uid", "==", res.user?.uid)).get().subscribe(
-			// 				ss => {
-			// 					ss.docs.forEach((doc: any) => {
-			// 						let student = doc.data();
-
-			// 						if (student.uid === res.user?.uid){
-
-			// 							localStorage.setItem('login', res.user?.uid ? res.user?.uid : '');
-			// 							localStorage.setItem('token', token);
-            //                             localStorage.setItem('user', 'teacher')
-
-			// 							return this.router.navigate(['/en/accueil']);
-			// 						}else 
-			// 							return "Vérifiez les informations saisies"
-									
-			// 					})
-			// 				}
-			// 			)	
-		
-			// 			break;
-		
-			// 		default:
-			// 			return "Saisie incorrecte";
-			// 	}
-			// 	return "";
-
-            // }).catch (err => {
-            //     return  'Veuillez ressayer';
-            // })
-    
-        // }, err => {
-		// 	return  'Veuillez ressayer';
-        // })
-		
     }
     
       // register method
