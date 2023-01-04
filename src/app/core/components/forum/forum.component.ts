@@ -55,10 +55,9 @@ export class ForumComponent implements OnInit {
 					})
 				else 
 					this.router.navigate(['/'])
+			} else {
+				this.router.navigate(['/'])
 			}
-			// } else {
-			// 	this.router.navigate(['/'])
-			// }
 			
 		});
 		

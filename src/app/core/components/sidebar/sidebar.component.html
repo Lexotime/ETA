@@ -54,7 +54,7 @@
         <img src="assets/images/menu.png" #sideBar class="w-8 cursor-pointer" >
     </button>
 
-    <div id="dropdown" #sideMenu  [ngClass]="{'top-16 z-[5000] w-screen bg-white rounded divide-y divide-gray-100 shadow': true, 'fixed': isOpen, 'hidden': !isOpen}">
+    <div id="dropdown" #sideMenu  [ngClass]="{'top-14 z-[5000] w-screen bg-white rounded divide-y divide-gray-100 shadow': true, 'fixed': isOpen, 'hidden': !isOpen}">
         
         <ul  class="py-1 text-sm text-gray-700 bg-white" aria-labelledby="dropdownDefault" *ngIf="isAuth() && getUser() === 'te12sdz'" >
             <li class=""  *ngFor="let link of tLinks">
