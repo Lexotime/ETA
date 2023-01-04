@@ -10,13 +10,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import {environment} from './environments/environment';
-import { HomeComponent } from './landing-page/home/home.component'
+import { HomeComponent } from './landing-page/home/home.component';
+import { ContexteComponent } from './landing-page/contexte/contexte.component';
+import { TeamComponent } from './landing-page/team/team.component'
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    ContexteComponent,
+    TeamComponent,
   ],
   imports: [
     // external module
