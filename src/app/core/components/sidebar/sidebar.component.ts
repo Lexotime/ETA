@@ -42,11 +42,12 @@ export class SidebarComponent implements OnInit {
 		});
 
 		this.renderer.listen('window', 'click',(e:Event)=>{
-			if(e.target !== this.toggleButton.nativeElement && e.target!==this.list.nativeElement){
-				this.isOpen=false;
-				console.log(e.target);
-				
-			}
+			if (this.toggleButton)
+				if(e.target !== this.toggleButton.nativeElement && e.target!==this.list.nativeElement){
+					this.isOpen=false;
+					console.log(e.target);
+					
+				}
 		});
 	}
 

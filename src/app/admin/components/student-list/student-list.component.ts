@@ -30,10 +30,10 @@ export class StudentListComponent {
 
 	ngOnInit () {
 		this.adminService.getAllStudents().subscribe( s => {
-			s.docs.forEach(ss => {
-				this.data.push(ss.data());
+			this.data = [];
+			s.forEach(ss => {
+				this.data.push(ss.payload.doc.data());
 			})
-			console.log(this.data);
 			
 			this.saveData = this.data;
 			this.listFragments = this.getListFragment(this.page, this.numberOfElement);
@@ -107,7 +107,6 @@ export class StudentListComponent {
 	if (!this.saveData)
 		this.saveData = this.data;
 
-		console.log(this.saveData);
 		
 
 		this.listFragments = this.getListFragment(this.page, this.numberOfElement);
@@ -146,15 +145,31 @@ export class StudentListComponent {
 	}
 
 	onBlock (id: string) {
-		this.message = this.adminService.blockUser(id, 'Students');
-		this.data.filter((e: any) => (e.id === id))[0].status = 'inactif';
-
+		this.adminService.getStudentId(id).subscribe(s => {
+			let uid: string = "";
+			s.forEach(ss => {
+				uid = ss.id;
+			});
+			this.adminService.userStatus(uid, 'Students', "inactif").then(res => {
+				
+			}).catch(err => {
+				
+			})
+		})
 	}
 
-	onUnblock (id: string) {
-		this.message = this.adminService.unBlockUser(id, 'Students');
-		this.data.filter((e: any) => (e.id === id))[0].status = 'actif';
-
+	onUnBlock (id: string) {
+		this.adminService.getStudentId(id).subscribe(s => {
+			let uid: string = "";
+			s.forEach(ss => {
+				uid = ss.id
+			});
+			this.adminService.userStatus(uid, 'Students', "actif").then(res => {
+				
+			}).catch(err => {
+				
+			})
+		})
 	}
 
 }

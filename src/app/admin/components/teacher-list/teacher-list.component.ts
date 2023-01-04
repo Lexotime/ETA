@@ -38,16 +38,24 @@ export class TeacherListComponent {
 	}
 
 	async ngOnInit () {
-		this.initTable();		
+		this.adminService.getAllTeachers().subscribe( s => {
+			this.data = [];
+
+			s.forEach(ss => {
+				this.data.push(ss.payload.doc.data());
+			})
+			
+			this.saveData = this.data;
+			this.listFragments = this.getListFragment(this.page, this.numberOfElement);
+		})	
 	}
 
 	initTable () {
 		this.data = [];
 		this.adminService.getAllTeachers().subscribe( s => {
-			s.docs.forEach(ss => {
-				this.data.push(ss.data());
+			s.forEach(ss => {
+				this.data.push(ss.payload.doc.data());
 			})
-			console.log(this.data);
 			
 			this.saveData = this.data;
 			this.listFragments = this.getListFragment(this.page, this.numberOfElement);
@@ -104,29 +112,27 @@ export class TeacherListComponent {
 
 	filter (search: string) {
 
-	this.page = 0;
+		this.page = 0;
 
-	if (search) {
+		if (search) {
 
-		this.saveData = this.data.filter((data: any) => {
-		for (const column of this.columns) {
-			if (search.toUpperCase().search(data[`${column.name}`].toString().toUpperCase()) != -1){
-			
-			return true;
+			this.saveData = this.data.filter((data: any) => {
+			for (const column of this.columns) {
+				if (search.toUpperCase().search(data[`${column.name}`].toString().toUpperCase()) != -1){
+				
+				return true;
+				}
 			}
+			return false;
+			});
+		} else {
+			this.saveData = this.data;
 		}
-		return false;
-		});
-	} else {
-		this.saveData = this.data;
-	}
 
 
-	if (!this.saveData)
-		this.saveData = this.data;
+		if (!this.saveData)
+			this.saveData = this.data;
 
-		console.log(this.saveData);
-		
 
 		this.listFragments = this.getListFragment(this.page, this.numberOfElement);
 
@@ -179,21 +185,34 @@ export class TeacherListComponent {
 	}
 
 	onBlock (id: string) {
-		
-		this.adminService.blockUser(id, 'Teachers');
-		this.data.filter((e: any) => (e.id === id))[0].status = 'inactif';
-		
-		
+		this.adminService.getTeacherId(id).subscribe(s => {
+			let uid: string = "";
+			s.forEach(ss => {
+				uid = ss.id;
+			});
+			this.adminService.userStatus(uid, 'Teachers', "inactif").then(res => {
+				
+			}).catch(err => {
+				
+			})
+		})
 	}
 
 	onUnBlock (id: string) {
-		if(this.adminService.unBlockUser(id, 'Teachers'))
-		this.data.filter((e: any) => (e.id === id))[0].status = 'actif';
-		
+		this.adminService.getTeacherId(id).subscribe(s => {
+			let uid: string = "";
+			s.forEach(ss => {
+				uid = ss.id;
+			});
+			this.adminService.userStatus(uid, 'Teachers', "actif").then(res => {
+				
+			}).catch(err => {
+				
+			})
+		})
 	}
 
 	getNotifyResponse (event: any) {
-		console.log(event);
 		this.alertVisible = false;
 		return event;
 	}

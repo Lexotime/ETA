@@ -1,6 +1,6 @@
 import { ActivatedRoute } from '@angular/router';
 import { AdminService } from './../../services/admin.service';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-course-list-admin',
@@ -18,8 +18,11 @@ export class CourseListComponent {
 		{name: 'link', value: 'lien'},
 	];
 
+	@ViewChild("lien") link!: ElementRef;
+
 
 	listFragments: any;
+	message!: string;
 	saveData: any;
 	sens: boolean = false;
 	saveColumn: string = '';
@@ -30,6 +33,8 @@ export class CourseListComponent {
 
 	idParams !: string;
 	teacher!: string;
+
+	currentData!: string ;
 
 	constructor (private adminService: AdminService, private route: ActivatedRoute) {
 		
@@ -101,31 +106,54 @@ export class CourseListComponent {
 			this.listFragments = this.getListFragment (--this.page, this.numberOfElement)
 	}
 
-	filter (search: string) {
+	addingLink!: boolean;
 
-	this.page = 0;
-
-	if (search) {
-
-		this.saveData = this.data.filter((data: any) => {
-		for (const column of this.columns) {
-			if (search.toUpperCase().search(data[`${column.name}`].toString().toUpperCase()) != -1){
-			
-			return true;
-			}
+	addLink(link: string) {
+		if (link === "") {
+			this.message = "Veuillez saisir le lien";
+			return;
 		}
-		return false;
-		});
-	} else {
-		this.saveData = this.data;
+
+		this.adminService.addLink(this.currentData, link).then( res => {
+			
+		}).catch(err => {
+
+		})
+		this.addingLink = false;
 	}
 
+	generateLink (data: string) {
+		this.adminService.getCourseId(data).subscribe(s => {
+			s.forEach(ss => {
+				this.currentData = ss.payload.doc['id'];
+			})
+		})
+		this.addingLink = true;
+	}
 
-	if (!this.saveData)
-		this.saveData = this.data;
+	filter (search: string) {
 
-		console.log(this.saveData);
-		
+		this.page = 0;
+
+		if (search) {
+
+			this.saveData = this.data.filter((data: any) => {
+			for (const column of this.columns) {
+				if (search.toUpperCase().search(data[`${column.name}`].toString().toUpperCase()) != -1){
+				
+				return true;
+				}
+			}
+			return false;
+			});
+		} else {
+			this.saveData = this.data;
+		}
+
+
+		if (!this.saveData)
+			this.saveData = this.data;
+
 
 		this.listFragments = this.getListFragment(this.page, this.numberOfElement);
 

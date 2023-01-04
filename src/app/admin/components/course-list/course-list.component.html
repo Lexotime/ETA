@@ -1,3 +1,22 @@
+
+
+<div *ngIf="addingLink" class="fixed   flex w-screen  z-[500]   justify-center ">
+    <div class="shadow drop-shadow-xl rounded-[20px] bg-white space-y-4 p-10">
+        <p>Ajouter un lien</p>
+        <p class="text-red-400">
+            {{message}}
+        </p>
+        <div class="relative z-0">
+            <input #lien type="text" id="floating_standard" class=" w-80 block py-2.5 px-0 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-amber-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+            <label for="floating_standard" class="w-80 absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Lien</label>
+        </div>
+        <div class="space-x-4">
+            <button [disabled]="!currentData" [ngClass]="{'bg-green-400 font-bold rounded-[5px] text-white px-2 ': true}"  (click)="addLink(lien.value)">Valider</button>
+            <button (click)="addingLink = false" class="text-white font-bold bg-red-500 px-2 rounded-[5px]">Annuler</button>
+        </div>
+    </div>
+</div>
+
 <div class="flex items-center justify-center flex-1 ">
 
     <div class="flex flex-col justify-center items-center w-full mx-10">
@@ -39,7 +58,7 @@
 
                         <td class="p-2 text-sm max-44">
                             <div class=" flex justify-between">
-                                <button *ngIf="!listItem.link" class=" px-4 py-1 rounded bg-blue-500 text-white font-bold">générer lien</button>
+                                <button (click)="generateLink(listItem.id)" class=" px-4 py-1 rounded bg-blue-500 text-white font-bold">générer lien</button>
                                 <button class=" px-4 py-1 rounded bg-blue-500 text-white font-bold"><a [href]="'/admin/videos/ajouter/'+listItem.id">+ vidéo</a></button>
                                 <button class=" px-4 py-1 rounded bg-blue-500 text-white font-bold"><a [href]="'/admin/videos/'+listItem.id">voir vidéo</a></button>
                             </div>

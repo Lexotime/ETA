@@ -36,7 +36,7 @@
                         <td class="p-2 text-sm w-44">
                             <div class=" flex justify-between">
                                 <button *ngIf="listItem.status === 'actif'"(click)="onBlock(listItem.id)" class="py-1 px-8 rounded bg-red-400 text-white font-bold">bloquer</button>
-                                <button *ngIf="listItem.status === 'inactif'" (click)="onUnblock(listItem.id)" class="py-1 px-8 rounded bg-green-400 text-white font-bold">débloquer</button>
+                                <button *ngIf="listItem.status === 'inactif'" (click)="onUnBlock(listItem.id)" class="py-1 px-8 rounded bg-green-400 text-white font-bold">débloquer</button>
                             </div>
                         </td>
                     </tr>
