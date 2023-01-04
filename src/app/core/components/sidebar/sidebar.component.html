@@ -13,7 +13,7 @@
 
        <!-- Teacher link -->   
         
-       <ul  class="mt-5" *ngIf="isAuth() && getUser() === 'teacher'" >
+       <ul  class="mt-5" *ngIf="isAuth() && getUser() === 'te12sdz'" >
             <li class=""  *ngFor="let link of tLinks">
                 <a class="block px-2 py-3 text-gray-900 bg-white bg-opacity-20 mb-2 rounded-xl mx-5 text-center" routerLinkActive="mr-0 rounded-r-none font-extrabold  text-amber-500 bg-opacity-100" [routerLink]="link.href">{{link.name}}</a>
             </li> 
@@ -22,7 +22,7 @@
         
         <!-- Admin link -->
     
-        <ul  class="mt-5" *ngIf="isAuth() && getUser() === 'admin'" >
+        <ul  class="mt-5" *ngIf="isAuth() && getUser() === 'a7sdsdn'" >
             <li class=""  *ngFor="let link of aLinks">
                 <a class="block px-2 py-3 text-gray-900 bg-white bg-opacity-20 mb-2 rounded-xl mx-5 text-center" routerLinkActive="mr-0 rounded-r-none font-extrabold text-amber-500 bg-opacity-100" [routerLink]="link.href">{{link.name}}</a>
             </li> 
@@ -30,7 +30,7 @@
     
         <!-- Student link -->
     
-        <ul  class="mt-5" *ngIf="isAuth() && getUser() === 'student'" >
+        <ul  class="mt-5" *ngIf="isAuth() && getUser() === 'st7865mt'" >
             <li class=""  *ngFor="let link of sLinks">
                 <a class="block px-2 py-3 text-gray-900 bg-white bg-opacity-20 mb-2 rounded-xl mx-5 text-center" routerLinkActive="mr-0 rounded-r-none font-extrabold text-amber-500 bg-opacity-100" [routerLink]="link.href">{{link.name}}</a>
             </li> 
@@ -39,7 +39,7 @@
     </div>
 
     <div class="mb-10" *ngIf="sideVisible">
-        <img src="" alt="logo" class="bg-white w-48 h-48 mx-auto">
+        <img src="" alt="logo" class="bg-white w-36 h-36 mx-auto">
         <div class="mt-10 text-sm">
             © 2022 Étoile d'afrique, Inc. 
         </div>
@@ -56,7 +56,7 @@
 
     <div id="dropdown" #sideMenu  [ngClass]="{'top-16 z-[5000] w-screen bg-white rounded divide-y divide-gray-100 shadow': true, 'fixed': isOpen, 'hidden': !isOpen}">
         
-        <ul  class="py-1 text-sm text-gray-700 bg-white" aria-labelledby="dropdownDefault" *ngIf="isAuth() && getUser() === 'teacher'" >
+        <ul  class="py-1 text-sm text-gray-700 bg-white" aria-labelledby="dropdownDefault" *ngIf="isAuth() && getUser() === 'te12sdz'" >
             <li class=""  *ngFor="let link of tLinks">
                 <a class="block  text-gray-900 bg-white bg-opacity-20 py-3 rounded-xl text-xl text-center" routerLinkActive=" rounded-r-none font-extrabold  text-amber-500 bg-opacity-100" [routerLink]="link.href">{{link.name}}</a>
             </li> 
@@ -65,7 +65,7 @@
         
         <!-- Admin link -->
     
-        <ul class="py-1 text-sm text-gray-700 bg-white" aria-labelledby="dropdownDefault" *ngIf="isAuth() && getUser() === 'admin'" >
+        <ul class="py-1 text-sm text-gray-700 bg-white" aria-labelledby="dropdownDefault" *ngIf="isAuth() && getUser() === 'a7sdsdn'" >
             <li class=""  *ngFor="let link of aLinks">
                 <a class="block  text-gray-900 bg-white bg-opacity-20 py-3 rounded-xl text-xl text-center" routerLinkActive=" rounded-r-none font-extrabold text-amber-500 bg-opacity-100" [routerLink]="link.href">{{link.name}}</a>
             </li> 
@@ -73,7 +73,7 @@
     
         <!-- Student link -->
     
-        <ul  class="py-1 text-sm text-gray-700 bg-white" aria-labelledby="dropdownDefault" *ngIf="isAuth() && getUser() === 'student'" >
+        <ul  class="py-1 text-sm text-gray-700 bg-white" aria-labelledby="dropdownDefault" *ngIf="isAuth() && getUser() === 'st7865mt'" >
             <li class=""  *ngFor="let link of sLinks">
                 <a class="block  text-gray-900 bg-white bg-opacity-20 py-3 rounded-xl text-xl text-center" routerLinkActive=" rounded-r-none font-extrabold text-amber-500 bg-opacity-100" [routerLink]="link.href">{{link.name}}</a>
             </li> 

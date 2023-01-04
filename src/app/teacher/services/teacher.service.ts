@@ -30,8 +30,8 @@ export class TeacherService {
 
 
 	getTeacher () {
-		let uid = localStorage.getItem("login");
-		if (!uid || localStorage.getItem("user") === "admin" || localStorage.getItem("user") === "student")
+		let uid = localStorage.getItem("li");
+		if (!uid || localStorage.getItem("us") === "a7sdsdn" || localStorage.getItem("us") === "st7865mt")
 			this.router.navigate(["/"]);
 		
 		return this.fireStore.collection("Teachers", ref => ref.where("uid", "==", uid)).snapshotChanges()

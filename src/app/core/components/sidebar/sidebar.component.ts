@@ -67,16 +67,15 @@ export class SidebarComponent implements OnInit {
 	}
 
 	onOpen (open: boolean) {
-		console.log(open);
 		
 		this.isOpen = open;
 	}
 	
 	isAuth (): boolean {
-		return localStorage.getItem('login') ? true : false;
+		return localStorage.getItem('li') ? true : false;
 	}
 	  
 	getUser() : string | null{
-			return localStorage.getItem('user');
+		return localStorage.getItem('us');
 	}
 }
