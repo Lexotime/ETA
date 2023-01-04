@@ -47,15 +47,18 @@
                     </div>
             </div>
 
+            <div *ngIf="messages.length === 0">
+            </div>
+
         </div>
 
         <div class="mt-10">
             <div class="flex  justify-center items-center">
                 <div class="relative z-0 w-full">
-                    <input #text type="text" id="floating_standard" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-amber-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+                    <input [disabled]="course.name=== undefined" #text type="text" id="floating_standard" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-amber-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
                     <label for="floating_standard" class="absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Message...</label>
                 </div>
-                <button (click)="sendMessage(text.value)"  class="p-2.5 ml-2 text-sm font-medium text-white bg-amber-500 rounded-lg border border-amber-500  focus:ring-4 focus:outline-none focus:ring-amber-300 ">
+                <button (click)="sendMessage(text.value)"  class="p-2.5 ml-2 text-sm font-medium text-white bg-amber-400 rounded-lg  focus:ring-4 focus:outline-none focus:ring-amber-300 ">
                     <svg fill="#ffffff" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
                             width="24px" height="24px" viewBox="0 0 31.806 31.806"
                             xml:space="preserve">
