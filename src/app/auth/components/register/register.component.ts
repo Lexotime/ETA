@@ -85,6 +85,7 @@ export class RegisterComponent {
 
         if (password !== confirmPassword) {
             this.errorMessage = "Mot de passe incorrecte"
+            this.isLoading = false;
         } else{
             if (login && password){
                     this.authService.register(login, password).then(res => {
@@ -95,6 +96,8 @@ export class RegisterComponent {
                         firstname: firstname,
                         lastname: lastname,
                         email: login,
+                        level: this.registerForm.get('level')?.value,
+                        option: this.registerForm.get('option')?.value,
                         status: 'inactif',
                         provenance: this.registerForm.get('provenance')?.value,
                         recommand: this.registerForm.get('recommand')?.value
@@ -118,6 +121,7 @@ export class RegisterComponent {
                 })
             } else {
                 this.errorMessage = "Veuillez remplir le formulaire";
+                this.isLoading = false;
             }
         }
     }

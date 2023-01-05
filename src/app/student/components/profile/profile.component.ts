@@ -58,8 +58,8 @@ export class ProfileComponent implements OnInit {
 	initForm(student: any) {
 		this.form = this.formBuilder.group(
 			{
-				firstname: [{value :student.name, disabled: true}, Validators.required],
-				lastname: [{value :student.name, disabled: true}, Validators.required],
+				firstname: [{value :student.firstname, disabled: true}, Validators.required],
+				lastname: [{value :student.lastname, disabled: true}, Validators.required],
 				email: [{value : student.email, disabled: true},  ],
 			}
 		);

@@ -26,9 +26,14 @@ export class CoursesComponent implements OnInit {
 			s.forEach(ss => {
 				this.student = ss.payload.doc.data();
 			})
+
+			if (this.student.level === undefined) {
+				this.isLoading = false;
+			}
 			
 			this.studentService.getStudentCourses(this.student.level).subscribe(s => {
 				this.courses = [];
+				console.log("hey");
 				
 				s.forEach(ss => {
 					//@ts-ignore

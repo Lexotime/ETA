@@ -27,21 +27,26 @@ export class CalendarComponent implements OnInit {
 	
 	student: any = {};
 	courses: any = [];
+	isLoading: boolean = false;
 
 	constructor (private studentService: StudentService) {}
 
 	ngOnInit () {
+		this.isLoading = true;
 		this.studentService.getStudent().subscribe(s => {
 			s.forEach(ss => {
 				this.student = ss.payload.doc.data();
 			})
-			
+			if (this.student.level === undefined) {
+				this.isLoading = false;
+			}
 			this.studentService.getStudentCourses(this.student.level).subscribe(s => {
 				this.courses = [];
 				s.forEach(ss => {
 					this.courses.push(ss.payload.doc.data());
 					
 				})
+				this.isLoading = false;
 			})
 		})
 	}
