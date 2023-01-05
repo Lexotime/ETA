@@ -4,16 +4,24 @@
 <div class="min-h-screen flex  items-center justify-between overflow-hidden">
     <div class="w-2/5 bg-amber-400 h-screen md:flex hidden flex-col items-center justify-center ">
 
-        <img src="" alt=" " class="w-80 h-44 bg-red-400 mb-4">
+        <p class="text-3xl mb-4 font-bold text-white">Etoiles d'afrique</p>
+        <img src="" alt=" " class="w-44 h-44 bg-white mb-4">
 
-        <p class="ofont-extrabold mt-4 w-3/4 text-xl text-center">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt nobis debitis cum, tempore est fugit earum quibusdam rem beatae ducimus placeat repellat libero laborum quam, iure pariatur quasi molestias eligendi.
+        <p class="text-2xl font-extr44bold mt-4 text-white">
+            Votre Professeur Particulier en Ligne
+        </p>
+
+        <p class="w-3/4 text-xl text-center">
+            Nous offrons un service de cours de renforcement des
+            élèves et cours d’apprentissage des langues nationales
+            aux parents d’élèves et toute personne désirant comprendre
+            et parler une langue.
         </p>
     </div>
 
     <div class="flex justify-center flex-1">
         <div class="p-6 block bg-white md:shadow-xl md:drop-shadow shadow-amber-50   rounded-3xl overflow-hidden">
-            <p class="text-center text-3xl">Inscription</p>
+            <p class="text-center text-3xl">Inscription <span *ngIf="isSign">réussi</span></p>
 
             <form *ngIf="!isSign" class="p-4 px-16 space-y-5" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                 <p class="text-red-500 text-center">{{errorMessage}}</p>
@@ -31,7 +39,7 @@
                 </div>
                 <!-- Email -->
                 <div class="relative z-0 w-80">
-                    <input formControlName="login" required type="email" id="floating_standard" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-amber-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+                    <input formControlName="email" required type="email" id="floating_standard" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-amber-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
                     <label for="floating_standard" class="absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email</label>
                 </div>
                 <!-- Level -->
@@ -39,6 +47,7 @@
                     <select name="level"
                             formControlName="level"
                             id="level"
+                            (change)="getOption()"
                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-amber-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer">
                         <option *ngFor="let item of level" [value]="item.value">{{item.name}}</option>
                     </select>
@@ -52,7 +61,7 @@
                             id="option"
                             
                             class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-amber-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer">
-                        <option *ngFor="let item of getOption()" [value]="item">{{item}}</option>
+                        <option *ngFor="let item of cuLevel.option" [value]="item">{{item}}</option>
                     </select>
                     <label for="floating_standard" class="absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Option</label>
                 </div>
@@ -83,7 +92,7 @@
                     <input [disabled]="registerForm.invalid"
                         type="submit"  
                         value="S'inscrire"
-                        class="cursor-pointer p-2 px-4 font-semibold border-2 rounded-2xl  drop-shadow-login-button bg-main-bg border-b-amber-300 border-r-amber-300"/>
+                        class="p-2 px-4 font-semibold border-2 rounded-2xl  drop-shadow-login-button bg-main-bg border-b-amber-300 border-r-amber-300"/>
                 </div>
 
                 <div *ngIf="isLoading" class="text-center w-full">
@@ -95,8 +104,8 @@
             </form>
 
             <div *ngIf="isSign">
-                <p>{{errorMessage}}</p>
-                <div>
+                <p class="text-center my-2 w-80">Inscription réussi pour debloquer votrer compte veuillez vous acquittez de vous frais de scolarité.</p>
+                <div class="flex space-x-4 items-center justify-center">
                     <div>
                         <img class="w-24" src="assets/images/wave.png" alt="">
                         <p>77 551 69 41</p>
