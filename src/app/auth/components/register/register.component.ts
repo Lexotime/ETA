@@ -35,7 +35,7 @@ export class RegisterComponent {
     isLoading: boolean = false;
     message!: string;
 
-    isSign: boolean = true;
+    isSign: boolean = false;
 
     constructor(
         private formBuilder: FormBuilder,
