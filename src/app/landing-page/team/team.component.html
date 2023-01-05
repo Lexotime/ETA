@@ -1,23 +1,26 @@
 <header class="py-6 text-white" style="background-image: url('../../../assets/images/pexels-tima-miroshnichenko-7567520.jpg');background-size: cover;">
     <div class="container mx-auto px-4 lg:px-2">
-        <nav class="flex space-x-32 px-4">
-            <div class="flex space-x-5">
-              <a href="/" class="w-16 h-16">
-                <img src="../../../assets/images/et1.jpg" class="object-cover rounded-full" alt="Logo">
-              </a>
-              <p class="text-3xl pt-2 text-amber-500 animate-pulse font-bold ">Etoiles d'Afrique</p>
-            </div>
-            <input type="checkbox" id="menu-toggler" class="hidden">
-            <span class="text-4xl hidden" id="menu-bars" >
-              <i class="bi bi-list bars"></i>
-              <i class="bi bi-x close hidden"></i>
-            </span>
-            <div class="hidden lg:flex menu font-bold py-5 text-amber-500">
-              <a routerLink="/" class="ml-4 text-3xl lg:text-base mb-6 lg:mb-0">Accueil</a>
-              <a routerLink="/contexte" class="ml-4 text-3xl lg:text-base mb-6 lg:mb-0">Contexte</a>
-              <a routerLink="/team" class="ml-4 text-3xl lg:text-base mb-6 lg:mb-0">Équipe Fondatrice</a>
-            </div>
-          </nav>
+      <nav class="flex space-x-32 px-4">
+        <div class="flex lg:space-x-5 items-center">
+          <a href="/" class="w-32">
+            <img src="../../../assets/images/et1.png" class="object-cover rounded-full" alt="Logo">
+          </a>
+          <p class="text-2xl lg:text-3xl text-white animate-pulse font-bold ">Etoiles d'Afrique</p>
+        </div>
+        <input type="checkbox" id="menu-toggler" class="hidden">
+        <span class="text-4xl hidden" id="menu-bars" >
+          <i class="bi bi-list bars"></i>
+          <i class="bi bi-x close hidden"></i>
+        </span>
+        <div class="hidden lg:flex menu font-bold py-8 text-amber-500">
+          <a routerLink="/" class="ml-4 text-3xl lg:text-base mb-6 lg:mb-0">Accueil</a>
+          <a routerLink="/contexte" class="ml-4 text-3xl lg:text-base mb-6 lg:mb-0">Contexte</a>
+          <a routerLink="/team" class="ml-4 text-3xl lg:text-base mb-6 lg:mb-0">Équipe Fondatrice</a>
+          <a routerLink="#" class="ml-4 text-3xl lg:text-base mb-6 lg:mb-0">Nos Services</a>
+          <a routerLink="#" class="ml-4 text-3xl lg:text-base mb-6 lg:mb-0">Concours</a>
+          <a routerLink="#" class="ml-4 text-3xl lg:text-base mb-6 lg:mb-0">Bibliothèques</a>
+        </div>
+      </nav>
     </div>
     <div class="flex flex-col mt-10 space-y-4">
         <div class="flex flex-col mx-auto space-y-2">
@@ -89,27 +92,27 @@ les budgets pour des projets soutenus par des partenaires dans ces différents p
    </div>
 </section>
 <footer class="p-5 bg-white text-blue-400">
-    <div class="flex flex-col space-y-4 w-full">
-      <div class="flex space-x-4 mx-auto">
-        <img src="../../../assets/images/et1.jpg" alt="" class="w-16 h-16 rounded-full">
-        <p class="text-2xl text-amber-500 font-bold py-4">Etoiles d'Afrique</p>
+  <div class="flex flex-col space-y-4 w-full">
+    <div class="flex lg:space-x-4 mx-auto items-center">
+      <img src="../../../assets/images/et1.png" alt="" class="w-32 h-32 rounded-full">
+      <p class="text-2xl text-amber-500 font-bold">Etoiles d'Afrique</p>
+    </div>
+    <div class="flex justify-between w-1/2 mx-auto">
+      <div class="rounded-full w-10 h-10 flex font-bold text-white bg-amber-500">
+        <a class="m-auto" href="#"><i class="bi bi-facebook"></i></a>
       </div>
-      <div class="flex justify-between w-1/2 mx-auto">
-        <div class="rounded-full w-10 h-10 flex font-bold text-white bg-amber-500">
-          <a class="m-auto" href="#"><i class="bi bi-facebook"></i></a>
-        </div>
-        <div class="rounded-full w-10 h-10 flex font-bold text-white bg-amber-500">
-          <a class="m-auto" href="#"><i class="bi bi-twitter"></i></a>
-        </div>
-        <div class="rounded-full w-10 h-10 flex font-bold text-white bg-amber-500">
-          <a class="m-auto" href="#"><i class="bi bi-instagram"></i></a>
-        </div>
-        <div class="rounded-full w-10 h-10 flex font-bold text-white bg-amber-500">
-          <a class="m-auto" href="#"><i class="bi bi-youtube"></i></a>
-        </div>
+      <div class="rounded-full w-10 h-10 flex font-bold text-white bg-amber-500">
+        <a class="m-auto" href="#"><i class="bi bi-twitter"></i></a>
       </div>
-      <div class="flex mx-auto">
-        <p class="text-amber-500">2022 &copy; Etoiles d'Afrique Tous droits réservés</p>
+      <div class="rounded-full w-10 h-10 flex font-bold text-white bg-amber-500">
+        <a class="m-auto" href="#"><i class="bi bi-instagram"></i></a>
+      </div>
+      <div class="rounded-full w-10 h-10 flex font-bold text-white bg-amber-500">
+        <a class="m-auto" href="#"><i class="bi bi-youtube"></i></a>
       </div>
     </div>
-  </footer>
+    <div class="flex mx-auto">
+      <p class="text-amber-500">2022 &copy; Etoiles d'Afrique Tous droits réservés</p>
+    </div>
+  </div>
+</footer>
