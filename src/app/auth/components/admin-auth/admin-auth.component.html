@@ -14,7 +14,7 @@
         <div class="p-10 mb-16 bg-white drop-shadow shadow-md shadow-amber-50  rounded-3xl overflow-hidden">
             <p class="text-center text-3xl">Connexion</p>
             <form class="p-4 px-16 space-y-12" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                <p class="text-red-500">{{errorMessage}}</p>
+                <p class="text-red-500 text-center">{{errorMessage}}</p>
                     <!-- Email -->
                 <div class="relative z-0 w-80">
                     <input formControlName="login" required type="email" id="floating_standard" class="block py-2.5 px-0 w-full text text-gray-900 bg-transparent border-0 border-b-2 border-amber-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
@@ -27,15 +27,17 @@
                     <label for="floating_standard" class="absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Mot de passe</label>
                 </div>
 
-                <div class="text-center">
+                <div *ngIf="!isLoading" class="text-center">
                     <input 
                         [disabled]="loginForm.invalid"
                         type="submit"  
                         value="Se Connecter"
                         class="cursor-pointer p-2 px-4 font-semibold border-2 rounded-2xl  drop-shadow-login-button bg-main-bg border-b-amber-300 border-r-amber-300"/>
                 </div>
-                
-                <div class="text-center">Pas encore inscrit ? <a class="text-amber-400" href="/inscription">S'inscrire.</a></div>
+
+                <div *ngIf="isLoading" class="text-center w-full">
+                    <img src="assets/images/load.gif" class="mx-auto" alt="">
+                </div>
 
             </form>
     

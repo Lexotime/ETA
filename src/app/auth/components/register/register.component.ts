@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { DatabaseService } from './../../../core/services/database.service';
 import { AuthService } from './../../services/auth.service';
 import { Component } from '@angular/core';
@@ -12,27 +13,8 @@ import {Router} from "@angular/router";
 })
 export class RegisterComponent {
 
-    level: {name: string, value: string, option: any[]}[] = [
-		{name: 'CI', value: 'CI', option: ['néan']},
-		{name: 'CP', value: 'CP', option: ['néan']},
-		{name: 'CE1', value: 'CE1', option: ['néan']},
-		{name: 'CE1', value: 'CE1', option: ['néan']},
-		{name: 'CM1', value: 'CM1', option: ['néan']},
-		{name: 'CM2', value: 'CM2', option: ['néan']},
-		{name: '6e', value: '6éme', option: ['néan']},
-		{name: '5e', value: '5éme', option: ['néan']},
-		{name: '4e', value: '4éme', option: ['néan']},
-		{name: '3e', value: '3éme', option: ['néan']},
-		{name: 'Second', value: 'Second', option: ['L', 'S']},
-		{name: 'Première', value: 'Première', option: ['L', 'S']},
-		{name: 'Terminale', value: 'Terminale', option: ['L', 'S']},
-	]
+    level: {name: string, value: string, option: any[]}[] = environment.level
 	
-	option = [
-		{name: 'néan', value: 'none'},
-		{name: 'L', value: 'L'},
-		{name: 'S', value: 'S'},
-	]
 
     // @ts-ignore
     registerForm: FormGroup;
@@ -40,8 +22,10 @@ export class RegisterComponent {
     errorMessage: any;
     // @ts-ignore
     isAuth: boolean = false;
-
+    isLoading: boolean = false;
     message!: string;
+
+    isSign: boolean = false;
 
     constructor(
         private formBuilder: FormBuilder,
@@ -60,7 +44,8 @@ export class RegisterComponent {
         this.registerForm = this.formBuilder.group(
             {
                 login: ['', Validators.required],
-                name: ['', Validators.required],
+                firstname: ['', Validators.required],
+                lastname: ['', Validators.required],
                 level: ['CI', Validators.required],
                 option: [, Validators.required],
                 password: ['', [Validators.required, Validators.pattern(/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/)]],
@@ -76,8 +61,11 @@ export class RegisterComponent {
     }
 
     onSubmit() {
+        this.isLoading = true;
         // @ts-ignore
-        const name = this.registerForm.get('name').value;
+        const firstname = this.registerForm.get('firstname').value;
+        // @ts-ignore
+        const lastname = this.registerForm.get('lastname').value;
         // @ts-ignore
         const login = this.registerForm.get('login').value;
         // @ts-ignore
@@ -88,31 +76,34 @@ export class RegisterComponent {
         if (password !== confirmPassword) {
             this.errorMessage = "Mot de passe incorrecte"
         } else{
-            let response = this.authService.register(login, password);
-            response.then((res: any) => {
-                if (res){
-                    if ( res.uid) {
-                        const student = {
-                            id: '',
-                            uid: res.uid,
-                            courses: [],
-                            name: name,
-                            email: login,
-                            status: 'actif',
-                            provenance: this.registerForm.get('provenance')?.value,
-                            recommand: this.registerForm.get('recommand')?.value
-                        }
-                        this.dataService.createStudent(student).then((res: any) => {
-                            this.message = ""
-                        }).catch((err: any) => {
-                            
-                        });
-                        console.log(this.dataService.getStudent(res.uid));
-                        this.router.navigate(['/connexion']);
-                    } else 
-                        this.errorMessage = res.message;
-                } else 
+            this.authService.register(login, password).then(res => {
+                const student = {
+                    id: '',
+                    uid: res.user?.uid,
+                    courses: [],
+                    firstname: firstname,
+                    lastname: lastname,
+                    email: login,
+                    status: 'inactif',
+                    provenance: this.registerForm.get('provenance')?.value,
+                    recommand: this.registerForm.get('recommand')?.value
+                }
+                this.dataService.createStudent(student).then((res: any) => {
+                    this.message = "Inscription réussi";
+                    this.isSign = true;
+                    this.isLoading = false;
+
+                }).catch((err: any) => {
+
                     this.errorMessage = "Une erreur c'est produit veuillez ressayer plutard";
+                    this.isLoading = false;
+                });
+
+            }, err => {
+                    
+                this.isLoading = false;
+                this.errorMessage = "Une erreur c'est produit veuillez ressayer plutard";
+
             })
         }
     }

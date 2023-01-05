@@ -10,16 +10,24 @@
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt nobis debitis cum, tempore est fugit earum quibusdam rem beatae ducimus placeat repellat libero laborum quam, iure pariatur quasi molestias eligendi.
         </p>
     </div>
+
     <div class="flex justify-center flex-1">
         <div class="p-6 block bg-white md:shadow-xl md:drop-shadow shadow-amber-50   rounded-3xl overflow-hidden">
             <p class="text-center text-3xl">Inscription</p>
-            <form class="p-4 px-16 space-y-5" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+            <form *ngIf="!isSign" class="p-4 px-16 space-y-5" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                 <p class="text-red-500 text-center">{{errorMessage}}</p>
 
                 <!-- Name -->
                 <div class="relative z-0 w-80">
-                    <input formControlName="name" required type="text" id="floating_standard" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-amber-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-                    <label for="floating_standard" class="absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Pseudo</label>
+                    <input formControlName="firstname" required type="text" id="floating_standard" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-amber-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+                    <label for="floating_standard" class="absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Prénom</label>
+                </div>
+
+                <!-- Name -->
+                <div class="relative z-0 w-80">
+                    <input formControlName="lastname" required type="text" id="floating_standard" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-amber-300 appearance-none  focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
+                    <label for="floating_standard" class="absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Nom</label>
                 </div>
                 <!-- Email -->
                 <div class="relative z-0 w-80">
@@ -71,17 +79,34 @@
                     <label for="floating_standard" class="absolute text-sm text-gray-500  duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Qui vous a recommandé</label>
                 </div>
         
-                <div class="text-center">
+                <div *ngIf="!isLoading" class="text-center">
                     <input [disabled]="registerForm.invalid"
                         type="submit"  
                         value="S'inscrire"
                         class="cursor-pointer p-2 px-4 font-semibold border-2 rounded-2xl  drop-shadow-login-button bg-main-bg border-b-amber-300 border-r-amber-300"/>
                 </div>
 
+                <div *ngIf="isLoading" class="text-center w-full">
+                    <img src="assets/images/load.gif" class="mx-auto" alt="">
+                </div>
+
                 <div class="text-center">Déjà inscrit ? <a class="text-amber-400" href="/connexion">Se connecter.</a></div>
 
-
             </form>
+
+            <div *ngIf="isSign">
+                <p>{{errorMessage}}</p>
+                <div>
+                    <div>
+                        <img class="w-24" src="assets/images/wave.png" alt="">
+                        <p>77 551 69 41</p>
+                    </div>
+                    <div>
+                        <img class="w-24" src="assets/images/orange.png" alt="">
+                        <p>70 700 25 95</p>
+                    </div>
+                </div>
+            </div>
         
         </div>
     </div>
