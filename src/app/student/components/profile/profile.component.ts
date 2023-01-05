@@ -40,7 +40,8 @@ export class ProfileComponent implements OnInit {
 	}
 
 	form = new FormGroup({
-		name: new FormControl(),
+		firstname: new FormControl(),
+		lastname: new FormControl(),
 		email: new FormControl(),
 	});
 
@@ -57,7 +58,8 @@ export class ProfileComponent implements OnInit {
 	initForm(student: any) {
 		this.form = this.formBuilder.group(
 			{
-				name: [{value :student.name, disabled: true}, Validators.required],
+				firstname: [{value :student.name, disabled: true}, Validators.required],
+				lastname: [{value :student.name, disabled: true}, Validators.required],
 				email: [{value : student.email, disabled: true},  ],
 			}
 		);
@@ -82,8 +84,6 @@ export class ProfileComponent implements OnInit {
 
 			return;
 		}
-		console.log(this.student);
-		
 		
 		// this.studentService.updatePassword(this.student.uid, password).then(res => {
 		// 	console.log(res);
