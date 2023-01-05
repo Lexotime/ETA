@@ -27,9 +27,9 @@ export const environment = {
 		{name: '5e', value: '5éme', option: ['néan']},
 		{name: '4e', value: '4éme', option: ['néan']},
 		{name: '3e', value: '3éme', option: ['néan']},
-		{name: 'Second', value: 'Second', option: ['L', 'S', 'STG']},
-		{name: 'Première', value: 'Première', option: ['L1', 'L2', 'STG', 'S1', 'S2']},
-		{name: 'Terminale', value: 'Terminale', option: ['L1', 'L2', 'STG', 'S1', 'S2']},
+		{name: 'Second', value: 'Second', option: ['L', 'S', 'STEG']},
+		{name: 'Première', value: 'Première', option: ['L1', 'L2', 'STEG', 'S1', 'S2']},
+		{name: 'Terminale', value: 'Terminale', option: ['L1', 'L2', 'STEG', 'S1', 'S2']},
 	],
 
   production: false,

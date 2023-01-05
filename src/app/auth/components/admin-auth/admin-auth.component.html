@@ -2,18 +2,26 @@
 
 
 <div class=" min-h-screen flex items-center justify-center ">
-    <div class="w-2/5 bg-amber-400 h-screen flex flex-col items-center justify-center ">
+    <div class="md:flex hidden w-2/5 bg-amber-400 h-screen flex-col items-center justify-center ">
+        <p class="text-3xl mb-4 font-bold text-white">Etoiles d'afrique</p>
+        <div class="h-64 w-64 flex items-center justify-center rounded-full  bg-white">
+            <img src="assets/images/etoile.png" alt="a" class="w-64">
+        </div>
+        <p class="text-2xl font-extr44bold mt-4 ">
+            Votre Professeur Particulier en Ligne
+        </p>
 
-        <img src="" alt=" " class="w-80 h-44 bg-red-400 mb-4">
-
-        <p class="ofont-extrabold mt-4 w-3/4 text-xl text-center">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Incidunt nobis debitis cum, tempore est fugit earum quibusdam rem beatae ducimus placeat repellat libero laborum quam, iure pariatur quasi molestias eligendi.
+        <p class="w-3/4 text-xl text-center text-white">
+            Nous offrons un service de cours de renforcement des
+            élèves et cours d’apprentissage des langues nationales
+            aux parents d’élèves et toute personne désirant comprendre
+            et parler une langue.
         </p>
     </div>
     <div class="flex justify-center flex-1">
-        <div class="p-10 mb-16 bg-white drop-shadow shadow-md shadow-amber-50  rounded-3xl overflow-hidden">
+        <div class="md:p-10 py-10 mb-16 bg-white md:drop-shadow md:shadow-md shadow-amber-50  rounded-3xl overflow-hidden">
             <p class="text-center text-3xl">Connexion</p>
-            <form class="p-4 px-16 space-y-12" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <form class="md:p-4 px-16 space-y-12" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                 <p class="text-red-500 text-center">{{errorMessage}}</p>
                     <!-- Email -->
                 <div class="relative z-0 w-80">
@@ -34,11 +42,10 @@
                         value="Se Connecter"
                         class="cursor-pointer p-2 px-4 font-semibold border-2 rounded-2xl  drop-shadow-login-button bg-main-bg border-b-amber-300 border-r-amber-300"/>
                 </div>
-
                 <div *ngIf="isLoading" class="text-center w-full">
                     <img src="assets/images/load.gif" class="mx-auto" alt="">
                 </div>
-
+                
             </form>
     
         </div>

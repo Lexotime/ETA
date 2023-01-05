@@ -3,7 +3,10 @@
 <div [ngClass]="{'z-[100] fixed left-0 top-0 right-0 shadow flex items-center justify-between px-8 bg-white': true, 'p-1' : isAuth(), 'p-6': !isAuth(), 'left-[280px]': screenSize >= 950 && sideVisible}" *ngIf="isAuth()">
     
    
-        <div [ngClass]="{'text-black text-xl': true, 'ml-8': screenSize < 950 || !sideVisible}">Étoiles d'afrique</div>
+        <div [ngClass]="{'text-black text-xl flex items-center': true, 'ml-8': screenSize < 950 || !sideVisible}">
+            <img src="assets/images/etoile.png" alt="a" class="w-16 inline">
+            Étoiles d'afrique
+        </div>
 
 
         <!-- Search -->
