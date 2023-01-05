@@ -66,10 +66,16 @@ export class LoginComponent {
                         user = ss.data();
                     })
                     if (user) {
-                        localStorage.setItem('li', res.user?.uid ? res.user?.uid : '');
-                        localStorage.setItem('us', 'st7865mt')
-
-                        this.router.navigate(["/etud/accueil"]);
+                        //@ts-ignore
+                        if (user.status === "inactif") {
+                            this.errorMessage = "Compte bloqué"
+                            this.isLoading = false;
+                        } else {
+                            localStorage.setItem('li', res.user?.uid ? res.user?.uid : '');
+                            localStorage.setItem('us', 'st7865mt')
+                            this.router.navigate(["/etud/accueil"]);
+                        }
+                        
                     } else {
                         this.errorMessage = "Email ou mot de passe incorrect"
                     }
@@ -85,9 +91,15 @@ export class LoginComponent {
                         user = ss.data();
                     })
                     if (user) {
-                        localStorage.setItem('li', res.user?.uid ? res.user?.uid : '');
-                        localStorage.setItem('us', 'te12sdz')
-                        this.router.navigate(["/en/accueil"]);
+                        //@ts-ignore
+                        if (user.status === "inactif") {
+                            this.errorMessage = "Compte bloqué"
+                            this.isLoading = false;
+                        } else {
+                            localStorage.setItem('li', res.user?.uid ? res.user?.uid : '');
+                            localStorage.setItem('us', 'te12sdz')
+                            this.router.navigate(["/en/accueil"]);
+                        }
                     } else {
                         this.errorMessage = "Email ou mot de passe incorrect"
                     }

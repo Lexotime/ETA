@@ -12,8 +12,8 @@ export class StudentComponent {
   students: any = STUDENTS;
   currentStudent: any = this.students[0];
   columns: {name: string, value: string}[] =[
-    {name: 'firstname', value: 'nom'},
-    {name: 'lastname', value: 'prenom'},
+    {name: 'firstname', value: 'prénom'},
+    {name: 'lastname', value: 'nom'},
     {name: 'email', value: 'email'},
     {name: 'status', value: 'etat'},
   ];

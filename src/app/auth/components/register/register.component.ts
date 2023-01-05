@@ -27,6 +27,8 @@ export class RegisterComponent {
         confirmPassword: new FormControl(''),
         provenance: new FormControl(''),
         recommand: new FormControl(''),
+        tel: new FormControl(''),
+        tutor: new FormControl(''),
     });
     
     errorMessage: any;
@@ -61,6 +63,8 @@ export class RegisterComponent {
                 confirmPassword: ['', [Validators.required, Validators.pattern(/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/)]],
                 provenance: ['', Validators.required],
                 recommand: ['', Validators.required],
+                tel: ['', Validators.required],
+                tutor: ['', Validators.required],
             }
         );
     }
@@ -100,7 +104,9 @@ export class RegisterComponent {
                         option: this.registerForm.get('option')?.value,
                         status: 'inactif',
                         provenance: this.registerForm.get('provenance')?.value,
-                        recommand: this.registerForm.get('recommand')?.value
+                        recommand: this.registerForm.get('recommand')?.value,
+                        tel: this.registerForm.get('tel')?.value,
+                        tutor: this.registerForm.get('tutor')?.value,
                     }
                     this.dataService.createStudent(student).then((res: any) => {
                         this.message = "Inscription réussi";

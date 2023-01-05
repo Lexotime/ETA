@@ -10,10 +10,13 @@ export class StudentListComponent {
 
 	data: any = [];
 	columns: any = [
-		{name: 'name', value: 'pseudo'},
+		{name: 'firstname', value: 'prénom'},
+		{name: 'lastname', value: 'nom'},
 		{name: 'email', value: 'email'},
 		{name: 'level', value: 'niveau'},
 		{name: 'status', value: 'status'},
+		{name: 'provenance', value: 'provenance'},
+		{name: 'recommand', value: 'recommandation'},
 	];
 
 	listFragments: any;
