@@ -14,7 +14,7 @@ export class ForumComponent implements OnInit {
 	course: any = {};
 	messages: any = [];
 	screenSize!: number;
-
+	userName: string = "";
 	chatroomVisible: boolean = false;
 
 
@@ -35,7 +35,8 @@ export class ForumComponent implements OnInit {
 				this.user = ss.payload.doc.data()
 			})
 			if (this.user) {
-				if (localStorage.getItem("us") === "st7865mt")
+				if (localStorage.getItem("us") === "st7865mt") {
+					this.userName = this.user.firstname+" "+this.user.lastname;
 					this.forumService.getStudentCourses(this.user.level).subscribe(c => {
 						this.courses = [];
 						c.forEach(cc => {
@@ -44,7 +45,8 @@ export class ForumComponent implements OnInit {
 						if (this.courses[0])
 							this.getMessages(this.courses[0])					
 					})
-				else if (localStorage.getItem("us") === "te12sdz")
+				} else if (localStorage.getItem("us") === "te12sdz") {
+					this.userName = "M. "+this.user.lastname;
 					this.forumService.getTeacherCourses(this.user.id).subscribe(c => {
 						this.courses = [];
 						c.forEach(cc => {
@@ -53,7 +55,7 @@ export class ForumComponent implements OnInit {
 						if (this.courses[0])
 							this.getMessages(this.courses[0])					
 					})
-				else 
+				} else 
 					this.router.navigate(['/'])
 			} else {
 				this.router.navigate(['/'])
@@ -80,18 +82,10 @@ export class ForumComponent implements OnInit {
 
 	sendMessage (message: string) {
 		if (message && this.course && this.user) {
-			let userName;
-			if (this.user.name)
-				userName = this.user.name;
-			else
-				userName = this.user.firstname+" "+this.user.lastname;
 
-			this.forumService.addMessage({message,	 course: this.course.id, userName, user: this.user.id, num: this.messages.length}).then( res => {
-				console.log(res);
+			this.forumService.addMessage({message,	 course: this.course.id, userName: this.userName, user: this.user.id, num: this.messages.length}).then( res => {
 				this.text.nativeElement.value = "";
 			}, err => {
-				console.log(err);
-				
 			})
 		}
 	}

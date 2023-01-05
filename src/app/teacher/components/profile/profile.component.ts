@@ -82,8 +82,6 @@ export class ProfileComponent implements OnInit {
 
 			return;
 		}
-		console.log(this.teacher);
-		
 		
 		this.teacherService.updatePassword(this.teacher.uid, password).then(res => {
 			
