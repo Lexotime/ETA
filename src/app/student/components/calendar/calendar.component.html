@@ -1,10 +1,10 @@
 <div class="relative top-0 pt-20 flex flex-col w-11/12 mx-auto items-center justify-center">
 
-    <div class="mb-10 font-extrabold text-center flex justify-center items-center py-4 rounded-[20px] text-white md:text-3xl text-xl bg-amber-400 w-full">
+    <div class="mb-10 font-extrabold text-center flex justify-center items-center py-4 rounded-[10px] text-white md:text-3xl text-xl bg-amber-400 w-full">
         Emploi du temps
     </div>
 
-    <table class="md:table hidden">
+    <table *ngIf="!isLoading" class="md:table hidden">
         <thead>
             <th></th>
             <th class="border py-4 text-amber-500 text-xl w-44" *ngFor="let day of days">{{day}}</th>
@@ -21,7 +21,7 @@
         </tbody>
     </table>
 
-    <div class="md:hidden w-full">
+    <div *ngIf="!isLoading" class="md:hidden w-full">
         <div class="" *ngFor="let day of days">
             <p class="ml-4 text-amber-500 text-xl ">-{{day}}</p>
             <div class=" flex overflow-auto scroll-m-1 pb-2">
@@ -35,5 +35,9 @@
         </div>
     </div>
    
+    <div *ngIf="isLoading">
+        <img class="mx-auto w-10" src="assets/images/load.gif" alt="">
+    </div>
    
 </div>
+

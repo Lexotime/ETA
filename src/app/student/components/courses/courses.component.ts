@@ -17,16 +17,23 @@ export class CoursesComponent implements OnInit {
 	fragCourses: any = [];
 	page: number = 1;
 	numberOfElement: number = 10;
+
+	isLoading: boolean = true;
 	
 	ngOnInit(): void {
-
+		this.isLoading = true;
 		this.studentService.getStudent().subscribe(s => {
 			s.forEach(ss => {
 				this.student = ss.payload.doc.data();
 			})
+
+			if (this.student.level === undefined) {
+				this.isLoading = false;
+			}
 			
 			this.studentService.getStudentCourses(this.student.level).subscribe(s => {
 				this.courses = [];
+				console.log("hey");
 				
 				s.forEach(ss => {
 					//@ts-ignore
@@ -40,6 +47,7 @@ export class CoursesComponent implements OnInit {
 					this.fragCourses.push(this.courses[i])
 					i++;
 				}
+				this.isLoading = false;
 			})
 		})
 	}

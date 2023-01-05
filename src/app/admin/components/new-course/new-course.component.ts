@@ -1,3 +1,5 @@
+import { filter } from 'rxjs';
+import { environment } from './../../../environments/environment';
 import { Component, OnInit } from '@angular/core';
 import { AdminService } from './../../services/admin.service';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
@@ -25,27 +27,8 @@ export class NewCourseComponent implements OnInit {
 	];
 	
 	
-	level: {name: string, value: string}[] = [
-		{name: 'CI', value: 'CI'},
-		{name: 'CP', value: 'CP'},
-		{name: 'CE1', value: 'CE1'},
-		{name: 'CE1', value: 'CE1'},
-		{name: 'CM1', value: 'CM1'},
-		{name: 'CM2', value: 'CM2'},
-		{name: '6e', value: '6éme'},
-		{name: '5e', value: '5éme'},
-		{name: '4e', value: '4éme'},
-		{name: '3e', value: '3éme'},
-		{name: 'Second', value: 'Second'},
-		{name: 'Première', value: 'Première'},
-		{name: 'Terminale', value: 'Terminale'},
-	]
-	
-	option = [
-		{name: 'néan', value: 'néan'},
-		{name: 'L', value: 'L'},
-		{name: 'S', value: 'S'},
-	]
+	level: any = environment.level;
+	cuLevel: any = environment.level[0];
 	
 	days: string[] = [
 		'Lundi',
@@ -80,15 +63,17 @@ export class NewCourseComponent implements OnInit {
 			{
 				day: ['Lundi', Validators.required],
 				hours: ['8h-10h', Validators.required],
-				level: ['CI', Validators.required],
-				option: ['none', Validators.required],
+				level: [this.cuLevel.name, Validators.required],
+				option: [this.cuLevel.option[0], Validators.required],
 				name: [, Validators.required],
 				description: ['', Validators.required],
 			}
 		)
 	}
 
-
+	changeLevel(e: any) {
+		this.cuLevel = this.level.filter((l: any) => (l.name === e.target.value))[0]		
+	}
 
 	onSubmit() {
 		let course = {...this.newForm.value};

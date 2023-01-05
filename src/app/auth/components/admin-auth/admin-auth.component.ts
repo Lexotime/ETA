@@ -19,6 +19,8 @@ export class AdminAuthComponent {
    // @ts-ignore
    isAuth: boolean = false;
 
+   isLoading: boolean = false;
+
    constructor(
        private formBuilder: FormBuilder,
        private router: Router,
@@ -40,7 +42,8 @@ export class AdminAuthComponent {
        );
    }
 
-   onSubmit() {
+    onSubmit() {
+        this.isLoading = true;
        // @ts-ignore
        const login = this.loginForm.get('login').value;
        // @ts-ignore
@@ -53,19 +56,21 @@ export class AdminAuthComponent {
             })
             if (search)
                 this.authService.adminLogin(login, password).then(res => {
-                    localStorage.setItem('login', res.user?.uid ? res.user?.uid : '');
+                    
+                    localStorage.setItem('li', res.user?.uid ? res.user?.uid : '');
+                    localStorage.setItem('us', 'a7sdsdn');
+                    
+                    this.isLoading = false;
+                    this.router.navigateByUrl('/admin/cours');
 
-                    res.user?.getIdToken().then(token => {
-                        localStorage.setItem('token', token);
-                        localStorage.setItem('user', 'admin')
-                        this.router.navigateByUrl('/admin/cours');
-                    }, err => {
-                        this.errorMessage = "Login ou mot de passe incorrect"
-                    })
+                }, err => {
+                    this.isLoading = false;
+                    this.errorMessage = "Login ou mot de passe incorrect"
                 })
-            else 
+            else {
                 this.errorMessage = "Login ou mot de passe incorrect"
-
+                this.isLoading = false;
+            }
        })       
    }
 }

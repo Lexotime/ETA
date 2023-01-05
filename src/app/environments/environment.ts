@@ -16,7 +16,21 @@ export const environment = {
     measurementId: "G-DPK52XZGRT"
   },
 
-  
+  level: [
+		{name: 'CI', value: 'CI', option: ['néan']},
+		{name: 'CP', value: 'CP', option: ['néan']},
+		{name: 'CE1', value: 'CE1', option: ['néan']},
+		{name: 'CE1', value: 'CE1', option: ['néan']},
+		{name: 'CM1', value: 'CM1', option: ['néan']},
+		{name: 'CM2', value: 'CM2', option: ['néan']},
+		{name: '6e', value: '6éme', option: ['néan']},
+		{name: '5e', value: '5éme', option: ['néan']},
+		{name: '4e', value: '4éme', option: ['néan']},
+		{name: '3e', value: '3éme', option: ['néan']},
+		{name: 'Second', value: 'Second', option: ['L', 'S', 'STG']},
+		{name: 'Première', value: 'Première', option: ['L1', 'L2', 'STG', 'S1', 'S2']},
+		{name: 'Terminale', value: 'Terminale', option: ['L1', 'L2', 'STG', 'S1', 'S2']},
+	],
 
   production: false,
 };

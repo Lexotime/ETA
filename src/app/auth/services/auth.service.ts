@@ -50,20 +50,24 @@ export class AuthService {
     }
     
       // register method
-    async register(email : string, password : string)  {
-        let response;  
-        await this.fireAuth.createUserWithEmailAndPassword(email, password).then( res => {
+    // async register(email : string, password : string)  {
+    //     let response;  
+    //     await this.fireAuth.createUserWithEmailAndPassword(email, password).then( res => {
 
-            response = {uid : res.user?.uid, message: ''};
+    //         response = {uid : res.user?.uid, message: ''};
           
-        }, err => {
-            if (err.message.search("auth/email-already-in-use"))
-                response =  {uid: null, message : "Email déjà utilisé"}
-            else
-                response =  {uid: null, message :"Une erreur c'est produit veuillez ressayer"}
-        })
+    //     }, err => {
+    //         if (err.message.search("auth/email-already-in-use"))
+    //             response =  {uid: null, message : "Email déjà utilisé"}
+    //         else
+    //             response =  {uid: null, message :"Une erreur c'est produit veuillez ressayer"}
+    //     })
         
-        return response;
+    //     return response;
+    // }
+
+    register(email : string, password : string)  {
+        return  this.fireAuth.createUserWithEmailAndPassword(email, password)
     }
     
 	// sign out

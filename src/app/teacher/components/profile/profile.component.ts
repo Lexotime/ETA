@@ -27,8 +27,6 @@ export class ProfileComponent implements OnInit {
 		if (this.code)
 			this.modifier = true;
 
-			console.log(this.modifier);
-			
 
 		this.teacherService.getTeacher().subscribe(s => {
 			s.forEach(ss => {
@@ -84,14 +82,10 @@ export class ProfileComponent implements OnInit {
 
 			return;
 		}
-		console.log(this.teacher);
-		
 		
 		this.teacherService.updatePassword(this.teacher.uid, password).then(res => {
-			console.log(res);
 			
 		}).catch(err => {
-			console.log(err);
 			
 		})
 	}

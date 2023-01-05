@@ -16,18 +16,21 @@ export class VideoComponent implements OnInit {
 	fragCourses: any = [];
 	page: number = 1;
 	numberOfElement: number = 10;
+	isLoading: boolean = false;
 
 	constructor( private studentService: StudentService, private router: ActivatedRoute) {}
 
 	ngOnInit(): void {
+		this.isLoading= true;
 		this.studentService.getStudent().subscribe(s => {
 			s.forEach(ss => {
 				this.student = ss.payload.doc.data();
 			})
-			
+			if (this.student.level === undefined) {
+				this.isLoading = false;
+			}
 			this.studentService.getStudentCourses(this.student.level).subscribe(s => {
 				this.courses = [];
-				console.log(this.student.option);
 				
 				s.forEach(ss => {
 					
@@ -37,6 +40,8 @@ export class VideoComponent implements OnInit {
 						
 					}
 				})
+				this.isLoading= false;
+
 			})
 		})
 	}
