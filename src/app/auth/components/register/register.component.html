@@ -23,7 +23,7 @@
         <div class="p-6 block bg-white md:shadow-xl md:drop-shadow shadow-amber-50   rounded-3xl overflow-hidden">
             <p class="text-center text-3xl">Inscription <span *ngIf="isSign">réussi</span></p>
 
-            <form *ngIf="!isSign" class="p-2 px-16 space-y-5" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <form *ngIf="!isSign" class="p-2 md:px-16 space-y-5" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                 <p class="text-red-500 text-center">{{errorMessage}}</p>
 
                 <!-- Name -->

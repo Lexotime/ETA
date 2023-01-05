@@ -67,8 +67,9 @@ export class LoginComponent {
                     })
                     if (user) {
                         //@ts-ignore
-                        if (user.status) {
-                            this.errorMessage = ""
+                        if (user.status === "inactif") {
+                            this.errorMessage = "Compte bloqué"
+                            this.isLoading = false;
                         } else {
                             localStorage.setItem('li', res.user?.uid ? res.user?.uid : '');
                             localStorage.setItem('us', 'st7865mt')
@@ -91,9 +92,9 @@ export class LoginComponent {
                     })
                     if (user) {
                         //@ts-ignore
-                        if (user.status) {
-                            this.errorMessage = ""
-
+                        if (user.status === "inactif") {
+                            this.errorMessage = "Compte bloqué"
+                            this.isLoading = false;
                         } else {
                             localStorage.setItem('li', res.user?.uid ? res.user?.uid : '');
                             localStorage.setItem('us', 'te12sdz')
